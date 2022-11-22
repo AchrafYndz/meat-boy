@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
-project(2022_project_AchrafYndz)
+project(2022-project-AchrafYndz)
 IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/installed" CACHE PATH "default install path" FORCE)
 ENDIF ()
@@ -13,6 +13,14 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 # The source files to compile
 SET(SRC
         src/main.cpp
+        src/representation/Game.cpp
+        src/representation/Game.h
+        src/logic/Stopwatch.cpp
+        src/logic/Stopwatch.h
+        src/logic/World.cpp
+        src/logic/World.h
+        src/logic/Camera.cpp
+        src/logic/Camera.h
         )
 
 # Add include dirs for SFML
