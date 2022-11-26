@@ -15,12 +15,16 @@ SET(SRC
         src/main.cpp
         src/representation/Game.cpp
         src/representation/Game.h
+        src/representation/Player.cpp
+        src/representation/Player.h
         src/logic/Stopwatch.cpp
         src/logic/Stopwatch.h
         src/logic/World.cpp
         src/logic/World.h
         src/logic/Camera.cpp
         src/logic/Camera.h
+        src/logic/StateMgr.cpp
+        src/logic/StateMgr.h
         )
 
 # Add include dirs for SFML
