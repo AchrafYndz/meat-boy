@@ -17,8 +17,8 @@ SET(SRC
         src/representation/Game.h
         src/representation/Player.cpp
         src/representation/Player.h
-        src/representation/Block.cpp
-        src/representation/Block.h
+        src/representation/Wall.cpp
+        src/representation/Wall.h
         src/logic/Stopwatch.cpp
         src/logic/Stopwatch.h
         src/logic/World.cpp
