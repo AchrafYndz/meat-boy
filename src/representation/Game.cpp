@@ -24,7 +24,7 @@ void Game::loadLevel() {
 	int tileSize = TILESIZE * SCALE;
 
 	std::ifstream level;
-	level.open("test.csv");
+	level.open("levels/level-1/level-1.csv");
 
 	std::string line;
 	char delimiter = ',';
@@ -36,7 +36,7 @@ void Game::loadLevel() {
 		std::stringstream ss(line); /* create stringstream from line */
 		while (getline(ss, value, delimiter)) { /* read each field from line */
 			Vec2 pos(row * tileSize, column * tileSize);
-			if (value == "0") 
+			if (value != "-1")
 				EntityMgr::getInstance()->addEntity(new Wall(pos));
 			//else if (value == "1") // end
 			row++;
