@@ -6,7 +6,7 @@ StateMgr* StateMgr::getInstance() {
 	return stateMgr.get();
 }
 
-void StateMgr::goToLevel() {
+void StateMgr::goToLevel(int level) {
 	currentState = LevelState;
 }
 

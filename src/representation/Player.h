@@ -27,8 +27,6 @@ private:
 	enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
 	PlyState state = PlyState::onAir;
 
-	void stateToConsole();
-
 	const float acceleration = 0.8f;
 	float currentAcceleration = 0.f;
 	const float topSpeed = 5.f;
@@ -47,11 +45,13 @@ public:
 
 	void processInput();
 
-	void update();
+	void update() override;
 
-	void draw();
+	void draw() override;
 
-	Vec2 getPosition();
+	Vec2 getPosition() override;
+
+	void setInitialPosition(int x, int y);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H

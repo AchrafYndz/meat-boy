@@ -18,7 +18,7 @@ public:
 	void operator=(const StateMgr& other) = delete;
 	static StateMgr* getInstance();
 
-	void goToLevel();
+	void goToLevel(int level);
 	void goToMenu();
 	bool isInMenuState();
 	bool isInLevelState();

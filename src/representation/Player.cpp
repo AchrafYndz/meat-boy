@@ -1,7 +1,5 @@
 #include "Player.h"
 #include "Game.h"
-#include "../logic/EntityMgr.h"
-
 
 #include <iostream>
 
@@ -15,27 +13,7 @@ Player::Player() : Entity(Type::player) {
 	texture.loadFromFile("player-sprite.png");
 
 	sprite.setTexture(texture);
-	sprite.setPosition(128.f, WINDOW_HEIGHT - (256 - texture.getSize().y * SCALE));
 	sprite.setScale(SCALE, SCALE);
-}
-
-void Player::stateToConsole()
-{
-	switch (state)
-	{
-	case Player::none: std::cout << "State: None\n";
-		break;
-	case Player::standingOnTile:std::cout << "State: On Tile\n";
-		break;
-	case Player::onAir: std::cout << "State: On Air\n";
-		break;
-	case Player::onLeftWall: std::cout << "State: On Left Wall\n";
-		break;
-	case Player::onRightWall: std::cout << "State: On Right Wall\n";
-		break;
-	default:
-		break;
-	}
 }
 
 void Player::processInput() {
@@ -108,7 +86,7 @@ void Player::update()
 
 	Vec2 ePos;
 	sf::FloatRect r;
-	for (auto e : EntityMgr::getInstance()->getEntities()) {
+	for (auto e : World::getInstance()->getEntities()) {
 		if (e->getType() == Type::wall) {
 			r.left = e->getPosition().x;
 			r.top = e->getPosition().y;
@@ -131,7 +109,7 @@ void Player::update()
 	else if (rightSensor.active) state = PlyState::onRightWall;
 	else state = PlyState::onAir;
 
-	for (auto e : EntityMgr::getInstance()->getEntities())
+	for (auto e : World::getInstance()->getEntities())
 	{
 		if (e->getType() == Type::wall) {
 			ePos.x = e->getPosition().x;
@@ -207,4 +185,9 @@ void Player::draw()
 
 Vec2 Player::getPosition() {
 	return Vec2(sprite.getPosition().x, sprite.getPosition().y);
+}
+
+void Player::setInitialPosition(int x, int y)
+{
+	sprite.setPosition(x, y);
 }

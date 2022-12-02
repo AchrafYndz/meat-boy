@@ -7,12 +7,16 @@
 // CONSTANTS
 const int WINDOW_WIDTH = 1280;
 const int WINDOW_HEIGHT = 720;
-const float TIME_PER_FRAME = 1 / 60.0f;
+const double TIME_PER_FRAME = 1 / 60.0;
 
 class Game {
 private:
     static sf::RenderWindow window;
 
+	sf::Font game_font;
+	sf::Text text;
+	int selectedLevel = 0;
+	int totalLevels = 3;
 public:
     // Constructor
     Game();
