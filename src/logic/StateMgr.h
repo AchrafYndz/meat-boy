@@ -5,23 +5,28 @@
 
 class StateMgr {
 private:
-	StateMgr() { currentState = MenuState; };
-	static std::unique_ptr<StateMgr> stateMgr;
+    StateMgr() { currentState = MenuState; };
+    static std::unique_ptr<StateMgr> stateMgr;
 
-	enum state {
-		MenuState, LevelState
-	};
-	state currentState;
+    enum state {
+        MenuState, LevelState
+    };
+    state currentState;
 
 public:
-	StateMgr(StateMgr& other) = delete;
-	void operator=(const StateMgr& other) = delete;
-	static StateMgr* getInstance();
+    StateMgr(StateMgr &other) = delete;
 
-	void goToLevel(int level);
-	void goToMenu();
-	bool isInMenuState();
-	bool isInLevelState();
+    void operator=(const StateMgr &other) = delete;
+
+    static StateMgr *getInstance();
+
+    void goToLevel(int level);
+
+    void goToMenu();
+
+    bool isInMenuState();
+
+    bool isInLevelState();
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_STATEMGR_H

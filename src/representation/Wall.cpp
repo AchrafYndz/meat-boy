@@ -4,19 +4,18 @@
 #include "../logic/World.h"
 #include "Game.h"
 
-Wall::Wall(Vec2 p) : Entity(Type::wall)
-{
-	texture.loadFromFile("wall.png");
+Wall::Wall(Vec2 p) : Entity(Type::wall) {
+    texture.loadFromFile("resources/sprites/wall.png");
 
-	sprite.setTexture(texture);
-	sprite.setPosition(p.x, p.y);
-	sprite.setScale(SCALE, SCALE);
+    sprite.setTexture(texture);
+    sprite.setPosition(p.x, p.y);
+    sprite.setScale(SCALE, SCALE);
 }
 
 void Wall::draw() {
-	Game::getWindow()->draw(sprite);
+    Game::getWindow()->draw(sprite);
 }
 
 Vec2 Wall::getPosition() {
-	return { sprite.getPosition().x, sprite.getPosition().y };
+    return {sprite.getPosition().x, sprite.getPosition().y};
 }

@@ -9,49 +9,54 @@
 
 class Player : public Entity {
 private:
-	Player();
-	static std::unique_ptr<Player> player;
+    Player();
 
-	sf::Texture texture;
-	sf::Sprite sprite;
+    static std::unique_ptr<Player> player;
 
-	struct Sensor {
-		int x;
-		int y;
-		bool active = false;
-	};
-	Sensor leftSensor;
-	Sensor rightSensor;
-	Sensor bottomSensor;
+    sf::Texture texture;
+    sf::Sprite sprite;
 
-	enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
-	PlyState state = PlyState::onAir;
+    struct Sensor {
+        int x;
+        int y;
+        bool active = false;
+    };
+    Sensor leftSensor;
+    Sensor rightSensor;
+    Sensor bottomSensor;
 
-	const float acceleration = 0.8f;
-	float currentAcceleration = 0.f;
-	const float topSpeed = 5.f;
+    enum PlyState {
+        none, standingOnTile, onAir, onLeftWall, onRightWall
+    };
+    PlyState state = PlyState::onAir;
 
-	const float JUMPING_TOTAL_TIME = 0.4f;
-	float currentJumpingTime = 0.f;
-	
-	enum JumpType { normal, toTheLeft, toTheRight };
-	JumpType jumpType;
+    const float acceleration = 0.8f;
+    float currentAcceleration = 0.f;
+    const float topSpeed = 5.f;
+
+    const float JUMPING_TOTAL_TIME = 0.4f;
+    float currentJumpingTime = 0.f;
+
+    enum JumpType {
+        normal, toTheLeft, toTheRight
+    };
+    JumpType jumpType;
 public:
-	Player(Player& other) = delete;
+    Player(Player &other) = delete;
 
-	void operator=(const Player& other) = delete;
+    void operator=(const Player &other) = delete;
 
-	static Player* getInstance();
+    static Player *getInstance();
 
-	void processInput();
+    void processInput();
 
-	void update() override;
+    void update() override;
 
-	void draw() override;
+    void draw() override;
 
-	Vec2 getPosition() override;
+    Vec2 getPosition() override;
 
-	void setInitialPosition(int x, int y);
+    void setInitialPosition(int x, int y);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H

@@ -2,22 +2,22 @@
 
 std::unique_ptr<StateMgr> StateMgr::stateMgr(new StateMgr);
 
-StateMgr* StateMgr::getInstance() {
-	return stateMgr.get();
+StateMgr *StateMgr::getInstance() {
+    return stateMgr.get();
 }
 
 void StateMgr::goToLevel(int level) {
-	currentState = LevelState;
+    currentState = LevelState;
 }
 
 void StateMgr::goToMenu() {
-	currentState = MenuState;
+    currentState = MenuState;
 }
 
 bool StateMgr::isInMenuState() {
-	return currentState == MenuState;
+    return currentState == MenuState;
 }
 
 bool StateMgr::isInLevelState() {
-	return currentState == LevelState;
+    return currentState == LevelState;
 }

@@ -6,16 +6,16 @@
 
 class LevelEnd : public Entity {
 private:
-	sf::Texture texture;
-	sf::Sprite sprite;
+    sf::Texture texture;
+    sf::Sprite sprite;
 public:
-	LevelEnd(int x, int y);
+    LevelEnd(int x, int y);
 
-	void update() override;
+    void update() override;
 
-	void draw() override;
+    void draw() override;
 
-	Vec2 getPosition() override;
+    Vec2 getPosition() override;
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_LVLEND_H

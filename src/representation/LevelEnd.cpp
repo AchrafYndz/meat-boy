@@ -3,7 +3,7 @@
 #include "../logic/World.h"
 
 LevelEnd::LevelEnd(int x, int y) : Entity(Type::end) {
-    texture.loadFromFile("end-sprite.png");
+    texture.loadFromFile("resources/sprites/end-sprite.png");
 
     sprite.setTexture(texture);
     sprite.setPosition(x, y);

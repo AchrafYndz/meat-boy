@@ -16,13 +16,13 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> lastUpdate = std::chrono::steady_clock::now();
 public:
     // singletons cannot be cloneable.
-    Stopwatch(Stopwatch& other) = delete;
+    Stopwatch(Stopwatch &other) = delete;
 
     // singletons cannot be assignable
-    void operator=(const Stopwatch& other) = delete;
+    void operator=(const Stopwatch &other) = delete;
 
     // returns the only instance of stopwatch
-    static Stopwatch* getInstance();
+    static Stopwatch *getInstance();
 
     // the time (in seconds) since reset() was last called
     double timeSinceLastUpdate();
