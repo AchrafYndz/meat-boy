@@ -13,23 +13,30 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 # The source files to compile
 SET(SRC
         src/main.cpp
-        src/representation/Game.cpp
-        src/representation/Game.h
-        src/representation/Player.cpp
-        src/representation/Player.h
-        src/representation/Wall.cpp
-        src/representation/Wall.h
-        src/representation/LevelEnd.cpp
-        src/representation/LevelEnd.h
-        src/logic/Stopwatch.cpp
-        src/logic/Stopwatch.h
-        src/logic/World.cpp
-        src/logic/World.h
-        src/logic/Camera.cpp
-        src/logic/Camera.h
-        src/logic/StateMgr.cpp
-        src/logic/StateMgr.h
-        src/logic/Entity.h
+
+        src/controller/StateManager.cpp
+        src/controller/StateManager.h
+
+        src/util/Stopwatch.cpp
+        src/util/Stopwatch.h
+
+        src/view/EntityView.cpp
+        src/view/EntityView.h
+
+        src/model/World.cpp
+        src/model/World.h
+        src/model/Camera.cpp
+        src/model/Camera.h
+        src/model/Entity.h
+        src/model/Player.cpp
+        src/model/Player.h
+        src/model/Wall.cpp
+        src/model/Wall.h
+        src/model/Goal.cpp
+        src/model/Goal.h
+
+        src/controller/Game.cpp
+        src/controller/Game.h
         )
 
 # Add include dirs for SFML
