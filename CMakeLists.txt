@@ -19,6 +19,7 @@ SET(SRC
 
         src/util/Stopwatch.cpp
         src/util/Stopwatch.h
+        src/util/json.hpp
 
         src/view/EntityView.cpp
         src/view/EntityView.h
