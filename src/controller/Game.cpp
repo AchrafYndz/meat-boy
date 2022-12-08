@@ -1,10 +1,10 @@
 #include "Game.h"
-#include "StateManager.h"
+#include "../model/Camera.h"
+#include "../model/Goal.h"
 #include "../model/Player.h"
 #include "../model/Wall.h"
-#include "../model/Goal.h"
-#include "../model/Camera.h"
 #include "../util/json.hpp"
+#include "StateManager.h"
 
 #include <fstream>
 #include <sstream>
@@ -12,7 +12,7 @@
 sf::RenderWindow Game::window;
 
 Game::Game() {
-    Camera *camera = Camera::getInstance();
+    Camera* camera = Camera::getInstance();
     window.create(sf::VideoMode(camera->getWindowWidth(), camera->getWindowHeight()), "Meat Boy");
 
     game_font.loadFromFile("resources/fonts/arial.ttf");
@@ -28,15 +28,16 @@ void Game::loadLevel() {
 
     int tileSize = TILESIZE * SCALE;
 
-    std::string currentLevel = std::to_string(StateManager::getInstance()->getCurrentLevel());
-
     std::ifstream levelMap;
     std::ifstream levelsInfo("resources/levels/levels-info.json");
 
     nlohmann::json j;
     levelsInfo >> j;
 
-    std::string lvlPath = j["level-" + currentLevel]["filePath"];
+    std::string lvlPath = j["level-" + std::to_string(selectedLevel)]["filePath"];
+	bool autoScrolling = j["level-" + std::to_string(selectedLevel)]["autoScrolling"];
+
+	StateManager::getInstance()->goToLevel(selectedLevel, autoScrolling);
 
     levelMap.open(lvlPath);
 
@@ -44,19 +45,19 @@ void Game::loadLevel() {
     char delimiter = ',';
 
     std::string value;
-    int column = 0; // top
-    int row = 0; // left
-    while (getline(levelMap, line)) { /* read entire line into line */
-        std::stringstream ss(line); /* create stringstream from line */
+    int column = 0;                             // top
+    int row = 0;                                // left
+    while (getline(levelMap, line)) {           /* read entire line into line */
+        std::stringstream ss(line);             /* create stringstream from line */
         while (getline(ss, value, delimiter)) { /* read each field from line */
             Vec2 pos(column * tileSize, row * tileSize);
             if (value == "0")
                 World::getInstance()->addEntity(new Wall(pos));
-            else if (value == "1") { // goal
+            else if (value == "1") // goal
                 World::getInstance()->addEntity(new Goal(pos.x, pos.y));
-            } else if (value == "2") { // player position
+            else if (value == "2") // player position
                 Player::getInstance()->startLevel(pos.x, pos.y);
-            }
+
             column++;
         }
         row++;
@@ -68,7 +69,7 @@ void Game::loadLevel() {
 }
 
 void Game::run() {
-    Stopwatch *stopwatch = Stopwatch::getInstance();
+    Stopwatch* stopwatch = Stopwatch::getInstance();
     while (window.isOpen()) {
         if (stopwatch->timeSinceLastUpdate() > TIME_PER_FRAME) {
             stopwatch->reset();
@@ -82,18 +83,18 @@ void Game::process() {
     if (StateManager::getInstance()->isInMenuState()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                window.close();
 
             switch (event.type) {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                case sf::Event::KeyPressed: {
-                    handleMenuInput(event.key.code);
-                }
-                    break;
-                default:
-                    break;
+            case sf::Event::Closed:
+                window.close();
+                break;
+            case sf::Event::KeyPressed: {
+                handleMenuInput(event.key.code);
+            } break;
+            default:
+                break;
             }
         }
     } else {
@@ -105,15 +106,15 @@ void Game::process() {
         Player::getInstance()->update();
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
         if (Player::getInstance()->hasReachedGoal()) {
-            if (selectedLevel == 3) StateManager::getInstance()->goToMenu();
+            if (selectedLevel == 3)
+                StateManager::getInstance()->goToMenu();
             else {
-                StateManager::getInstance()->goToLevel(++selectedLevel);
+				selectedLevel++;
                 loadLevel();
             }
         }
         // DIE -> Restart Level
         if (!Camera::getInstance()->entityIsVisible(Player::getInstance())) {
-            StateManager::getInstance()->goToLevel(selectedLevel);
             loadLevel();
         }
     }
@@ -156,12 +157,14 @@ void Game::render() {
 
 void Game::handleMenuInput(sf::Keyboard::Key key) {
     if (key == sf::Keyboard::W || key == sf::Keyboard::Up) {
-        if (selectedLevel > 1) { selectedLevel--; }
-        else { selectedLevel = 1; }
+        if (selectedLevel > 1) {
+            selectedLevel--;
+        } else {
+            selectedLevel = 1;
+        }
     } else if (key == sf::Keyboard::S || key == sf::Keyboard::Down) {
-        if (selectedLevel < totalLevels) selectedLevel++;
-    } else if (key == sf::Keyboard::Enter) {
-        StateManager::getInstance()->goToLevel(selectedLevel);
-        loadLevel();
-    }
+        if (selectedLevel < totalLevels)
+            selectedLevel++;
+    } else if (key == sf::Keyboard::Enter)
+		loadLevel();
 }

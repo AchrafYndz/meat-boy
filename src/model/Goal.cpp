@@ -10,14 +10,8 @@ Goal::Goal(int x, int y) : Entity(Type::goal) {
     sprite.setScale(SCALE, SCALE);
 }
 
-void Goal::update() {
+void Goal::update() {}
 
-}
+void Goal::draw() { Game::getWindow()->draw(sprite); }
 
-void Goal::draw() {
-    Game::getWindow()->draw(sprite);
-}
-
-Vec2 Goal::getPosition() {
-    return {sprite.getPosition().x, sprite.getPosition().y};
-}
+Vec2 Goal::getPosition() { return {sprite.getPosition().x, sprite.getPosition().y}; }

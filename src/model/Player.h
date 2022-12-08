@@ -1,9 +1,9 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 
-#include <SFML/Graphics.hpp>
 #include "Entity.h"
 #include "World.h"
+#include <SFML/Graphics.hpp>
 
 #include <memory>
 
@@ -25,9 +25,7 @@ private:
     Sensor rightSensor;
     Sensor bottomSensor;
 
-    enum PlyState {
-        none, standingOnTile, onAir, onLeftWall, onRightWall
-    };
+    enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
     PlyState state = PlyState::onAir;
 
     const float acceleration = 1.f;
@@ -40,18 +38,17 @@ private:
 
     bool jumpAvailable = true;
 
-    enum JumpType {
-        normal, toTheLeft, toTheRight
-    };
+    enum JumpType { normal, toTheLeft, toTheRight };
     JumpType jumpType;
 
     bool reachedGoal = false;
+
 public:
-    Player(Player &other) = delete;
+    Player(Player& other) = delete;
 
-    void operator=(const Player &other) = delete;
+    void operator=(const Player& other) = delete;
 
-    static Player *getInstance();
+    static Player* getInstance();
 
     void processInput();
 

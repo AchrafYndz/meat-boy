@@ -1,12 +1,11 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H
 
-#include <memory>
 #include "Entity.h"
 #include "World.h"
+#include <memory>
 
 struct Vec2;
-
 
 class Camera {
 private:
@@ -15,18 +14,19 @@ private:
     const int windowHeight = 853;
 
     // 720p
-//    const int windowWidth = 720;
-//    const int windowHeight = 1280;
+    //    const int windowWidth = 720;
+    //    const int windowHeight = 1280;
 
     Camera() = default;
 
     static std::unique_ptr<Camera> theCamera;
 
     double cameraCenter;
-public:
-    Camera(Camera &other) = delete;
 
-    void operator=(const Camera &other) = delete;
+public:
+    Camera(Camera& other) = delete;
+
+    void operator=(const Camera& other) = delete;
 
     // Getters
     int getWindowWidth() const { return windowWidth; }
@@ -37,13 +37,13 @@ public:
 
     void setCameraCenter(double h) { cameraCenter = h - (windowHeight / 2.f); }
 
-    static Camera *getInstance();
+    static Camera* getInstance();
 
     void move(double diff);
 
-    bool entityIsVisible(Entity *e);
+    bool entityIsVisible(Entity* e);
 
-    void update(Entity *entity);
+    void update(Entity* entity);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H

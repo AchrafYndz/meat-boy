@@ -5,9 +5,7 @@
 
 std::unique_ptr<Player> Player::player(new Player);
 
-Player *Player::getInstance() {
-    return player.get();
-}
+Player* Player::getInstance() { return player.get(); }
 
 Player::Player() : Entity(Type::player) {
     texture.loadFromFile("resources/sprites/player-sprite.png");
@@ -22,28 +20,33 @@ void Player::processInput() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         if (jumpType == JumpType::toTheRight)
             currentAcceleration -= acceleration / 3.f;
-        else currentAcceleration -= acceleration;
+        else
+            currentAcceleration -= acceleration;
         sprite.setScale(-SCALE, SCALE);
         sprite.setOrigin(sprite.getLocalBounds().width, 0.f);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		if (jumpType == JumpType::toTheLeft)
-			currentAcceleration += acceleration / 3.f;
-		else currentAcceleration += acceleration;
-		sprite.setScale(SCALE, SCALE);
-		sprite.setOrigin(0.f, 0.f);
-	}
-	else if (currentJumpingTime < 0.f) { // deceleration if not jumping
-		if (currentAcceleration > 0.f) currentAcceleration -= acceleration;
-		else if (currentAcceleration < 0.f) currentAcceleration += acceleration;
-	}
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        if (jumpType == JumpType::toTheLeft)
+            currentAcceleration += acceleration / 3.f;
+        else
+            currentAcceleration += acceleration;
+        sprite.setScale(SCALE, SCALE);
+        sprite.setOrigin(0.f, 0.f);
+    } else if (currentJumpingTime < 0.f) { // deceleration if not jumping
+        if (currentAcceleration > 0.f)
+            currentAcceleration -= acceleration;
+        else if (currentAcceleration < 0.f)
+            currentAcceleration += acceleration;
+    }
 
-    if (currentAcceleration > topSpeed) currentAcceleration = topSpeed;
-    else if (currentAcceleration < -topSpeed) currentAcceleration = -topSpeed;
+    if (currentAcceleration > topSpeed)
+        currentAcceleration = topSpeed;
+    else if (currentAcceleration < -topSpeed)
+        currentAcceleration = -topSpeed;
 
     if (jumpAvailable && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && state != PlyState::onAir) {
         jumpAvailable = false;
-        if (state == PlyState::standingOnTile) jumpType = JumpType::normal;
+        if (state == PlyState::standingOnTile)
+            jumpType = JumpType::normal;
         else if (state == PlyState::onLeftWall) {
             jumpType = JumpType::toTheRight;
             currentAcceleration = topSpeed;
@@ -53,7 +56,8 @@ void Player::processInput() {
         }
 
         currentJumpingTime = JUMPING_TOTAL_TIME;
-    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) jumpAvailable = true;
+    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        jumpAvailable = true;
 
     sprite.setPosition(currentX + currentAcceleration, sprite.getPosition().y);
 }
@@ -92,7 +96,7 @@ void Player::update() {
 
     Vec2 ePos;
     sf::FloatRect r;
-    for (auto e: World::getInstance()->getEntities()) {
+    for (auto e : World::getInstance()->getEntities()) {
         if (e->getType() == Type::wall) {
             r.left = e->getPosition().x;
             r.top = e->getPosition().y;
@@ -108,12 +112,16 @@ void Player::update() {
             }
         }
     }
-    if (bottomSensor.active) state = PlyState::standingOnTile;
-    else if (leftSensor.active) state = PlyState::onLeftWall;
-    else if (rightSensor.active) state = PlyState::onRightWall;
-    else state = PlyState::onAir;
+    if (bottomSensor.active)
+        state = PlyState::standingOnTile;
+    else if (leftSensor.active)
+        state = PlyState::onLeftWall;
+    else if (rightSensor.active)
+        state = PlyState::onRightWall;
+    else
+        state = PlyState::onAir;
 
-    for (auto e: World::getInstance()->getEntities()) {
+    for (auto e : World::getInstance()->getEntities()) {
         // player with wall
         if (e->getType() == Type::wall) {
             Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, e->getPosition());
@@ -121,12 +129,12 @@ void Player::update() {
 
             if (thereIsCollision) {
                 if (overlapPly.y < overlapPly.x) { // compensate only the shortest overlap, in this case y
-                    if (bottomSensor.active) { // player on top of tile
+                    if (bottomSensor.active) {     // player on top of tile
                         plyPos.y -= overlapPly.y;
                     } else { // player hit tile from below
                         plyPos.y += overlapPly.y;
                     }
-                } else { // compensate only x
+                } else {                      // compensate only x
                     if (rightSensor.active) { // player colliding on right wall
                         plyPos.x -= overlapPly.x;
                     } else if (leftSensor.active) { // player colliding on left wall
@@ -136,25 +144,21 @@ void Player::update() {
                 sprite.setPosition(plyPos.x, plyPos.y);
             }
         }
-            // player with goal (bandage girl)
+        // player with goal (bandage girl)
         else if (e->getType() == Type::goal) {
             Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, e->getPosition());
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
-            if (thereIsCollision) reachedGoal = true;
+            if (thereIsCollision)
+                reachedGoal = true;
         }
     }
 }
 
-void Player::draw() {
-    Game::getWindow()->draw(sprite);
-}
+void Player::draw() { Game::getWindow()->draw(sprite); }
 
-Vec2 Player::getPosition() {
-    return Vec2(sprite.getPosition().x, sprite.getPosition().y);
-}
+Vec2 Player::getPosition() { return Vec2(sprite.getPosition().x, sprite.getPosition().y); }
 
 void Player::startLevel(int x, int y) {
     reachedGoal = false;
     sprite.setPosition(x, y);
-
 }

@@ -1,14 +1,14 @@
 {
   "level-1": {
     "filePath": "resources/levels/level-1.csv",
-    "autoScrolling": 0
+    "autoScrolling": false
   },
   "level-2": {
     "filePath": "resources/levels/level-2.csv",
-    "autoScrolling": 0
+    "autoScrolling": false
   },
   "level-3": {
     "filePath": "resources/levels/level-3.csv",
-    "autoScrolling": 1
+    "autoScrolling": true
   }
 }

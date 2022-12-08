@@ -1,8 +1,8 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_WALL_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_WALL_H
 
-#include <SFML/Graphics.hpp>
 #include "Entity.h"
+#include <SFML/Graphics.hpp>
 
 struct Vec2;
 
@@ -10,6 +10,7 @@ class Wall : public Entity {
 private:
     sf::Texture texture;
     sf::Sprite sprite;
+
 public:
     Wall(Vec2 p);
 

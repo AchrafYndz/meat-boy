@@ -1,8 +1,8 @@
 #include "Wall.h"
 
-#include <iostream>
-#include "World.h"
 #include "../controller/Game.h"
+#include "World.h"
+#include <iostream>
 
 Wall::Wall(Vec2 p) : Entity(Type::wall) {
     texture.loadFromFile("resources/sprites/wall-sprite.png");
@@ -12,10 +12,6 @@ Wall::Wall(Vec2 p) : Entity(Type::wall) {
     sprite.setScale(SCALE, SCALE);
 }
 
-void Wall::draw() {
-    Game::getWindow()->draw(sprite);
-}
+void Wall::draw() { Game::getWindow()->draw(sprite); }
 
-Vec2 Wall::getPosition() {
-    return {sprite.getPosition().x, sprite.getPosition().y};
-}
+Vec2 Wall::getPosition() { return {sprite.getPosition().x, sprite.getPosition().y}; }

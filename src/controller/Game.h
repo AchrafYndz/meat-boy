@@ -15,6 +15,7 @@ private:
     sf::Text text;
     int selectedLevel = 0;
     int totalLevels = 3;
+
 public:
     // Constructor
     Game();
@@ -25,7 +26,7 @@ public:
     // Main game loop
     void run();
 
-    static sf::RenderWindow *getWindow() { return &window; }
+    static sf::RenderWindow* getWindow() { return &window; }
 
 private:
     void process();

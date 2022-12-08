@@ -6,9 +6,7 @@ struct Vec2;
 class Entity {
 private:
 public:
-    enum Type {
-        none, player, wall, goal
-    };
+    enum Type { none, player, wall, goal };
     Type type = none;
 
     Entity(Type t) { type = t; }

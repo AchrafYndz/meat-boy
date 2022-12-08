@@ -6,12 +6,12 @@
 
 class Entity;
 
-//Constants
+// Constants
 const float TILESIZE = 256;
 // SCALE for 480p
 const float SCALE = 0.125;
 // SCALE for 720p
-//const float SCALE = 0.1875;
+// const float SCALE = 0.1875;
 
 // Vector
 struct Vec2 {
@@ -35,20 +35,21 @@ private:
 
     static std::unique_ptr<World> world;
 
-    std::vector<Entity *> entities;
+    std::vector<Entity*> entities;
+
 public:
-    World(World &other) = delete;
+    World(World& other) = delete;
 
-    void operator=(const World &other) = delete;
+    void operator=(const World& other) = delete;
 
-    static World *getInstance();
+    static World* getInstance();
 
     // collisions
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
-    void addEntity(Entity *e) { entities.push_back(e); }
+    void addEntity(Entity* e) { entities.push_back(e); }
 
-    std::vector<Entity *> getEntities() { return entities; }
+    std::vector<Entity*> getEntities() { return entities; }
 
     void clearEntities();
 
