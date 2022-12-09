@@ -1,9 +1,6 @@
 #include "Game.h"
 #include "../model/Camera.h"
-#include "../model/Goal.h"
 #include "../model/Player.h"
-#include "../model/Wall.h"
-#include "../util/json.hpp"
 #include "StateManager.h"
 
 #include <fstream>
@@ -12,7 +9,7 @@
 sf::RenderWindow Game::window;
 
 Game::Game() {
-    Camera* camera = Camera::getInstance();
+	std::shared_ptr<Camera> camera = Camera::getInstance();
     window.create(sf::VideoMode(camera->getWindowWidth(), camera->getWindowHeight()), "Meat Boy");
 
     game_font.loadFromFile("resources/fonts/arial.ttf");
@@ -21,55 +18,8 @@ Game::Game() {
     StateManager::getInstance()->goToMenu();
 };
 
-void Game::loadLevel() {
-    World::getInstance()->clearEntities();
-
-    World::getInstance()->addEntity(Player::getInstance());
-
-    int tileSize = TILESIZE * SCALE;
-
-    std::ifstream levelMap;
-    std::ifstream levelsInfo("resources/levels/levels-info.json");
-
-    nlohmann::json j;
-    levelsInfo >> j;
-
-    std::string lvlPath = j["level-" + std::to_string(selectedLevel)]["filePath"];
-	bool autoScrolling = j["level-" + std::to_string(selectedLevel)]["autoScrolling"];
-
-	StateManager::getInstance()->goToLevel(selectedLevel, autoScrolling);
-
-    levelMap.open(lvlPath);
-
-    std::string line;
-    char delimiter = ',';
-
-    std::string value;
-    int column = 0;                             // top
-    int row = 0;                                // left
-    while (getline(levelMap, line)) {           /* read entire line into line */
-        std::stringstream ss(line);             /* create stringstream from line */
-        while (getline(ss, value, delimiter)) { /* read each field from line */
-            Vec2 pos(column * tileSize, row * tileSize);
-            if (value == "0")
-                World::getInstance()->addEntity(new Wall(pos));
-            else if (value == "1") // goal
-                World::getInstance()->addEntity(new Goal(pos.x, pos.y));
-            else if (value == "2") // player position
-                Player::getInstance()->startLevel(pos.x, pos.y);
-
-            column++;
-        }
-        row++;
-        column = 0;
-    }
-
-    // set initial camera position
-    Camera::getInstance()->setCameraCenter(row * tileSize);
-}
-
 void Game::run() {
-    Stopwatch* stopwatch = Stopwatch::getInstance();
+	std::shared_ptr<Stopwatch> stopwatch = Stopwatch::getInstance();
     while (window.isOpen()) {
         if (stopwatch->timeSinceLastUpdate() > TIME_PER_FRAME) {
             stopwatch->reset();
@@ -110,12 +60,12 @@ void Game::process() {
                 StateManager::getInstance()->goToMenu();
             else {
 				selectedLevel++;
-                loadLevel();
+                World::getInstance()->loadLevel(selectedLevel);
             }
         }
         // DIE -> Restart Level
         if (!Camera::getInstance()->entityIsVisible(Player::getInstance())) {
-            loadLevel();
+			World::getInstance()->loadLevel(selectedLevel);
         }
     }
 }
@@ -149,7 +99,7 @@ void Game::render() {
         sf::View v = window.getView();
         v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraDiff);
         window.setView(v);
-        World::getInstance()->drawAll();
+        World::getInstance()->draw();
     }
 
     window.display();
@@ -166,5 +116,5 @@ void Game::handleMenuInput(sf::Keyboard::Key key) {
         if (selectedLevel < totalLevels)
             selectedLevel++;
     } else if (key == sf::Keyboard::Enter)
-		loadLevel();
+		World::getInstance()->loadLevel(selectedLevel);
 }

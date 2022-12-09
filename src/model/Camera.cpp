@@ -3,16 +3,16 @@
 #include "World.h"
 #include "../controller/StateManager.h"
 
-std::unique_ptr<Camera> Camera::theCamera(new Camera);
+std::shared_ptr<Camera> Camera::theCamera(new Camera);
 
-Camera* Camera::getInstance() { return theCamera.get(); }
+std::shared_ptr<Camera> Camera::getInstance() { return theCamera; }
 
 void Camera::move(double diff) {
     if (cameraCenter + diff - windowHeight / 2 >= 0)
         cameraCenter += diff;
 }
 
-bool Camera::entityIsVisible(Entity* e) {
+bool Camera::entityIsVisible(std::shared_ptr<Entity> e) {
     Vec2 ePos = e->getPosition();
     if (ePos.y < cameraCenter + (windowHeight / 2) && ePos.y + TILESIZE * SCALE > cameraCenter - (windowHeight / 2)) {
         return true;
@@ -21,7 +21,7 @@ bool Camera::entityIsVisible(Entity* e) {
     }
 }
 
-void Camera::update(Entity* entity) {
+void Camera::update(std::shared_ptr<Entity> entity) {
     // Move if autoscrolling
 	if (StateManager::getInstance()->currentLevelHasAutoScroll()) {
 		move(-0.02f);

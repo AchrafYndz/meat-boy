@@ -1,8 +1,8 @@
 #include "StateManager.h"
 
-std::unique_ptr<StateManager> StateManager::stateMgr(new StateManager);
+std::shared_ptr<StateManager> StateManager::stateMgr(new StateManager);
 
-StateManager* StateManager::getInstance() { return stateMgr.get(); }
+std::shared_ptr<StateManager> StateManager::getInstance() { return stateMgr; }
 
 void StateManager::goToLevel(int level, bool autoScrolling) {
 	currentLevel.current = level;

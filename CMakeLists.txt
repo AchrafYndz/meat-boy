@@ -14,9 +14,6 @@ FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 SET(SRC
         src/main.cpp
 
-        src/controller/StateManager.cpp
-        src/controller/StateManager.h
-
         src/util/Stopwatch.cpp
         src/util/Stopwatch.h
         src/util/json.hpp
@@ -35,9 +32,14 @@ SET(SRC
         src/model/Wall.h
         src/model/Goal.cpp
         src/model/Goal.h
+        src/model/ConcreteFactory.cpp
+        src/model/ConcreteFactory.h
 
         src/controller/Game.cpp
         src/controller/Game.h
+        src/controller/StateManager.cpp
+        src/controller/StateManager.h
+        src/controller/AbstractFactory.h
         )
 
 # Add include dirs for SFML

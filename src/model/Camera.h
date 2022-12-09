@@ -19,7 +19,7 @@ private:
 
     Camera() = default;
 
-    static std::unique_ptr<Camera> theCamera;
+    static std::shared_ptr<Camera> theCamera;
 
     double cameraCenter;
 
@@ -37,13 +37,13 @@ public:
 
     void setCameraCenter(double h) { cameraCenter = h - (windowHeight / 2.f); }
 
-    static Camera* getInstance();
+    static std::shared_ptr<Camera> getInstance();
 
     void move(double diff);
 
-    bool entityIsVisible(Entity* e);
+    bool entityIsVisible(std::shared_ptr<Entity> e);
 
-    void update(Entity* entity);
+    void update(std::shared_ptr<Entity> entity);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H

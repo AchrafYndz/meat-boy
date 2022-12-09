@@ -33,27 +33,29 @@ class World {
 private:
     World();
 
-    static std::unique_ptr<World> world;
+    static std::shared_ptr<World> world;
 
-    std::vector<Entity*> entities;
+    std::vector<std::shared_ptr<Entity>> entities;
 
 public:
     World(World& other) = delete;
 
     void operator=(const World& other) = delete;
 
-    static World* getInstance();
+    static std::shared_ptr<World> getInstance();
 
-    // collisions
+	// Load a Level
+	void loadLevel(int lvl);
+
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
-    void addEntity(Entity* e) { entities.push_back(e); }
+    void addEntity(std::shared_ptr<Entity> e) { entities.push_back(e); }
 
-    std::vector<Entity*> getEntities() { return entities; }
+    std::vector<std::shared_ptr<Entity>> getEntities() { return entities; }
 
     void clearEntities();
 
-    void drawAll();
+    void draw();
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H

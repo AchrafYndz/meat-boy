@@ -13,15 +13,13 @@ private:
 
     sf::Font game_font;
     sf::Text text;
-    int selectedLevel = 0;
-    int totalLevels = 3;
+
+	int selectedLevel = 0;
+	int totalLevels = 3;
 
 public:
     // Constructor
     Game();
-
-    // Load a Level
-    void loadLevel();
 
     // Main game loop
     void run();

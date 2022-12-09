@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "World.h"
+#include "../view/EntityView.h"
 #include <SFML/Graphics.hpp>
 
 #include <memory>
@@ -11,10 +12,7 @@ class Player : public Entity {
 private:
     Player();
 
-    static std::unique_ptr<Player> player;
-
-    sf::Texture texture;
-    sf::Sprite sprite;
+    static std::shared_ptr<Player> player;
 
     struct Sensor {
         int x;
@@ -48,15 +46,13 @@ public:
 
     void operator=(const Player& other) = delete;
 
-    static Player* getInstance();
+    static std::shared_ptr<Player> getInstance();
 
     void processInput();
 
     void update() override;
 
-    void draw() override;
-
-    Vec2 getPosition() override;
+	void draw() override;
 
     void startLevel(int x, int y);
 

@@ -1,8 +1,8 @@
 #include "Stopwatch.h"
 
-std::unique_ptr<Stopwatch> Stopwatch::stopwatch(new Stopwatch);
+std::shared_ptr<Stopwatch> Stopwatch::stopwatch(new Stopwatch);
 
-Stopwatch* Stopwatch::getInstance() { return stopwatch.get(); }
+std::shared_ptr<Stopwatch> Stopwatch::getInstance() { return stopwatch; }
 
 double Stopwatch::timeSinceLastUpdate() {
     return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - lastUpdate).count() /

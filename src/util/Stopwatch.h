@@ -11,7 +11,7 @@ private:
     Stopwatch() = default;
 
     // the only instance of stopwatch
-    static std::unique_ptr<Stopwatch> stopwatch;
+    static std::shared_ptr<Stopwatch> stopwatch;
     // time of last reset
     std::chrono::time_point<std::chrono::steady_clock> lastUpdate = std::chrono::steady_clock::now();
 
@@ -23,7 +23,7 @@ public:
     void operator=(const Stopwatch& other) = delete;
 
     // returns the only instance of stopwatch
-    static Stopwatch* getInstance();
+    static std::shared_ptr<Stopwatch> getInstance();
 
     // the time (in seconds) since reset() was last called
     double timeSinceLastUpdate();

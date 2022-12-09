@@ -7,18 +7,13 @@
 struct Vec2;
 
 class Wall : public Entity {
-private:
-    sf::Texture texture;
-    sf::Sprite sprite;
-
 public:
-    Wall(Vec2 p);
+    Wall(Vec2 pos);
+	~Wall() {}
 
-    void update() override {}
+	void update() override;
 
-    void draw() override;
-
-    Vec2 getPosition() override;
+	void draw() override;
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WALL_H

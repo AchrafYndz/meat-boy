@@ -3,15 +3,17 @@
 
 #include <iostream>
 
-std::unique_ptr<Player> Player::player(new Player);
+std::shared_ptr<Player> Player::player(new Player);
 
-Player* Player::getInstance() { return player.get(); }
+std::shared_ptr<Player> Player::getInstance() { return player; }
 
 Player::Player() : Entity(Type::player) {
-    texture.loadFromFile("resources/sprites/player-sprite.png");
+	std::shared_ptr<EntityView> entView(new EntityView());
+	attachObserver(entView);
 
-    sprite.setTexture(texture);
-    sprite.setScale(SCALE, SCALE);
+	texture.loadFromFile("resources/sprites/player-sprite.png");
+	sprite.setTexture(texture);
+	sprite.setScale(SCALE, SCALE);
 }
 
 void Player::processInput() {
@@ -154,9 +156,10 @@ void Player::update() {
     }
 }
 
-void Player::draw() { Game::getWindow()->draw(sprite); }
-
-Vec2 Player::getPosition() { return Vec2(sprite.getPosition().x, sprite.getPosition().y); }
+void Player::draw()
+{
+	observer->draw(sprite);
+}
 
 void Player::startLevel(int x, int y) {
     reachedGoal = false;

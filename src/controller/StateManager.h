@@ -6,7 +6,7 @@
 class StateManager {
 private:
     StateManager(){};
-    static std::unique_ptr<StateManager> stateMgr;
+    static std::shared_ptr<StateManager> stateMgr;
 	
 	struct Level {
 		// 0 = menu, 1.. = levels
@@ -20,7 +20,7 @@ public:
 
     void operator=(const StateManager& other) = delete;
 
-    static StateManager* getInstance();
+    static std::shared_ptr<StateManager> getInstance();
 
     void goToLevel(int level, bool autoScrolling);
 
