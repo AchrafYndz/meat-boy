@@ -6,6 +6,7 @@
 #include "../controller/StateManager.h"
 #include "../util/json.hpp"
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -18,8 +19,6 @@ std::shared_ptr<World> World::getInstance() { return world; }
 void World::loadLevel(int lvl)
 {
 	clearEntities();
-
-	//addEntity(Player::getInstance());
 
 	int tileSize = TILESIZE * SCALE;
 
@@ -39,28 +38,40 @@ void World::loadLevel(int lvl)
 	std::string line;
 	char delimiter = ',';
 
+	// get amount of rows
+	int totalRows = 0;
+	while (getline(levelMap, line)) totalRows++;
+	levelMap.clear();
+	levelMap.seekg(0); // return to the beginning
+	Camera::getInstance()->setHeight(totalRows); // set total height of level												 
+	Camera::getInstance()->setCameraCenter(totalRows * tileSize);// set initial camera position
+
 	std::string value;
 	int column = 0;                             // top
 	int row = 0;                                // left
 	while (getline(levelMap, line)) {           /* read entire line into line */
 		std::stringstream ss(line);             /* create stringstream from line */
 		while (getline(ss, value, delimiter)) { /* read each field from line */
-			Vec2 pos(column * tileSize, row * tileSize);
+			Vec2 pos = Camera::getInstance()->normalizedPosition(Vec2(column*tileSize, row*tileSize));
 			if (value == "0")
 				World::getInstance()->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
 			else if (value == "1") // goal
 				World::getInstance()->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::goal, pos));
-			else if (value == "2") // player position
-				Player::getInstance()->startLevel(pos.x, pos.y);
+			else if (value == "2") { // player position
+				Vec2 pos = Camera::getInstance()->normalizedPosition(Vec2(column*tileSize, row*tileSize));
+				Player::getInstance()->startLevel(pos);
+			}
 
 			column++;
 		}
 		row++;
 		column = 0;
 	}
-
-	// set initial camera position
-	Camera::getInstance()->setCameraCenter(row * tileSize);
+	
+	// Vec2 p= (Player::getInstance()->getPosition());
+	// std::cout << p.x << ", " << p.y << std::endl;
+	//p = Camera::getInstance()->toPixels(p);
+   // std::cout << p.x << ", " << p.y << std::endl;
 }
 
 Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {

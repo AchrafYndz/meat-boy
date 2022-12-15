@@ -53,7 +53,9 @@ void Game::process() {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || event.type == sf::Event::Closed)
                 StateManager::getInstance()->goToMenu();
         }
+
         Player::getInstance()->update();
+
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
         if (Player::getInstance()->hasReachedGoal()) {
             if (selectedLevel == 3)
@@ -95,9 +97,9 @@ void Game::render() {
             window.draw(text);
         }
     } else {
-        float cameraDiff = Camera::getInstance()->getCameraCenter();
+        float cameraCtr = Camera::getInstance()->getCameraCenter();
         sf::View v = window.getView();
-        v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraDiff);
+        v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraCtr);
         window.setView(v);
         World::getInstance()->draw();
     }
@@ -115,6 +117,7 @@ void Game::handleMenuInput(sf::Keyboard::Key key) {
     } else if (key == sf::Keyboard::S || key == sf::Keyboard::Down) {
         if (selectedLevel < totalLevels)
             selectedLevel++;
-    } else if (key == sf::Keyboard::Enter)
+	} else if (key == sf::Keyboard::Enter) {
 		World::getInstance()->loadLevel(selectedLevel);
+	}
 }

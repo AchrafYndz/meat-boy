@@ -49,7 +49,7 @@ public:
 
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
-    void addEntity(std::shared_ptr<Entity> e) { entities.push_back(e); }
+    void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
 
     std::vector<std::shared_ptr<Entity>> getEntities() { return entities; }
 

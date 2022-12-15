@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
-project(2022-project-AchrafYndz)
+project(Game)
 IF (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/installed" CACHE PATH "default install path" FORCE)
 ENDIF ()
@@ -8,18 +8,15 @@ ENDIF ()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 # Look for SFML >= 2.0, with the specific subcomponents listed below
-FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
+FIND_PACKAGE(SFML 2 COMPONENTS system window graphics REQUIRED)
 
-# The source files to compile
-SET(SRC
-        src/main.cpp
+# Add include dirs for SFML
+include_directories(/Library/Frameworks/SFML.framework/Headers)
 
+add_library(Logic STATIC
         src/util/Stopwatch.cpp
         src/util/Stopwatch.h
         src/util/json.hpp
-
-        src/view/EntityView.cpp
-        src/view/EntityView.h
 
         src/model/World.cpp
         src/model/World.h
@@ -34,6 +31,15 @@ SET(SRC
         src/model/Goal.h
         src/model/ConcreteFactory.cpp
         src/model/ConcreteFactory.h
+        )
+
+add_library(View STATIC
+        src/view/EntityView.cpp
+        src/view/EntityView.h
+        )
+
+add_executable(Game
+        src/main.cpp
 
         src/controller/Game.cpp
         src/controller/Game.h
@@ -42,14 +48,10 @@ SET(SRC
         src/controller/AbstractFactory.h
         )
 
-# Add include dirs for SFML
-INCLUDE_DIRECTORIES(/Library/Frameworks/SFML.framework/Headers)
-
-# The program we're compiling with the sources set above
-ADD_EXECUTABLE(game ${SRC})
-
 # Link target to SFML libs
-TARGET_LINK_LIBRARIES(game sfml-system sfml-graphics sfml-window)
+target_link_libraries(View sfml-system sfml-graphics sfml-window)
+target_link_libraries(Logic sfml-system sfml-graphics sfml-window)
+target_link_libraries(Game Logic View sfml-system sfml-graphics sfml-window)
 
 # Install our executable to the CMAKE_INSTALL_PREFIX/bin
-INSTALL(TARGETS game DESTINATION bin)
+install(TARGETS Game DESTINATION bin)

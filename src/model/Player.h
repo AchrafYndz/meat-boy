@@ -50,11 +50,11 @@ public:
 
     void processInput();
 
-    void update() override;
+    void update();
 
 	void draw() override;
 
-    void startLevel(int x, int y);
+    void startLevel(Vec2 pos);
 
     bool hasReachedGoal() { return reachedGoal; }
 };

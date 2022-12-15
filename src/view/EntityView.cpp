@@ -1,6 +1,8 @@
 #include "EntityView.h"
 #include "../controller/Game.h"
 
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 
 EntityView::EntityView()

@@ -11,8 +11,6 @@ public:
     Wall(Vec2 pos);
 	~Wall() {}
 
-	void update() override;
-
 	void draw() override;
 };
 

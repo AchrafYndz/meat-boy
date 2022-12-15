@@ -20,14 +20,12 @@ std::shared_ptr<Entity> ConcreteFactory::CreateObject(Entity::Type type, Vec2 po
 		wall->attachObserver(entView);
 		return wall;
 	}
-		break;
 	case Entity::goal: {
 		std::shared_ptr<EntityView> entView(new EntityView());
 		std::shared_ptr<Goal> goal(new Goal(pos));
 		goal->attachObserver(entView);
 		return goal;
 	}
-		break;
 	default:
 		break;
 	}

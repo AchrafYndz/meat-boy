@@ -13,6 +13,8 @@ class Entity {
 protected:
 	std::shared_ptr<EntityView> observer;
 
+	Vec2 position; // normalized position
+
 	sf::Texture texture;
 	sf::Sprite sprite;
 public:
@@ -26,11 +28,9 @@ public:
 
     Type getType() const { return type; }
 
-    virtual void update() = 0;
-
 	virtual void draw() = 0;
 
-	Vec2 getPosition() { return Vec2(sprite.getPosition().x, sprite.getPosition().y); }
+	Vec2 getPosition() { return position; }
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_ENTITY_H

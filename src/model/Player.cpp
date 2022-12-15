@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "../controller/Game.h"
+#include "Camera.h"
 
 #include <iostream>
 
@@ -8,16 +9,17 @@ std::shared_ptr<Player> Player::player(new Player);
 std::shared_ptr<Player> Player::getInstance() { return player; }
 
 Player::Player() : Entity(Type::player) {
-	std::shared_ptr<EntityView> entView(new EntityView());
-	attachObserver(entView);
+    std::shared_ptr<EntityView> entView(new EntityView());
+    attachObserver(entView);
 
-	texture.loadFromFile("resources/sprites/player-sprite.png");
-	sprite.setTexture(texture);
-	sprite.setScale(SCALE, SCALE);
+    texture.loadFromFile("resources/sprites/player-sprite.png");
+    sprite.setTexture(texture);
+    sprite.setScale(SCALE, SCALE);
 }
 
 void Player::processInput() {
-    int currentX = sprite.getPosition().x;
+	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
+    int currentX = plyPos.x;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         if (jumpType == JumpType::toTheRight)
@@ -61,29 +63,34 @@ void Player::processInput() {
     } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         jumpAvailable = true;
 
-    sprite.setPosition(currentX + currentAcceleration, sprite.getPosition().y);
+    sprite.setPosition(currentX + currentAcceleration, plyPos.y);
 }
 
 void Player::update() {
+	static int updates = 1;
+	std::cout << std::to_string(updates++);
+
     processInput();
 
-    int currentY = sprite.getPosition().y;
+	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
+
+    int currentY = plyPos.y;
     if (currentJumpingTime > 0) {
         if (jumpType == JumpType::normal || jumpType == JumpType::toTheLeft || jumpType == JumpType::toTheRight)
-            sprite.setPosition(sprite.getPosition().x, currentY - topSpeed);
+            sprite.setPosition(plyPos.x, currentY - topSpeed);
 
         // if one third of the jump -> deceleration
         if (currentJumpingTime < JUMPING_TOTAL_TIME / 3.f) {
-            sprite.setPosition(sprite.getPosition().x, currentY + jumpDeceleration);
+            sprite.setPosition(plyPos.x, currentY + jumpDeceleration);
         }
 
         currentJumpingTime -= TIME_PER_FRAME;
     } else { // apply gravity
-        sprite.setPosition(sprite.getPosition().x, currentY + topSpeed);
+        sprite.setPosition(plyPos.x, currentY + topSpeed);
     }
 
     /// collision
-    Vec2 plyPos = getPosition(); // top left corner
+	
     // update sensor positions:
     float sensorOffset = 4.f;
     leftSensor.x = plyPos.x - sensorOffset;
@@ -100,19 +107,25 @@ void Player::update() {
     sf::FloatRect r;
     for (auto e : World::getInstance()->getEntities()) {
         if (e->getType() == Type::wall) {
-            r.left = e->getPosition().x;
-            r.top = e->getPosition().y;
+			Vec2 ePos = Camera::getInstance()->toPixels(e->getPosition()); // top left corner
+
+            r.left = ePos.x;
+            r.top = ePos.y;
             r.height = TILESIZE * SCALE;
             r.width = TILESIZE * SCALE;
 
             if (r.contains(bottomSensor.x, bottomSensor.y)) {
                 bottomSensor.active = true;
+				std::cout << "bottom active";
             } else if (r.contains(leftSensor.x, leftSensor.y)) {
                 leftSensor.active = true;
+				std::cout << "left active";
             } else if (r.contains(rightSensor.x, rightSensor.y)) {
                 rightSensor.active = true;
+				std::cout << "right active";
             }
         }
+
     }
     if (bottomSensor.active)
         state = PlyState::standingOnTile;
@@ -126,7 +139,7 @@ void Player::update() {
     for (auto e : World::getInstance()->getEntities()) {
         // player with wall
         if (e->getType() == Type::wall) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, e->getPosition());
+            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, Camera::getInstance()->toPixels(e->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
 
             if (thereIsCollision) {
@@ -148,7 +161,7 @@ void Player::update() {
         }
         // player with goal (bandage girl)
         else if (e->getType() == Type::goal) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, e->getPosition());
+            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, Camera::getInstance()->toPixels(e->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
             if (thereIsCollision)
                 reachedGoal = true;
@@ -156,12 +169,15 @@ void Player::update() {
     }
 }
 
-void Player::draw()
-{
-	observer->draw(sprite);
+void Player::draw() {
+    Vec2 pos = Camera::getInstance()->toPixels(position);
+    sprite.setPosition(pos.x, pos.y);
+
+    observer->draw(sprite);
 }
 
-void Player::startLevel(int x, int y) {
+void Player::startLevel(Vec2 pos) {
     reachedGoal = false;
-    sprite.setPosition(x, y);
+    position = pos;
+    // sprite.setPosition(x, y);
 }

@@ -10,8 +10,6 @@ public:
     Goal(Vec2 pos);
 	~Goal() {}
 
-    void update() override;
-
 	void draw() override;
 };
 
