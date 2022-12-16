@@ -54,10 +54,14 @@ void Game::process() {
                 StateManager::getInstance()->goToMenu();
         }
 
-        Player::getInstance()->update();
+        auto world = World::getInstance();
+
+        auto player = world->getPlayer();
+
+        player->update();
 
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
-        if (Player::getInstance()->hasReachedGoal()) {
+        if (player->hasReachedGoal()) {
             if (selectedLevel == 3)
                 StateManager::getInstance()->goToMenu();
             else {
@@ -66,7 +70,7 @@ void Game::process() {
             }
         }
         // DIE -> Restart Level
-        if (!Camera::getInstance()->entityIsVisible(Player::getInstance())) {
+        if (!Camera::getInstance()->entityIsVisible(player)) {
 			World::getInstance()->loadLevel(selectedLevel);
         }
     }

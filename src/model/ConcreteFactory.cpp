@@ -2,6 +2,7 @@
 
 #include "Wall.h"
 #include "Goal.h"
+#include "Player.h"
 #include "World.h"
 
 #include <SFML/Graphics.hpp>
@@ -25,7 +26,13 @@ std::shared_ptr<Entity> ConcreteFactory::CreateObject(Entity::Type type, Vec2 po
 		std::shared_ptr<Goal> goal(new Goal(pos));
 		goal->attachObserver(entView);
 		return goal;
-	}
+    }
+    case Entity::player: {
+        std::shared_ptr<EntityView> entView(new EntityView());
+        std::shared_ptr<Player> player(new Player(pos));
+        World::getInstance()->setPlayer(player);
+        return player;
+    }
 	default:
 		break;
 	}

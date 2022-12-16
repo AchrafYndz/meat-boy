@@ -1,18 +1,19 @@
 #include "Player.h"
 #include "../controller/Game.h"
 #include "Camera.h"
+#include "../view/EntityView.h"
 
 #include <iostream>
 
-std::shared_ptr<Player> Player::player(new Player);
 
-std::shared_ptr<Player> Player::getInstance() { return player; }
-
-Player::Player() : Entity(Type::player) {
+Player::Player(Vec2 pos) : Entity(Type::player) {
     std::shared_ptr<EntityView> entView(new EntityView());
     attachObserver(entView);
 
     texture.loadFromFile("resources/sprites/player-sprite.png");
+
+    position = pos;
+
     sprite.setTexture(texture);
     sprite.setScale(SCALE, SCALE);
 }
@@ -64,29 +65,31 @@ void Player::processInput() {
         jumpAvailable = true;
 
     sprite.setPosition(currentX + currentAcceleration, plyPos.y);
+	position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
 }
 
 void Player::update() {
-	static int updates = 1;
-	std::cout << std::to_string(updates++);
-
     processInput();
 
 	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
 
     int currentY = plyPos.y;
     if (currentJumpingTime > 0) {
-        if (jumpType == JumpType::normal || jumpType == JumpType::toTheLeft || jumpType == JumpType::toTheRight)
-            sprite.setPosition(plyPos.x, currentY - topSpeed);
+		if (jumpType == JumpType::normal || jumpType == JumpType::toTheLeft || jumpType == JumpType::toTheRight) {
+			sprite.setPosition(plyPos.x, currentY - topSpeed);
+			position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
+		}
 
         // if one third of the jump -> deceleration
         if (currentJumpingTime < JUMPING_TOTAL_TIME / 3.f) {
             sprite.setPosition(plyPos.x, currentY + jumpDeceleration);
+			position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
         }
 
         currentJumpingTime -= TIME_PER_FRAME;
     } else { // apply gravity
         sprite.setPosition(plyPos.x, currentY + topSpeed);
+		position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
     }
 
     /// collision
@@ -116,13 +119,13 @@ void Player::update() {
 
             if (r.contains(bottomSensor.x, bottomSensor.y)) {
                 bottomSensor.active = true;
-				std::cout << "bottom active";
+//				std::cout << "bottom active";
             } else if (r.contains(leftSensor.x, leftSensor.y)) {
                 leftSensor.active = true;
-				std::cout << "left active";
+//				std::cout << "left active";
             } else if (r.contains(rightSensor.x, rightSensor.y)) {
                 rightSensor.active = true;
-				std::cout << "right active";
+//				std::cout << "right active";
             }
         }
 
@@ -157,6 +160,7 @@ void Player::update() {
                     }
                 }
                 sprite.setPosition(plyPos.x, plyPos.y);
+				position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
             }
         }
         // player with goal (bandage girl)

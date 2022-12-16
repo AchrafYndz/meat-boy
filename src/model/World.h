@@ -5,6 +5,7 @@
 #include <vector>
 
 class Entity;
+class Player;
 
 // Constants
 const float TILESIZE = 256;
@@ -37,6 +38,8 @@ private:
 
     std::vector<std::shared_ptr<Entity>> entities;
 
+    std::shared_ptr<Player> player;
+
 public:
     World(World& other) = delete;
 
@@ -52,6 +55,10 @@ public:
     void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
 
     std::vector<std::shared_ptr<Entity>> getEntities() { return entities; }
+
+    std::shared_ptr<Player> getPlayer() { return player; };
+
+    void setPlayer(std::shared_ptr<Player> player_) { player = player_; }
 
     void clearEntities();
 

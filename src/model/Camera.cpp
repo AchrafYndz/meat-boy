@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "Entity.h"
+#include "Player.h"
 #include "World.h"
 #include "../controller/StateManager.h"
 
@@ -69,15 +70,14 @@ void Camera::setCameraCenter(double h)
 	cameraCenter = h - (windowHeight / 2.f);
 }
 
-void Camera::update(std::shared_ptr<Entity> entity) {
+void Camera::update(std::shared_ptr<Player> player) {
     // Move if autoscrolling
 	if (StateManager::getInstance()->currentLevelHasAutoScroll()) {
 		move(-0.02f);
 	}
 	// if player above 80% of the level, move also
-	double playerHeight = toPixels(entity->getPosition()).y;
+	double playerHeight = toPixels(player->getPosition()).y;
 	double diff = playerHeight - (cameraCenter - (windowHeight * 0.3));
 	if (diff < 0)
 		move(diff);
-
 }

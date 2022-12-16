@@ -2,18 +2,14 @@
 #define INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 
 #include "Entity.h"
-#include "World.h"
-#include "../view/EntityView.h"
 #include <SFML/Graphics.hpp>
 
 #include <memory>
 
+struct Vec2;
+
 class Player : public Entity {
 private:
-    Player();
-
-    static std::shared_ptr<Player> player;
-
     struct Sensor {
         int x;
         int y;
@@ -42,11 +38,7 @@ private:
     bool reachedGoal = false;
 
 public:
-    Player(Player& other) = delete;
-
-    void operator=(const Player& other) = delete;
-
-    static std::shared_ptr<Player> getInstance();
+    Player(Vec2 pos);
 
     void processInput();
 

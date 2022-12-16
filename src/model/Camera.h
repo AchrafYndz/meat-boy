@@ -49,7 +49,7 @@ public:
 
     bool entityIsVisible(std::shared_ptr<Entity> e);
 
-    void update(std::shared_ptr<Entity> entity);
+    void update(std::shared_ptr<Player> player);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H
