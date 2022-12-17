@@ -16,7 +16,7 @@ World::World() {}
 
 std::shared_ptr<World> World::getInstance() { return world; }
 
-void World::loadLevel(int lvl) {
+void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager) {
     clearEntities();
 
     int tileSize = TILESIZE * SCALE;
@@ -30,7 +30,7 @@ void World::loadLevel(int lvl) {
     std::string lvlPath = j["level-" + std::to_string(lvl)]["filePath"];
     bool autoScrolling = j["level-" + std::to_string(lvl)]["autoScrolling"];
 
-    StateManager::getInstance()->goToLevel(lvl, autoScrolling);
+    stateManager->goToLevel(lvl, autoScrolling);
 
     levelMap.open(lvlPath);
 
@@ -110,13 +110,13 @@ Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
 
 void World::clearEntities() { entities.clear(); }
 
-void World::draw() {
+void World::draw(std::shared_ptr<StateManager> stateManager) {
     std::shared_ptr<Camera> camera = Camera::getInstance();
 
     std::shared_ptr<Player> player = getPlayer();
 
     // camera
-    camera->update(player);
+    camera->update(player, stateManager);
 
     // entities only if visible
     for (auto& entity : entities) {

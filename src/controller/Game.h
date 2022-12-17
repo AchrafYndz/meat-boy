@@ -2,6 +2,7 @@
 #define INC_2022_PROJECT_ACHRAFYNDZ_GAME_H
 
 #include "../util/Stopwatch.h"
+#include "StateManager.h"
 #include <SFML/Graphics.hpp>
 
 // CONSTANTS
@@ -10,6 +11,8 @@ const double TIME_PER_FRAME = 1 / 60.0;
 class Game {
 private:
     static sf::RenderWindow window;
+
+    std::shared_ptr<StateManager> stateManager;
 
     sf::Font game_font;
     sf::Text text;

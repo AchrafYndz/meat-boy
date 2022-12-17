@@ -15,7 +15,9 @@ Game::Game() {
     game_font.loadFromFile("resources/fonts/arial.ttf");
     text.setFont(game_font);
 
-    StateManager::getInstance()->goToMenu();
+    stateManager = std::make_shared<StateManager>();
+
+    stateManager->goToMenu();
 };
 
 void Game::run() {
@@ -30,7 +32,7 @@ void Game::run() {
 }
 
 void Game::process() {
-    if (StateManager::getInstance()->isInMenuState()) {
+    if (stateManager->isInMenuState()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -51,7 +53,7 @@ void Game::process() {
         sf::Event event{};
         while (window.pollEvent(event)) {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || event.type == sf::Event::Closed)
-                StateManager::getInstance()->goToMenu();
+                stateManager->goToMenu();
         }
 
         auto world = World::getInstance();
@@ -63,15 +65,15 @@ void Game::process() {
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
         if (player->hasReachedGoal()) {
             if (selectedLevel == 3)
-                StateManager::getInstance()->goToMenu();
+                stateManager->goToMenu();
             else {
 				selectedLevel++;
-                World::getInstance()->loadLevel(selectedLevel);
+                World::getInstance()->loadLevel(selectedLevel, stateManager);
             }
         }
         // DIE -> Restart Level
         if (!Camera::getInstance()->entityIsVisible(player)) {
-			World::getInstance()->loadLevel(selectedLevel);
+			World::getInstance()->loadLevel(selectedLevel, stateManager);
         }
     }
 }
@@ -79,7 +81,7 @@ void Game::process() {
 void Game::render() {
     window.clear();
 
-    if (StateManager::getInstance()->isInMenuState()) {
+    if (stateManager->isInMenuState()) {
         // draw the game title
         text.setCharacterSize(48);
         text.setString("Meat Boy");
@@ -105,7 +107,7 @@ void Game::render() {
         sf::View v = window.getView();
         v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraCtr);
         window.setView(v);
-        World::getInstance()->draw();
+        World::getInstance()->draw(stateManager);
     }
 
     window.display();
@@ -122,6 +124,6 @@ void Game::handleMenuInput(sf::Keyboard::Key key) {
         if (selectedLevel < totalLevels)
             selectedLevel++;
 	} else if (key == sf::Keyboard::Enter) {
-		World::getInstance()->loadLevel(selectedLevel);
+		World::getInstance()->loadLevel(selectedLevel, stateManager);
 	}
 }

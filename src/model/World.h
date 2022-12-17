@@ -1,6 +1,7 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H
 
+#include "../controller/StateManager.h"
 #include <memory>
 #include <vector>
 
@@ -48,7 +49,7 @@ public:
     static std::shared_ptr<World> getInstance();
 
 	// Load a Level
-	void loadLevel(int lvl);
+	void loadLevel(int lvl, std::shared_ptr<StateManager> stateManager);
 
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
@@ -62,7 +63,7 @@ public:
 
     void clearEntities();
 
-    void draw();
+    void draw(std::shared_ptr<StateManager> stateManager);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H
