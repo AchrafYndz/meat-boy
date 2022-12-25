@@ -108,6 +108,16 @@ Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
     return result;
 }
 
+bool World::rectContainsPoint(floatRect r, Vec2 point)
+{
+	float minX = std::min(r.left, (r.left + r.width));
+	float maxX = std::max(r.left, (r.left + r.width));
+	float minY = std::min(r.top, (r.top + r.height));
+	float maxY = std::max(r.top, (r.top + r.height));
+
+	return (point.x >= minX) && (point.x < maxX) && (point.y >= minY) && (point.y < maxY);
+}
+
 void World::clearEntities() { entities.clear(); }
 
 void World::draw(std::shared_ptr<StateManager> stateManager) {

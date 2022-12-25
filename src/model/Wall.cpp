@@ -7,18 +7,16 @@
 #include <iostream>
 
 Wall::Wall(Vec2 pos) : Entity(Type::wall) {
-    texture.loadFromFile("resources/sprites/wall-sprite.png");
-
     position = pos;
+}
 
-    sprite.setTexture(texture);
-    // sprite.setPosition(pos.x, pos.y);
-    sprite.setScale(SCALE, SCALE);
+void Wall::update()
+{
+	Vec2 pos = Camera::getInstance()->toPixels(position);
+	notifyObservers(pos.x, pos.y);
 }
 
 void Wall::draw() {
-    Vec2 pos = Camera::getInstance()->toPixels(position);
-    sprite.setPosition(pos.x, pos.y);
-
-    observer->draw(sprite);
+	Vec2 pos = Camera::getInstance()->toPixels(position);
+	entView->draw(pos);
 }

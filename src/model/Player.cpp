@@ -1,5 +1,4 @@
 #include "Player.h"
-#include "../controller/Game.h"
 #include "Camera.h"
 #include "../view/EntityView.h"
 
@@ -7,35 +6,37 @@
 
 
 Player::Player(Vec2 pos) : Entity(Type::player) {
-    std::shared_ptr<EntityView> entView(new EntityView());
-    attachObserver(entView);
-
-    texture.loadFromFile("resources/sprites/player-sprite.png");
-
     position = pos;
+}
 
-    sprite.setTexture(texture);
-    sprite.setScale(SCALE, SCALE);
+void Player::buttonAction(KeyEnum k, bool pressed)
+{
+	switch (k)
+	{
+	case Player::left: keys.left = pressed; break;
+	case Player::right: keys.right = pressed; break;
+	case Player::space: keys.space = pressed; break;
+	default:
+		break;
+	}
 }
 
 void Player::processInput() {
 	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
     int currentX = plyPos.x;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    if (keys.left) {
         if (jumpType == JumpType::toTheRight)
             currentAcceleration -= acceleration / 3.f;
         else
             currentAcceleration -= acceleration;
-        sprite.setScale(-SCALE, SCALE);
-        sprite.setOrigin(sprite.getLocalBounds().width, 0.f);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		entView->face(true);
+    } else if (keys.right) {
         if (jumpType == JumpType::toTheLeft)
             currentAcceleration += acceleration / 3.f;
         else
             currentAcceleration += acceleration;
-        sprite.setScale(SCALE, SCALE);
-        sprite.setOrigin(0.f, 0.f);
+		entView->face(false);
     } else if (currentJumpingTime < 0.f) { // deceleration if not jumping
         if (currentAcceleration > 0.f)
             currentAcceleration -= acceleration;
@@ -48,7 +49,7 @@ void Player::processInput() {
     else if (currentAcceleration < -topSpeed)
         currentAcceleration = -topSpeed;
 
-    if (jumpAvailable && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && state != PlyState::onAir) {
+    if (jumpAvailable && keys.space && state != PlyState::onAir) {
         jumpAvailable = false;
         if (state == PlyState::standingOnTile)
             jumpType = JumpType::normal;
@@ -61,11 +62,11 @@ void Player::processInput() {
         }
 
         currentJumpingTime = JUMPING_TOTAL_TIME;
-    } else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    } else if (!keys.space)
         jumpAvailable = true;
 
-    sprite.setPosition(currentX + currentAcceleration, plyPos.y);
-	position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
+	notifyObservers(plyPos.x, plyPos.y);
+	position = Camera::getInstance()->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
 void Player::update() {
@@ -86,22 +87,23 @@ void Player::update() {
 	}
 	else  plyPos.y += topSpeed; // apply gravity
 
-								/// collision
+	/// collision
 
-								// update sensor positions:
+	// update sensor positions:
 	float sensorOffset = 4.f;
+	Vec2 bounds = entView->size();
 	leftSensor.x = plyPos.x - sensorOffset;
-	leftSensor.y = plyPos.y + (SCALE * sprite.getLocalBounds().height / 4.f);
+	leftSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
 	leftSensor.active = false;
-	rightSensor.x = plyPos.x + (SCALE * sprite.getLocalBounds().width) + sensorOffset;
-	rightSensor.y = plyPos.y + (SCALE * sprite.getLocalBounds().height / 4.f);
+	rightSensor.x = plyPos.x + (SCALE * bounds.x) + sensorOffset;
+	rightSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
 	rightSensor.active = false;
-	bottomSensor.x = plyPos.x + (SCALE * sprite.getLocalBounds().width / 2.f);
-	bottomSensor.y = plyPos.y + (SCALE * sprite.getLocalBounds().height) + sensorOffset;
+	bottomSensor.x = plyPos.x + (SCALE * bounds.x / 2.f);
+	bottomSensor.y = plyPos.y + (SCALE * bounds.y) + sensorOffset;
 	bottomSensor.active = false;
 
 	Vec2 ePos;
-	sf::FloatRect r;
+	World::floatRect r;
 	for (auto e : World::getInstance()->getEntities()) {
 		if (e->getType() == Type::wall) {
 			Vec2 ePos = Camera::getInstance()->toPixels(e->getPosition()); // top left corner
@@ -111,17 +113,13 @@ void Player::update() {
 			r.height = TILESIZE * SCALE;
 			r.width = TILESIZE * SCALE;
 
-			if (r.contains(bottomSensor.x, bottomSensor.y)) {
+			if (World::getInstance()->rectContainsPoint(r, Vec2(bottomSensor.x, bottomSensor.y)))
 				bottomSensor.active = true;
-			}
-			else if (r.contains(leftSensor.x, leftSensor.y)) {
+			else if (World::getInstance()->rectContainsPoint(r, Vec2(leftSensor.x, leftSensor.y)))
 				leftSensor.active = true;
-			}
-			else if (r.contains(rightSensor.x, rightSensor.y)) {
+			else if (World::getInstance()->rectContainsPoint(r, Vec2(rightSensor.x, rightSensor.y)))
 				rightSensor.active = true;
-			}
 		}
-
 	}
 	if (bottomSensor.active)
 		state = PlyState::standingOnTile;
@@ -167,19 +165,17 @@ void Player::update() {
 		}
 	}
 
-	sprite.setPosition(plyPos.x, plyPos.y);
-	position = Camera::getInstance()->normalizedPosition(Vec2(sprite.getPosition().x, sprite.getPosition().y));
+	notifyObservers(plyPos.x, plyPos.y);
+	position = Camera::getInstance()->normalizedPosition(Vec2(plyPos.x, plyPos.y));
 }
 
 void Player::draw() {
     Vec2 pos = Camera::getInstance()->toPixels(position);
-    sprite.setPosition(pos.x, pos.y);
 
-    observer->draw(sprite);
+	entView->draw(pos);
 }
 
 void Player::startLevel(Vec2 pos) {
     reachedGoal = false;
     position = pos;
-    // sprite.setPosition(x, y);
 }

@@ -5,9 +5,6 @@
 #include "StateManager.h"
 #include <SFML/Graphics.hpp>
 
-// CONSTANTS
-const double TIME_PER_FRAME = 1 / 60.0;
-
 class Game {
 private:
     static sf::RenderWindow window;

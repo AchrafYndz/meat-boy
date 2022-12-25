@@ -2,13 +2,29 @@
 #define INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 
 #include "Entity.h"
-#include <SFML/Graphics.hpp>
+#include "ObserverPattern.h"
 
 #include <memory>
 
 struct Vec2;
 
-class Player : public Entity {
+struct floatRect {
+    float left = 0.0f;
+    float top = 0.0f;
+    float height = 0.0f;
+    float width = 0.0f;
+
+    bool contains(float x, float y) const {
+        float minX = std::min(left, left + width);
+        float maxX = std::max(left, left + width);
+        float minY = std::min(top, top + height);
+        float maxY = std::max(top, top + height);
+
+        return (x >= minX) && (x < maxX) && (y >= minY) && (y < maxY);
+    }
+};
+
+class Player : public Entity, public Subject {
 private:
     struct Sensor {
         int x;
@@ -37,14 +53,25 @@ private:
 
     bool reachedGoal = false;
 
+    struct Keys {
+        bool left = false;
+        bool right = false;
+        bool space = false;
+    };
+    Keys keys;
+
 public:
     Player(Vec2 pos);
 
+    enum KeyEnum { left, right, space };
+
+    void buttonAction(KeyEnum k, bool pressed);
+
     void processInput();
 
-    void update();
+    void update() override;
 
-	void draw() override;
+    void draw() override;
 
     void startLevel(Vec2 pos);
 

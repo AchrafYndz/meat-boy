@@ -5,18 +5,13 @@
 
 #include "World.h"
 
-#include <SFML/Graphics.hpp>
-
 class EntityView;
 
 class Entity {
 protected:
-	std::shared_ptr<EntityView> observer;
-
 	Vec2 position; // normalized position
 
-	sf::Texture texture;
-	sf::Sprite sprite;
+	std::shared_ptr<EntityView> entView;
 public:
     enum Type { none, player, wall, goal };
     Type type = none;
@@ -24,10 +19,11 @@ public:
     Entity(Type t) { type = t; }
 	virtual ~Entity() { }
 
-	void attachObserver(std::shared_ptr<EntityView> o) { observer = o; }
+	void assignView(std::shared_ptr<EntityView> v) { entView = v; }
 
     Type getType() const { return type; }
 
+	virtual void update() = 0;
 	virtual void draw() = 0;
 
 	Vec2 getPosition() { return position; }

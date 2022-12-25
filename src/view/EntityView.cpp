@@ -1,16 +1,38 @@
 #include "EntityView.h"
 #include "../controller/Game.h"
+#include "../model/World.h"
 
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
 
-EntityView::EntityView()
+EntityView::EntityView(std::string filepath)
 {
+	texture.loadFromFile(filepath);
 
+	sprite.setTexture(texture);
+	sprite.setScale(SCALE, SCALE);
 }
 
-void EntityView::draw(sf::Sprite s)
+Vec2 EntityView::size()
 {
-	Game::getWindow()->draw(s);
+	return Vec2(sprite.getLocalBounds().width, sprite.getLocalBounds().height);
+}
+
+void EntityView::face(bool left)
+{
+	if (left) {
+		sprite.setScale(-SCALE, SCALE);
+		sprite.setOrigin(sprite.getLocalBounds().width, 0.f);
+	}
+	else {
+		sprite.setScale(SCALE, SCALE);
+		sprite.setOrigin(0.f, 0.f);
+	}
+}
+
+void EntityView::draw(Vec2 pos)
+{
+	sprite.setPosition(pos.x, pos.y);
+	Game::getWindow()->draw(sprite);
 }

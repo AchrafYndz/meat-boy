@@ -8,7 +8,9 @@
 class Entity;
 class Player;
 
+
 // Constants
+const double TIME_PER_FRAME = 1 / 60.0;
 const float TILESIZE = 256;
 // SCALE for 480p
 const float SCALE = 0.125;
@@ -44,6 +46,13 @@ private:
 public:
     World(World& other) = delete;
 
+	struct floatRect {
+		float left;
+		float top;
+		float width;
+		float height;
+	};
+
     void operator=(const World& other) = delete;
 
     static std::shared_ptr<World> getInstance();
@@ -52,6 +61,8 @@ public:
 	void loadLevel(int lvl, std::shared_ptr<StateManager> stateManager);
 
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
+
+	bool rectContainsPoint(floatRect r, Vec2 point);
 
     void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
 
