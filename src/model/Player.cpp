@@ -37,7 +37,8 @@ void Player::processInput() {
         else
             currentAcceleration += acceleration;
 		entView->face(false);
-    } else if (currentJumpingTime < 0.f) { // deceleration if not jumping
+    } else if (currentJumpingTime <= 0.f) { // deceleration if not jumping
+		if (currentAcceleration < 0.2f && currentAcceleration > -0.2f) currentAcceleration = 0.f; // correction
         if (currentAcceleration > 0.f)
             currentAcceleration -= acceleration;
         else if (currentAcceleration < 0.f)
@@ -67,6 +68,8 @@ void Player::processInput() {
 
 	notifyObservers(plyPos.x, plyPos.y);
 	position = Camera::getInstance()->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
+
+	std::cout << std::to_string(currentAcceleration) << "\n";
 }
 
 void Player::update() {
