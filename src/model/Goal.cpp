@@ -12,9 +12,4 @@ void Goal::update()
 	notifyObservers(pos.x, pos.y);
 }
 
-void Goal::draw()
-{
-	Vec2 pos = Camera::getInstance()->toPixels(position);
-	entView->draw(pos);
-}
 

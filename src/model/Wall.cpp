@@ -15,8 +15,3 @@ void Wall::update()
 	Vec2 pos = Camera::getInstance()->toPixels(position);
 	notifyObservers(pos.x, pos.y);
 }
-
-void Wall::draw() {
-	Vec2 pos = Camera::getInstance()->toPixels(position);
-	entView->draw(pos);
-}

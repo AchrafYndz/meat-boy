@@ -37,24 +37,23 @@ private:
 
     bool reachedGoal = false;
 
-	struct Keys {
-		bool left = false;
-		bool right = false;
-		bool space = false;
-	};
-	Keys keys;
+    struct Keys {
+        bool left = false;
+        bool right = false;
+        bool space = false;
+    };
+    Keys keys;
+
 public:
     Player(Vec2 pos);
 
-	enum KeyEnum { left, right, space };
+    enum KeyEnum { left, right, space };
 
-	void buttonAction(KeyEnum k, bool pressed);
+    void buttonAction(KeyEnum k, bool pressed);
 
     void processInput();
 
-	void update() override;
-
-	void draw() override;
+    void update() override;
 
     void startLevel(Vec2 pos);
 

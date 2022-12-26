@@ -74,7 +74,7 @@ public:
 
     void clearEntities();
 
-    void draw(std::shared_ptr<StateManager> stateManager);
+    void update();
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H

@@ -54,15 +54,13 @@ void Camera::move(double diff) {
         cameraCenter += diff;
 }
 
-bool Camera::entityIsVisible(std::shared_ptr<Entity> e) {
-    Vec2 ePos = toPixels(e->getPosition());
-
+bool Camera::entityIsVisible(int y) {
 	// x will always be visible
 
 	float upperLimit = cameraCenter - windowHeight / 2.f;
 	float lowerLimit = cameraCenter + windowHeight / 2.f;
 
-	return (ePos.y + SCALE * TILESIZE >= upperLimit && ePos.y <= lowerLimit);
+	return (y + SCALE * TILESIZE >= upperLimit && y <= lowerLimit);
 }
 
 void Camera::setCameraCenter(double h)

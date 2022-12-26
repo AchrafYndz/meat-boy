@@ -30,9 +30,3 @@ void EntityView::face(bool left)
 		sprite.setOrigin(0.f, 0.f);
 	}
 }
-
-void EntityView::draw(Vec2 pos)
-{
-	sprite.setPosition(pos.x, pos.y);
-	Game::getWindow()->draw(sprite);
-}

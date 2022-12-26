@@ -47,7 +47,7 @@ public:
 
     void move(double diff);
 
-    bool entityIsVisible(std::shared_ptr<Entity> e);
+    bool entityIsVisible(int y);
 
     void update(std::shared_ptr<Player> player, std::shared_ptr<StateManager> stateManager);
 };

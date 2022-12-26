@@ -24,9 +24,11 @@ void Game::run() {
 	while (window.isOpen()) {
 		if (stopwatch->timeSinceLastUpdate() > TIME_PER_FRAME) {
 			stopwatch->reset();
+            window.clear();
 			process();
+            render();
+            window.display();
 		}
-		render();
 	}
 }
 
@@ -74,7 +76,7 @@ void Game::process() {
 			player->buttonAction(player->KeyEnum::space, true);
 		else player->buttonAction(player->KeyEnum::space, false);
 
-		player->update();
+        World::getInstance()->update();
 
 		// WIN STATE -> go to Next Level or Main Menu if it's the last level
 		if (player->hasReachedGoal()) {
@@ -86,14 +88,14 @@ void Game::process() {
 			}
 		}
 		// DIE -> Restart Level
-		if (!Camera::getInstance()->entityIsVisible(player)) {
+		if (!Camera::getInstance()->entityIsVisible(Camera::getInstance()->toPixels(player->getPosition()).y)) {
 			World::getInstance()->loadLevel(selectedLevel, stateManager);
 		}
+        Camera::getInstance()->update(player, stateManager);
 	}
 }
 
 void Game::render() {
-	window.clear();
 
 	if (stateManager->isInMenuState()) {
 		// draw the game title
@@ -122,10 +124,8 @@ void Game::render() {
 		sf::View v = window.getView();
 		v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraCtr);
 		window.setView(v);
-		World::getInstance()->draw(stateManager);
 	}
 
-	window.display();
 }
 
 void Game::handleMenuInput(sf::Keyboard::Key key) {

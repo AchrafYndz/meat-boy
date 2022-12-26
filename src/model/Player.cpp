@@ -68,8 +68,6 @@ void Player::processInput() {
 
 	notifyObservers(plyPos.x, plyPos.y);
 	position = Camera::getInstance()->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
-
-	std::cout << std::to_string(currentAcceleration) << "\n";
 }
 
 void Player::update() {
@@ -170,12 +168,6 @@ void Player::update() {
 
 	notifyObservers(plyPos.x, plyPos.y);
 	position = Camera::getInstance()->normalizedPosition(Vec2(plyPos.x, plyPos.y));
-}
-
-void Player::draw() {
-    Vec2 pos = Camera::getInstance()->toPixels(position);
-
-	entView->draw(pos);
 }
 
 void Player::startLevel(Vec2 pos) {

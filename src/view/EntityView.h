@@ -3,7 +3,11 @@
 
 #include <memory>
 
+#include "../controller/Game.h"
+#include "../model/Camera.h"
 #include "../model/ObserverPattern.h"
+
+#include <iostream>
 
 #include <SFML/Graphics.hpp>
 
@@ -18,13 +22,15 @@ public:
 	~EntityView() override {  }
 
 	void update(int x, int y) override {
-		sprite.setPosition(x, y);
+        if (Camera::getInstance()->entityIsVisible(y)) {
+            sprite.setPosition(x, y);
+            Game::getWindow()->draw(sprite);
+        }
 	}
 
 	Vec2 size();
 
 	void face(bool left);
-	void draw(Vec2 pos);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_ENITITYVIEW_H

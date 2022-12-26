@@ -120,18 +120,8 @@ bool World::rectContainsPoint(floatRect r, Vec2 point)
 
 void World::clearEntities() { entities.clear(); }
 
-void World::draw(std::shared_ptr<StateManager> stateManager) {
-    std::shared_ptr<Camera> camera = Camera::getInstance();
-
-    std::shared_ptr<Player> player = getPlayer();
-
-    // camera
-    camera->update(player, stateManager);
-
-    // entities only if visible
-    for (auto& entity : entities) {
-        if (camera->entityIsVisible(entity))
-            entity->draw();
+void World::update() {
+    for (auto entity: entities) {
+        entity->update();
     }
-    player->draw();
 }

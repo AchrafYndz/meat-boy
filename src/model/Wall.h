@@ -12,7 +12,6 @@ public:
 	~Wall() {}
 
 	void update() override;
-	void draw() override;
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WALL_H

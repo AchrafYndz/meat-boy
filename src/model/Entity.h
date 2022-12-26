@@ -24,7 +24,6 @@ public:
     Type getType() const { return type; }
 
 	virtual void update() = 0;
-	virtual void draw() = 0;
 
 	Vec2 getPosition() { return position; }
 };

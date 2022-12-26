@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 
 // The Observer class defines an interface for observing the Player's state
 class Observer {
