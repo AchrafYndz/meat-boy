@@ -10,8 +10,8 @@ class Observer {
 public:
 	virtual ~Observer() = default;
 
-	// This method is called when the Player's state changes
-	virtual void update(int x, int y) = 0;
+	// This method is called when an entity's state changes
+	virtual void update(int x, int y, bool facingLeft = false) = 0;
 };
 
 // The Subject class allows Observers to register and be notified of changes
@@ -23,9 +23,9 @@ public:
 	}
 
 	// Notify all registered Observers of a change
-	void notifyObservers(int x, int y) {
+	void notifyObservers(int x, int y, bool facingLeft = false) {
 		for (auto& observer : observers) {
-			observer->update(x, y);
+			observer->update(x, y, facingLeft);
 		}
 	}
 

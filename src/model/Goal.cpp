@@ -1,5 +1,4 @@
 #include "Goal.h"
-#include "../controller/Game.h"
 #include "Camera.h"
 
 Goal::Goal(Vec2 pos) : Entity(Type::goal) {

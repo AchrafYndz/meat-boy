@@ -1,8 +1,8 @@
 #include "World.h"
+#include "../controller/ConcreteFactory.h"
 #include "../controller/StateManager.h"
 #include "../util/json.hpp"
 #include "Camera.h"
-#include "ConcreteFactory.h"
 #include "Entity.h"
 #include "Player.h"
 

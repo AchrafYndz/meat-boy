@@ -1,9 +1,9 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_CONCRETEFACTORY_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_CONCRETEFACTORY_H
 
-#include "../controller/AbstractFactory.h"
+#include "AbstractFactory.h"
 
-#include "Entity.h"
+#include "../model/Entity.h"
 
 #include <memory>
 

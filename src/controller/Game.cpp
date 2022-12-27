@@ -11,7 +11,7 @@ Game::Game() {
 	std::shared_ptr<Camera> camera = Camera::getInstance();
 	window.create(sf::VideoMode(camera->getWindowWidth(), camera->getWindowHeight()), "Meat Boy");
 
-	game_font.loadFromFile("resources/fonts/arial.ttf");
+	game_font.loadFromFile("resources/fonts/meat-boy-font.ttf");
 	text.setFont(game_font);
 
 	stateManager = std::make_shared<StateManager>();

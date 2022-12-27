@@ -1,9 +1,10 @@
 #include "ConcreteFactory.h"
 
-#include "Wall.h"
-#include "Goal.h"
-#include "Player.h"
-#include "World.h"
+#include "../model/Goal.h"
+#include "../model/Player.h"
+#include "../model/Wall.h"
+
+#include "../view/EntityView.h"
 
 std::shared_ptr<ConcreteFactory> ConcreteFactory::concreteFactory(new ConcreteFactory);
 

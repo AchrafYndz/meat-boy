@@ -1,10 +1,4 @@
 #include "EntityView.h"
-#include "../controller/Game.h"
-#include "../model/World.h"
-
-#include <iostream>
-
-#include <SFML/Graphics.hpp>
 
 EntityView::EntityView(std::string filepath)
 {

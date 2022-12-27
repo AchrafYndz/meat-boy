@@ -1,6 +1,4 @@
 #include "Wall.h"
-#include "../controller/Game.h"
-#include "../view/EntityView.h"
 #include "Camera.h"
 #include "World.h"
 

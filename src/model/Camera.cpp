@@ -71,7 +71,7 @@ void Camera::setCameraCenter(double h)
 void Camera::update(std::shared_ptr<Player> player, std::shared_ptr<StateManager> stateManager) {
     // Move if autoscrolling
 	if (stateManager->currentLevelHasAutoScroll()) {
-		move(-0.02f);
+		move(-0.5f);
 	}
 	// if player above 80% of the level, move also
 	double playerHeight = toPixels(player->getPosition()).y;

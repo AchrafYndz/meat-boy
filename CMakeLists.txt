@@ -29,8 +29,6 @@ add_library(Logic STATIC
         src/model/Wall.h
         src/model/Goal.cpp
         src/model/Goal.h
-        src/model/ConcreteFactory.cpp
-        src/model/ConcreteFactory.h
         )
 
 
@@ -42,13 +40,14 @@ add_executable(Game
         src/controller/StateManager.cpp
         src/controller/StateManager.h
         src/controller/AbstractFactory.h
+        src/controller/ConcreteFactory.cpp
+        src/controller/ConcreteFactory.h
 
         src/view/EntityView.cpp
         src/view/EntityView.h
         )
 
 # Link target to SFML libs
-target_link_libraries(Logic sfml-system sfml-graphics sfml-window)
 target_link_libraries(Game Logic sfml-system sfml-graphics sfml-window)
 
 # Install our executable to the CMAKE_INSTALL_PREFIX/bin

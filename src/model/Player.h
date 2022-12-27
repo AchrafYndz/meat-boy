@@ -37,6 +37,8 @@ private:
 
     bool reachedGoal = false;
 
+    bool facingLeft = false;
+
     struct Keys {
         bool left = false;
         bool right = false;
@@ -54,8 +56,6 @@ public:
     void processInput();
 
     void update() override;
-
-    void startLevel(Vec2 pos);
 
     bool hasReachedGoal() { return reachedGoal; }
 };

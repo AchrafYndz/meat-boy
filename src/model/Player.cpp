@@ -1,8 +1,5 @@
 #include "Player.h"
 #include "Camera.h"
-#include "../view/EntityView.h"
-
-#include <iostream>
 
 
 Player::Player(Vec2 pos) : Entity(Type::player) {
@@ -30,13 +27,13 @@ void Player::processInput() {
             currentAcceleration -= acceleration / 3.f;
         else
             currentAcceleration -= acceleration;
-		entView->face(true);
+		facingLeft = true;
     } else if (keys.right) {
         if (jumpType == JumpType::toTheLeft)
             currentAcceleration += acceleration / 3.f;
         else
             currentAcceleration += acceleration;
-		entView->face(false);
+		facingLeft = false;
     } else if (currentJumpingTime <= 0.f) { // deceleration if not jumping
 		if (currentAcceleration < 0.2f && currentAcceleration > -0.2f) currentAcceleration = 0.f; // correction
         if (currentAcceleration > 0.f)
@@ -57,16 +54,18 @@ void Player::processInput() {
         else if (state == PlyState::onLeftWall) {
             jumpType = JumpType::toTheRight;
             currentAcceleration = topSpeed;
+            facingLeft = false;
         } else if (state == PlyState::onRightWall) {
             jumpType = JumpType::toTheLeft;
             currentAcceleration = -topSpeed;
+            facingLeft = true;
         }
 
         currentJumpingTime = JUMPING_TOTAL_TIME;
     } else if (!keys.space)
         jumpAvailable = true;
 
-	notifyObservers(plyPos.x, plyPos.y);
+	notifyObservers(plyPos.x, plyPos.y, facingLeft);
 	position = Camera::getInstance()->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
@@ -92,7 +91,7 @@ void Player::update() {
 
 	// update sensor positions:
 	float sensorOffset = 4.f;
-	Vec2 bounds = entView->size();
+	Vec2 bounds(TILESIZE, TILESIZE);
 	leftSensor.x = plyPos.x - sensorOffset;
 	leftSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
 	leftSensor.active = false;
@@ -103,7 +102,6 @@ void Player::update() {
 	bottomSensor.y = plyPos.y + (SCALE * bounds.y) + sensorOffset;
 	bottomSensor.active = false;
 
-	Vec2 ePos;
 	World::floatRect r;
 	for (auto e : World::getInstance()->getEntities()) {
 		if (e->getType() == Type::wall) {
@@ -166,11 +164,6 @@ void Player::update() {
 		}
 	}
 
-	notifyObservers(plyPos.x, plyPos.y);
+	notifyObservers(plyPos.x, plyPos.y, facingLeft);
 	position = Camera::getInstance()->normalizedPosition(Vec2(plyPos.x, plyPos.y));
-}
-
-void Player::startLevel(Vec2 pos) {
-    reachedGoal = false;
-    position = pos;
 }

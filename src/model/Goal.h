@@ -3,7 +3,6 @@
 
 #include "ObserverPattern.h"
 #include "Entity.h"
-#include "../view/EntityView.h"
 
 class Goal : public Entity, public Subject {
 public:
