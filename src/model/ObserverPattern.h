@@ -5,13 +5,15 @@
 #include <memory>
 #include <iostream>
 
+#include "Camera.h"
+
 // The Observer class defines an interface for observing the Player's state
 class Observer {
 public:
 	virtual ~Observer() = default;
 
 	// This method is called when an entity's state changes
-	virtual void update(int x, int y, bool facingLeft = false) = 0;
+	virtual void update(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) = 0;
 };
 
 // The Subject class allows Observers to register and be notified of changes
@@ -23,9 +25,9 @@ public:
 	}
 
 	// Notify all registered Observers of a change
-	void notifyObservers(int x, int y, bool facingLeft = false) {
+	void notifyObservers(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) {
 		for (auto& observer : observers) {
-			observer->update(x, y, facingLeft);
+			observer->update(x, y, camera, facingLeft);
 		}
 	}
 

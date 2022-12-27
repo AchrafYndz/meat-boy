@@ -18,8 +18,8 @@ void Player::buttonAction(KeyEnum k, bool pressed)
 	}
 }
 
-void Player::processInput() {
-	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
+void Player::processInput(std::shared_ptr<Camera> camera) {
+	Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
     int currentX = plyPos.x;
 
     if (keys.left) {
@@ -65,14 +65,14 @@ void Player::processInput() {
     } else if (!keys.space)
         jumpAvailable = true;
 
-	notifyObservers(plyPos.x, plyPos.y, facingLeft);
-	position = Camera::getInstance()->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
+	notifyObservers(plyPos.x, plyPos.y, camera, facingLeft);
+	position = camera->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
-void Player::update() {
-	processInput();
+void Player::update(std::shared_ptr<Camera> camera) {
+	processInput(camera);
 
-	Vec2 plyPos = Camera::getInstance()->toPixels(getPosition()); // top left corner
+	Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
 
 	int currentY = plyPos.y;
 	if (currentJumpingTime > 0) {
@@ -105,7 +105,7 @@ void Player::update() {
 	World::floatRect r;
 	for (auto e : World::getInstance()->getEntities()) {
 		if (e->getType() == Type::wall) {
-			Vec2 ePos = Camera::getInstance()->toPixels(e->getPosition()); // top left corner
+			Vec2 ePos = camera->toPixels(e->getPosition()); // top left corner
 
 			r.left = ePos.x;
 			r.top = ePos.y;
@@ -132,7 +132,7 @@ void Player::update() {
 	for (auto e : World::getInstance()->getEntities()) {
 		// player with wall
 		if (e->getType() == Type::wall) {
-			Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, Camera::getInstance()->toPixels(e->getPosition()));
+			Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(e->getPosition()));
 			bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
 
 			if (thereIsCollision) {
@@ -157,13 +157,13 @@ void Player::update() {
 		}
 		// player with goal (bandage girl)
 		else if (e->getType() == Type::goal) {
-			Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, Camera::getInstance()->toPixels(e->getPosition()));
+			Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(e->getPosition()));
 			bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
 			if (thereIsCollision)
 				reachedGoal = true;
 		}
 	}
 
-	notifyObservers(plyPos.x, plyPos.y, facingLeft);
-	position = Camera::getInstance()->normalizedPosition(Vec2(plyPos.x, plyPos.y));
+	notifyObservers(plyPos.x, plyPos.y, camera, facingLeft);
+	position = camera->normalizedPosition(Vec2(plyPos.x, plyPos.y));
 }

@@ -1,5 +1,4 @@
 #include "Game.h"
-#include "../model/Camera.h"
 #include "../model/Player.h"
 #include "StateManager.h"
 
@@ -8,13 +7,14 @@
 sf::RenderWindow Game::window;
 
 Game::Game() {
-	std::shared_ptr<Camera> camera = Camera::getInstance();
-	window.create(sf::VideoMode(camera->getWindowWidth(), camera->getWindowHeight()), "Meat Boy");
+	window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Meat Boy");
 
 	game_font.loadFromFile("resources/fonts/meat-boy-font.ttf");
 	text.setFont(game_font);
 
 	stateManager = std::make_shared<StateManager>();
+
+    camera = std::make_shared<Camera>();
 
 	stateManager->goToMenu();
 };
@@ -76,7 +76,7 @@ void Game::process() {
 			player->buttonAction(player->KeyEnum::space, true);
 		else player->buttonAction(player->KeyEnum::space, false);
 
-        World::getInstance()->update();
+        World::getInstance()->update(camera);
 
 		// WIN STATE -> go to Next Level or Main Menu if it's the last level
 		if (player->hasReachedGoal()) {
@@ -84,14 +84,14 @@ void Game::process() {
 				stateManager->goToMenu();
 			else {
 				selectedLevel++;
-				World::getInstance()->loadLevel(selectedLevel, stateManager);
+				World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
 			}
 		}
 		// DIE -> Restart Level
-		if (!Camera::getInstance()->entityIsVisible(Camera::getInstance()->toPixels(player->getPosition()).y)) {
-			World::getInstance()->loadLevel(selectedLevel, stateManager);
+		if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
+			World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
 		}
-        Camera::getInstance()->update(player, stateManager);
+        camera->update(player, stateManager);
 	}
 }
 
@@ -106,7 +106,7 @@ void Game::render() {
 
 		// reposition View (in case we came from the level)
 		sf::View v = window.getView();
-		v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, Camera::getInstance()->getWindowHeight() / 2.f);
+		v.setCenter(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f);
 		window.setView(v);
 
 		window.draw(text);
@@ -120,9 +120,9 @@ void Game::render() {
 		}
 	}
 	else {
-		float cameraCtr = Camera::getInstance()->getCameraCenter();
+		float cameraCtr = camera->getCameraCenter();
 		sf::View v = window.getView();
-		v.setCenter(Camera::getInstance()->getWindowWidth() / 2.f, cameraCtr);
+		v.setCenter(WINDOW_WIDTH / 2.f, cameraCtr);
 		window.setView(v);
 	}
 
@@ -142,6 +142,6 @@ void Game::handleMenuInput(sf::Keyboard::Key key) {
 			selectedLevel++;
 	}
 	else if (key == sf::Keyboard::Enter) {
-		World::getInstance()->loadLevel(selectedLevel, stateManager);
+		World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
 	}
 }

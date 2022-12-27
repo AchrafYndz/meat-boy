@@ -7,27 +7,27 @@
 
 struct Vec2;
 
+/// Constants
+// 480 p
+const int WINDOW_WIDTH = 480;
+const int WINDOW_HEIGHT = 853;
+
+// 720p
+//const int WINDOW_WIDTH = 720;
+//const int WINDOW_HEIGHT = 1280;
+
+const double TIME_PER_FRAME = 1 / 60.0;
+const float TILESIZE = 256;
+// SCALE for 480p
+const float SCALE = (WINDOW_WIDTH/15)/TILESIZE;
+
 class Camera {
 private:
-    // 480 p
-	const int windowWidth = 480;
-    const int windowHeight = 853;
-
-    // 720p
-    //    const int windowWidth = 720;
-    // const int windowHeight = 1280;
-
-    Camera() = default;
-
-    static std::shared_ptr<Camera> theCamera;
-
     double cameraCenter;
 
 	float totalHeight = 0; // total rows
 public:
-    Camera(Camera& other) = delete;
-
-    void operator=(const Camera& other) = delete;
+    Camera() = default;
 
 	void setHeight(int rows) { totalHeight = rows; }
 
@@ -35,15 +35,9 @@ public:
 	Vec2 toPixels(Vec2 pos) const;
 
     // Getters
-    int getWindowWidth() const { return windowWidth; }
-
-    int getWindowHeight() const { return windowHeight; }
-
     int getCameraCenter() const { return cameraCenter; }
 
 	void setCameraCenter(double h);
-
-    static std::shared_ptr<Camera> getInstance();
 
     void move(double diff);
 

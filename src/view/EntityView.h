@@ -21,8 +21,8 @@ public:
 	EntityView(std::string filename);
 	~EntityView() override {  }
 
-	void update(int x, int y, bool facingLeft = false) override {
-        if (Camera::getInstance()->entityIsVisible(y)) {
+	void update(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) override {
+        if (camera->entityIsVisible(y)) {
             sprite.setPosition(x, y);
             face(facingLeft);
             Game::getWindow()->draw(sprite);

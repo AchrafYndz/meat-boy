@@ -13481,7 +13481,7 @@ assert(m_plus.e == v.e);
 //  --------------------(-----------+-----------------------)--------    (B)
 //                      m-          v                       m+
 //
-// First scale v (and m- and m+) such that the exponent is in the range
+// First SCALE v (and m- and m+) such that the exponent is in the range
 // [alpha, gamma].
 
 const cached_power cached = get_cached_power_for_binary_exponent(m_plus.e);

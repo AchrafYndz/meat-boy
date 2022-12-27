@@ -1,6 +1,7 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_GAME_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_GAME_H
 
+#include "../model/Camera.h"
 #include "../util/Stopwatch.h"
 #include "StateManager.h"
 #include <SFML/Graphics.hpp>
@@ -10,6 +11,8 @@ private:
     static sf::RenderWindow window;
 
     std::shared_ptr<StateManager> stateManager;
+
+    std::shared_ptr<Camera> camera;
 
     sf::Font game_font;
     sf::Text text;

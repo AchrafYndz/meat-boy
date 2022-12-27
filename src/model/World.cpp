@@ -7,16 +7,13 @@
 #include "Player.h"
 
 #include <fstream>
-#include <iostream>
 #include <sstream>
 
 std::shared_ptr<World> World::world(new World);
 
-World::World() {}
-
 std::shared_ptr<World> World::getInstance() { return world; }
 
-void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager) {
+void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::shared_ptr<Camera> camera) {
     clearEntities();
 
     int tileSize = TILESIZE * SCALE;
@@ -43,8 +40,8 @@ void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager) {
         totalRows++;
     levelMap.clear();
     levelMap.seekg(0);                                            // return to the beginning
-    Camera::getInstance()->setHeight(totalRows);                  // set total height of level
-    Camera::getInstance()->setCameraCenter(totalRows * tileSize); // set initial camera position
+    camera->setHeight(totalRows);                  // set total height of level
+    camera->setCameraCenter(totalRows * tileSize); // set initial camera position
 
     auto world_ = World::getInstance();
     std::string value;
@@ -53,7 +50,7 @@ void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager) {
     while (getline(levelMap, line)) {           /* read entire line into line */
         std::stringstream ss(line);             /* create stringstream from line */
         while (getline(ss, value, delimiter)) { /* read each field from line */
-            Vec2 pos = Camera::getInstance()->normalizedPosition(Vec2(column * tileSize, row * tileSize));
+            Vec2 pos = camera->normalizedPosition(Vec2(column * tileSize, row * tileSize));
             if (value == "0")
                 world_->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
             else if (value == "1") // goal
@@ -120,8 +117,8 @@ bool World::rectContainsPoint(floatRect r, Vec2 point)
 
 void World::clearEntities() { entities.clear(); }
 
-void World::update() {
+void World::update(std::shared_ptr<Camera> camera) {
     for (auto entity: entities) {
-        entity->update();
+        entity->update(camera);
     }
 }

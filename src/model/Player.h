@@ -3,6 +3,7 @@
 
 #include "ObserverPattern.h"
 #include "Entity.h"
+#include "Camera.h"
 
 #include <memory>
 
@@ -53,9 +54,9 @@ public:
 
     void buttonAction(KeyEnum k, bool pressed);
 
-    void processInput();
+    void processInput(std::shared_ptr<Camera> camera);
 
-    void update() override;
+    void update(std::shared_ptr<Camera> camera) override;
 
     bool hasReachedGoal() { return reachedGoal; }
 };

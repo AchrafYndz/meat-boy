@@ -7,15 +7,7 @@
 
 class Entity;
 class Player;
-
-
-// Constants
-const double TIME_PER_FRAME = 1 / 60.0;
-const float TILESIZE = 256;
-// SCALE for 480p
-const float SCALE = 0.125;
-// SCALE for 720p
-// const float SCALE = 0.1875;
+class Camera;
 
 // Vector
 struct Vec2 {
@@ -35,7 +27,7 @@ struct Vec2 {
 
 class World {
 private:
-    World();
+    World() = default;
 
     static std::shared_ptr<World> world;
 
@@ -46,23 +38,23 @@ private:
 public:
     World(World& other) = delete;
 
-	struct floatRect {
-		float left;
-		float top;
-		float width;
-		float height;
-	};
+    struct floatRect {
+        float left;
+        float top;
+        float width;
+        float height;
+    };
 
     void operator=(const World& other) = delete;
 
     static std::shared_ptr<World> getInstance();
 
-	// Load a Level
-	void loadLevel(int lvl, std::shared_ptr<StateManager> stateManager);
+    // Load a Level
+    void loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::shared_ptr<Camera> camera);
 
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
-	bool rectContainsPoint(floatRect r, Vec2 point);
+    bool rectContainsPoint(floatRect r, Vec2 point);
 
     void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
 
@@ -74,7 +66,7 @@ public:
 
     void clearEntities();
 
-    void update();
+    void update(std::shared_ptr<Camera> camera);
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H

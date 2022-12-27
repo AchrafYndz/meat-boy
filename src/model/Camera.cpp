@@ -2,9 +2,6 @@
 #include "Entity.h"
 #include "Player.h"
 #include "World.h"
-#include "../controller/StateManager.h"
-
-std::shared_ptr<Camera> Camera::theCamera(new Camera);
 
 Vec2 Camera::normalizedPosition(Vec2 pos)
 {
@@ -23,8 +20,8 @@ Vec2 Camera::normalizedPosition(Vec2 pos)
 	float oldPercent = (pos.y - oldMin) / (oldMax - oldMin);
 	result.y = ((newMax - newMin) * oldPercent + newMin);
 
-	result.x = ((2.f * pos.x) / windowWidth) - 1.f;
-   // result.y = (((totalHeight+1) * pos.y) / windowHeight) - 1.f;
+	result.x = ((2.f * pos.x) / WINDOW_WIDTH) - 1.f;
+   // result.y = (((totalHeight+1) * pos.y) / WINDOW_HEIGHT) - 1.f;
 
 	return result;
 }
@@ -41,31 +38,29 @@ Vec2 Camera::toPixels(Vec2 pos) const
 	float oldPercent = (pos.y - oldMin) / (oldMax - oldMin);
 	result.y = ((newMax - newMin) * oldPercent + newMin);
 
-	result.x = ((pos.x + 1.f) / 2.f) * windowWidth;
-    //result.y = ((pos.y + 1.f) / (totalHeight + 1.f)) * windowHeight;
+	result.x = ((pos.x + 1.f) / 2.f) * WINDOW_WIDTH;
+    //result.y = ((pos.y + 1.f) / (totalHeight + 1.f)) * WINDOW_HEIGHT;
 
 	return result;
 }
 
-std::shared_ptr<Camera> Camera::getInstance() { return theCamera; }
-
 void Camera::move(double diff) {
-    if (cameraCenter + diff - windowHeight / 2 >= 0)
+    if (cameraCenter + diff - WINDOW_HEIGHT / 2 >= 0)
         cameraCenter += diff;
 }
 
 bool Camera::entityIsVisible(int y) {
 	// x will always be visible
 
-	float upperLimit = cameraCenter - windowHeight / 2.f;
-	float lowerLimit = cameraCenter + windowHeight / 2.f;
+	float upperLimit = cameraCenter - WINDOW_HEIGHT / 2.f;
+	float lowerLimit = cameraCenter + WINDOW_HEIGHT / 2.f;
 
 	return (y + SCALE * TILESIZE >= upperLimit && y <= lowerLimit);
 }
 
 void Camera::setCameraCenter(double h)
 {
-	cameraCenter = h - (windowHeight / 2.f);
+	cameraCenter = h - (WINDOW_HEIGHT / 2.f);
 }
 
 void Camera::update(std::shared_ptr<Player> player, std::shared_ptr<StateManager> stateManager) {
@@ -75,7 +70,7 @@ void Camera::update(std::shared_ptr<Player> player, std::shared_ptr<StateManager
 	}
 	// if player above 80% of the level, move also
 	double playerHeight = toPixels(player->getPosition()).y;
-	double diff = playerHeight - (cameraCenter - (windowHeight * 0.3));
+	double diff = playerHeight - (cameraCenter - (WINDOW_HEIGHT * 0.3));
 	if (diff < 0)
 		move(diff);
 }

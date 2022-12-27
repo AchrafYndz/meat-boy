@@ -23,7 +23,7 @@ public:
 
     Type getType() const { return type; }
 
-	virtual void update() = 0;
+	virtual void update(std::shared_ptr<Camera> camera) = 0;
 
 	Vec2 getPosition() { return position; }
 };

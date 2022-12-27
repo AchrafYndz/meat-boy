@@ -8,8 +8,8 @@ Wall::Wall(Vec2 pos) : Entity(Type::wall) {
     position = pos;
 }
 
-void Wall::update()
+void Wall::update(std::shared_ptr<Camera> camera)
 {
-	Vec2 pos = Camera::getInstance()->toPixels(position);
-	notifyObservers(pos.x, pos.y);
+	Vec2 pos = camera->toPixels(position);
+	notifyObservers(pos.x, pos.y, camera);
 }

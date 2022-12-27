@@ -9,7 +9,7 @@ public:
     Goal(Vec2 pos);
 	~Goal() {}
 
-	void update() override;
+	void update(std::shared_ptr<Camera> camera) override;
 };
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_LVLEND_H
