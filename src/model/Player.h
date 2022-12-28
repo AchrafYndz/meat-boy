@@ -23,13 +23,14 @@ private:
     enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
     PlyState state = PlyState::onAir;
 
-    const float acceleration = 60.f * TIME_PER_FRAME;
+	const float speedMultiplier = WINDOW_WIDTH / 480.f;
+    const float acceleration = 60.f * TIME_PER_FRAME * speedMultiplier;
     float currentAcceleration = 0.f;
-    const float topSpeed = 300.f * TIME_PER_FRAME;
+    const float topSpeed = 300.f * TIME_PER_FRAME * speedMultiplier;
 
     const float JUMPING_TOTAL_TIME = 0.8f;
     float currentJumpingTime = 0.f;
-	const float jumpDeceleration = 120.f * TIME_PER_FRAME;
+	const float jumpDeceleration = 120.f * TIME_PER_FRAME * speedMultiplier;
 
     bool jumpAvailable = true;
 
