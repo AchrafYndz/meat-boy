@@ -65,7 +65,6 @@ void Player::processInput(std::shared_ptr<Camera> camera) {
     } else if (!keys.space)
         jumpAvailable = true;
 
-	notifyObservers(plyPos.x, plyPos.y, camera, facingLeft);
 	position = camera->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
