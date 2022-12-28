@@ -1,9 +1,9 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 
-#include "ObserverPattern.h"
-#include "Entity.h"
 #include "Camera.h"
+#include "Entity.h"
+#include "ObserverPattern.h"
 
 #include <memory>
 
@@ -23,14 +23,14 @@ private:
     enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
     PlyState state = PlyState::onAir;
 
-	const float speedMultiplier = WINDOW_WIDTH / 480.f;
+    const float speedMultiplier = WINDOW_WIDTH / 480.f;
     const float acceleration = 60.f * TIME_PER_FRAME * speedMultiplier;
     float currentAcceleration = 0.f;
     const float topSpeed = 300.f * TIME_PER_FRAME * speedMultiplier;
 
     const float JUMPING_TOTAL_TIME = 0.8f;
     float currentJumpingTime = 0.f;
-	const float jumpDeceleration = 120.f * TIME_PER_FRAME * speedMultiplier;
+    const float jumpDeceleration = 120.f * TIME_PER_FRAME * speedMultiplier;
 
     bool jumpAvailable = true;
 

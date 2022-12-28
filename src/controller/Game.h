@@ -17,8 +17,8 @@ private:
     sf::Font game_font;
     sf::Text text;
 
-	int selectedLevel = 1;
-	int totalLevels = 3;
+    int selectedLevel = 1;
+    int totalLevels = 3;
 
 public:
     // Constructor

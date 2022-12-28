@@ -8,7 +8,6 @@
 // as well as methods for checking the current state.
 class StateManager {
 private:
-
     // This struct contains information about the current level.
     struct Level {
         // The `current` variable is the number of the current level.

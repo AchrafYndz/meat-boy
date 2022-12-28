@@ -39,7 +39,7 @@ void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::
     while (getline(levelMap, line))
         totalRows++;
     levelMap.clear();
-    levelMap.seekg(0);                                            // return to the beginning
+    levelMap.seekg(0);                             // return to the beginning
     camera->setHeight(totalRows);                  // set total height of level
     camera->setCameraCenter(totalRows * tileSize); // set initial camera position
 
@@ -105,20 +105,19 @@ Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
     return result;
 }
 
-bool World::rectContainsPoint(floatRect r, Vec2 point)
-{
-	float minX = std::min(r.left, (r.left + r.width));
-	float maxX = std::max(r.left, (r.left + r.width));
-	float minY = std::min(r.top, (r.top + r.height));
-	float maxY = std::max(r.top, (r.top + r.height));
+bool World::rectContainsPoint(floatRect r, Vec2 point) {
+    float minX = std::min(r.left, (r.left + r.width));
+    float maxX = std::max(r.left, (r.left + r.width));
+    float minY = std::min(r.top, (r.top + r.height));
+    float maxY = std::max(r.top, (r.top + r.height));
 
-	return (point.x >= minX) && (point.x < maxX) && (point.y >= minY) && (point.y < maxY);
+    return (point.x >= minX) && (point.x < maxX) && (point.y >= minY) && (point.y < maxY);
 }
 
 void World::clearEntities() { entities.clear(); }
 
 void World::update(std::shared_ptr<Camera> camera) {
-    for (auto entity: entities) {
+    for (auto entity : entities) {
         entity->update(camera);
     }
 }
