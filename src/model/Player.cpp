@@ -36,7 +36,7 @@ void Model::Player::processInput(std::shared_ptr<Camera> camera) {
             currentAcceleration += acceleration;
         facingLeft = false;
     } else if (currentJumpingTime <= 0.f) { // deceleration if not jumping
-        if (currentAcceleration < 0.2f && currentAcceleration > -0.2f)
+        if (currentAcceleration < 0.34f && currentAcceleration > -0.34f)
             currentAcceleration = 0.f; // correction
         if (currentAcceleration > 0.f)
             currentAcceleration -= acceleration;
