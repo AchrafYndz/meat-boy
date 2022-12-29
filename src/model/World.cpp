@@ -9,11 +9,11 @@
 #include <fstream>
 #include <sstream>
 
-std::shared_ptr<World> World::world(new World);
+std::shared_ptr<Model::World> Model::World::world(new World);
 
-std::shared_ptr<World> World::getInstance() { return world; }
+std::shared_ptr<Model::World> Model::World::getInstance() { return world; }
 
-void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::shared_ptr<Camera> camera) {
+void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> stateManager, std::shared_ptr<Camera> camera) {
     clearEntities();
 
     int tileSize = TILESIZE * SCALE;
@@ -52,43 +52,20 @@ void World::loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::
         while (getline(ss, value, delimiter)) { /* read each field from line */
             Vec2 pos = camera->normalizedPosition(Vec2(column * tileSize, row * tileSize));
             if (value == "0")
-                world_->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
             else if (value == "1") // goal
-                world_->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::goal, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::goal, pos));
             else if (value == "2") // player position
-                world_->addEntity(ConcreteFactory::getInstance()->CreateObject(Entity::player, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::player, pos));
 
             column++;
         }
         row++;
         column = 0;
     }
-
-    // Vec2 p= (Player::getInstance()->getPosition());
-    // std::cout << p.x << ", " << p.y << std::endl;
-    // p = Camera::getInstance()->toPixels(p);
-    // std::cout << p.x << ", " << p.y << std::endl;
 }
 
-// Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
-//     Vec2 result = Vec2(-1, -1);
-//
-//     // X
-//     if (aPos.x < bPos.x)
-//         result.x = (TILESIZE * SCALE) - (bPos.x - aPos.x);
-//     else
-//         result.x = (TILESIZE * SCALE) - (aPos.x - bPos.x);
-//     // Y
-//     if (aPos.y < bPos.y)
-//         result.y = (TILESIZE * SCALE) - (bPos.y - aPos.y);
-//     else
-//         result.y = (TILESIZE * SCALE) - (aPos.y - bPos.y);
-//
-//     // if there is no collision, it will return negative values
-//     return result;
-// }
-
-Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
+Model::Vec2 Model::World::getOverlap(Model::Vec2 aPos, Model::Vec2 bPos) {
     Vec2 result = Vec2(-1, -1);
 
     // X
@@ -105,7 +82,7 @@ Vec2 World::getOverlap(Vec2 aPos, Vec2 bPos) {
     return result;
 }
 
-bool World::rectContainsPoint(floatRect r, Vec2 point) {
+bool Model::World::rectContainsPoint(floatRect r, Vec2 point) {
     float minX = std::min(r.left, (r.left + r.width));
     float maxX = std::max(r.left, (r.left + r.width));
     float minY = std::min(r.top, (r.top + r.height));
@@ -114,9 +91,9 @@ bool World::rectContainsPoint(floatRect r, Vec2 point) {
     return (point.x >= minX) && (point.x < maxX) && (point.y >= minY) && (point.y < maxY);
 }
 
-void World::clearEntities() { entities.clear(); }
+void Model::World::clearEntities() { entities.clear(); }
 
-void World::update(std::shared_ptr<Camera> camera) {
+void Model::World::update(std::shared_ptr<Camera> camera) {
     for (auto entity : entities) {
         entity->update(camera);
     }

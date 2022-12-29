@@ -7,7 +7,7 @@ EntityView::EntityView(std::string filepath) {
     sprite.setScale(SCALE, SCALE);
 }
 
-Vec2 EntityView::size() { return Vec2(sprite.getLocalBounds().width, sprite.getLocalBounds().height); }
+Model::Vec2 EntityView::size() { return {sprite.getLocalBounds().width, sprite.getLocalBounds().height}; }
 
 void EntityView::face(bool left) {
     if (left) {

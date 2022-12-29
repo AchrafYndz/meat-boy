@@ -7,6 +7,7 @@
 
 #include "Camera.h"
 
+namespace Model {
 // The Observer class defines an interface for observing the Player's state
 class Observer {
 public:
@@ -32,5 +33,6 @@ public:
 private:
     std::vector<std::shared_ptr<Observer>> observers;
 };
+} // namespace Model
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_OBSERVERPATTERN_H

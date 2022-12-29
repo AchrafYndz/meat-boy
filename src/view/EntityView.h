@@ -13,7 +13,7 @@
 
 struct Vec2;
 
-class EntityView : public Observer {
+class EntityView : public Model::Observer {
 private:
     sf::Texture texture;
     sf::Sprite sprite;
@@ -22,15 +22,15 @@ public:
     EntityView(std::string filename);
     ~EntityView() override {}
 
-    void update(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) override {
+    void update(int x, int y, std::shared_ptr<Model::Camera> camera, bool facingLeft = false) override {
         if (camera->entityIsVisible(y)) {
             sprite.setPosition(x, y);
             face(facingLeft);
-            Game::getWindow()->draw(sprite);
+            Controller::Game::getWindow()->draw(sprite);
         }
     }
 
-    Vec2 size();
+    Model::Vec2 size();
 
     void face(bool left);
 };

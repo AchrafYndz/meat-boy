@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 
+namespace Model {
 class Entity;
 class Player;
 class Camera;
@@ -50,7 +51,7 @@ public:
     static std::shared_ptr<World> getInstance();
 
     // Load a Level
-    void loadLevel(int lvl, std::shared_ptr<StateManager> stateManager, std::shared_ptr<Camera> camera);
+    void loadLevel(int lvl, std::shared_ptr<Controller::StateManager> stateManager, std::shared_ptr<Camera> camera);
 
     Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
@@ -68,5 +69,6 @@ public:
 
     void update(std::shared_ptr<Camera> camera);
 };
+} // namespace Model
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H

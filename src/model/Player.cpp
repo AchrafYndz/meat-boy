@@ -1,9 +1,9 @@
 #include "Player.h"
 #include "Camera.h"
 
-Player::Player(Vec2 pos) : Entity(Type::player) { position = pos; }
+Model::Player::Player(Vec2 pos) : Entity(Type::player) { position = pos; }
 
-void Player::buttonAction(KeyEnum k, bool pressed) {
+void Model::Player::buttonAction(KeyEnum k, bool pressed) {
     switch (k) {
     case Player::left:
         keys.left = pressed;
@@ -19,7 +19,7 @@ void Player::buttonAction(KeyEnum k, bool pressed) {
     }
 }
 
-void Player::processInput(std::shared_ptr<Camera> camera) {
+void Model::Player::processInput(std::shared_ptr<Camera> camera) {
     Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
     int currentX = plyPos.x;
 
@@ -70,7 +70,7 @@ void Player::processInput(std::shared_ptr<Camera> camera) {
     position = camera->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
-void Player::update(std::shared_ptr<Camera> camera) {
+void Model::Player::update(std::shared_ptr<Camera> camera) {
     processInput(camera);
 
     Vec2 plyPos = camera->toPixels(getPosition()); // top left corner

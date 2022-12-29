@@ -4,9 +4,9 @@
 
 #include <sstream>
 
-sf::RenderWindow Game::window;
+sf::RenderWindow Controller::Game::window;
 
-Game::Game() {
+Controller::Game::Game() {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Meat Boy");
 
     game_font.loadFromFile("resources/fonts/meat-boy-font.ttf");
@@ -14,13 +14,13 @@ Game::Game() {
 
     stateManager = std::make_shared<StateManager>();
 
-    camera = std::make_shared<Camera>();
+    camera = std::make_shared<Model::Camera>();
 
     stateManager->goToMenu();
 };
 
-void Game::run() {
-    std::shared_ptr<Stopwatch> stopwatch = Stopwatch::getInstance();
+void Controller::Game::run() {
+    std::shared_ptr<Utility::Stopwatch> stopwatch = Utility::Stopwatch::getInstance();
     while (window.isOpen()) {
         if (stopwatch->timeSinceLastUpdate() > TIME_PER_FRAME) {
             stopwatch->reset();
@@ -32,7 +32,7 @@ void Game::run() {
     }
 }
 
-void Game::process() {
+void Controller::Game::process() {
     if (stateManager->isInMenuState()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
@@ -59,7 +59,7 @@ void Game::process() {
                 window.close();
         }
 
-        auto world = World::getInstance();
+        auto world = Model::World::getInstance();
 
         auto player = world->getPlayer();
 
@@ -78,7 +78,7 @@ void Game::process() {
         else
             player->buttonAction(player->KeyEnum::space, false);
 
-        World::getInstance()->update(camera);
+        Model::World::getInstance()->update(camera);
 
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
         if (player->hasReachedGoal()) {
@@ -86,18 +86,19 @@ void Game::process() {
                 stateManager->goToMenu();
             else {
                 selectedLevel++;
-                World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+                Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
             }
         }
         // DIE -> Restart Level
         if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
-            World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+            std::cout << "We died!" << std::endl;
+            Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
         }
         camera->update(player, stateManager);
     }
 }
 
-void Game::render() {
+void Controller::Game::render() {
 
     if (stateManager->isInMenuState()) {
         // draw the game title
@@ -128,7 +129,7 @@ void Game::render() {
     }
 }
 
-void Game::handleMenuInput(sf::Keyboard::Key key) {
+void Controller::Game::handleMenuInput(sf::Keyboard::Key key) {
     if (key == sf::Keyboard::W || key == sf::Keyboard::Up) {
         if (selectedLevel > 1) {
             selectedLevel--;
@@ -139,6 +140,6 @@ void Game::handleMenuInput(sf::Keyboard::Key key) {
         if (selectedLevel < totalLevels)
             selectedLevel++;
     } else if (key == sf::Keyboard::Enter) {
-        World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+        Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
     }
 }

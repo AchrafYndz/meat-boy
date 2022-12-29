@@ -21,6 +21,7 @@ const float TILESIZE = 256;
 // SCALE for 480p
 const float SCALE = (WINDOW_WIDTH / 15) / TILESIZE;
 
+namespace Model {
 class Camera {
 private:
     double cameraCenter;
@@ -43,7 +44,8 @@ public:
 
     bool entityIsVisible(int y);
 
-    void update(std::shared_ptr<Player> player, std::shared_ptr<StateManager> stateManager);
+    void update(std::shared_ptr<Player> player, std::shared_ptr<Controller::StateManager> stateManager);
 };
+} // namespace Model
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H

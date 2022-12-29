@@ -3,9 +3,7 @@
 
 #include <memory>
 
-// This class manages the current state of the application.
-// It has methods for changing to different levels and the menu,
-// as well as methods for checking the current state.
+namespace Controller {
 class StateManager {
 private:
     // This struct contains information about the current level.
@@ -49,5 +47,6 @@ public:
     // enabled, and `false` otherwise.
     bool currentLevelHasAutoScroll() { return currentLevel.autoscroll; }
 };
+} // namespace Controller
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_STATEMANAGER_H

@@ -7,6 +7,7 @@
 
 #include <memory>
 
+namespace Model {
 struct Vec2;
 
 class Player : public Entity, public Subject {
@@ -57,9 +58,10 @@ public:
 
     void processInput(std::shared_ptr<Camera> camera);
 
-    void update(std::shared_ptr<Camera> camera) override;
+    void update(std::shared_ptr<Model::Camera> camera) override;
 
     bool hasReachedGoal() { return reachedGoal; }
 };
+} // namespace Model
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H

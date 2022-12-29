@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 
+namespace Utility {
 class Stopwatch {
 private:
     // constructor must be private
@@ -31,5 +32,6 @@ public:
     // resets the time since last update to now
     void reset();
 };
+}
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_STOPWATCH_H

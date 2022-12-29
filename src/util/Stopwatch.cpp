@@ -1,12 +1,12 @@
 #include "Stopwatch.h"
 
-std::shared_ptr<Stopwatch> Stopwatch::stopwatch(new Stopwatch);
+std::shared_ptr<Utility::Stopwatch> Utility::Stopwatch::stopwatch(new Stopwatch);
 
-std::shared_ptr<Stopwatch> Stopwatch::getInstance() { return stopwatch; }
+std::shared_ptr<Utility::Stopwatch> Utility::Stopwatch::getInstance() { return stopwatch; }
 
-double Stopwatch::timeSinceLastUpdate() {
+double Utility::Stopwatch::timeSinceLastUpdate() {
     return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - lastUpdate).count() /
            1e9;
 }
 
-void Stopwatch::reset() { lastUpdate = std::chrono::steady_clock::now(); }
+void Utility::Stopwatch::reset() { lastUpdate = std::chrono::steady_clock::now(); }

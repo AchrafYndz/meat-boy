@@ -7,6 +7,7 @@
 
 class EntityView;
 
+namespace Model {
 class Entity {
 protected:
     Vec2 position; // normalized position
@@ -28,5 +29,6 @@ public:
 
     Vec2 getPosition() { return position; }
 };
+} // namespace Model
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_ENTITY_H

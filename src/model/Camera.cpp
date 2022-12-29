@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "World.h"
 
-Vec2 Camera::normalizedPosition(Vec2 pos) {
+Model::Vec2 Model::Camera::normalizedPosition(Vec2 pos) {
     Vec2 result;
 
     /*
@@ -25,7 +25,7 @@ Vec2 Camera::normalizedPosition(Vec2 pos) {
     return result;
 }
 
-Vec2 Camera::toPixels(Vec2 pos) const {
+Model::Vec2 Model::Camera::toPixels(Vec2 pos) const {
     Vec2 result;
 
     float oldMin = -1;
@@ -42,12 +42,12 @@ Vec2 Camera::toPixels(Vec2 pos) const {
     return result;
 }
 
-void Camera::move(double diff) {
+void Model::Camera::move(double diff) {
     if (cameraCenter + diff - WINDOW_HEIGHT / 2 >= 0)
         cameraCenter += diff;
 }
 
-bool Camera::entityIsVisible(int y) {
+bool Model::Camera::entityIsVisible(int y) {
     // x will always be visible
 
     float upperLimit = cameraCenter - WINDOW_HEIGHT / 2.f;
@@ -56,9 +56,9 @@ bool Camera::entityIsVisible(int y) {
     return (y + SCALE * TILESIZE >= upperLimit && y <= lowerLimit);
 }
 
-void Camera::setCameraCenter(double h) { cameraCenter = h - (WINDOW_HEIGHT / 2.f); }
+void Model::Camera::setCameraCenter(double h) { cameraCenter = h - (WINDOW_HEIGHT / 2.f); }
 
-void Camera::update(std::shared_ptr<Player> player, std::shared_ptr<StateManager> stateManager) {
+void Model::Camera::update(std::shared_ptr<Player> player, std::shared_ptr<Controller::StateManager> stateManager) {
     // Move if autoscrolling
     if (stateManager->currentLevelHasAutoScroll()) {
         move(-0.5f);

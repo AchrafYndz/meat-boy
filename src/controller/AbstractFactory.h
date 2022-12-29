@@ -6,13 +6,13 @@
 
 class Entity;
 
+namespace Controller {
 class AbstractFactory {
 public:
     ~AbstractFactory() {}
 
-    virtual std::shared_ptr<Entity> CreateObject(Entity::Type type, Vec2 pos) = 0;
-
-private:
+    virtual std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos) = 0;
 };
+} // namespace Controller
 
 #endif // INC_2022_PROJECT_ACHRAFYNDZ_ABSTRACTFACTORY_H
