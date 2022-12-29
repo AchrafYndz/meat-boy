@@ -79,6 +79,7 @@ void Controller::Game::process() {
             player->buttonAction(player->KeyEnum::space, false);
 
         Model::World::getInstance()->update(camera);
+        camera->update(player, stateManager);
 
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
         if (player->hasReachedGoal()) {
@@ -90,11 +91,9 @@ void Controller::Game::process() {
             }
         }
         // DIE -> Restart Level
-        if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
-            std::cout << "We died!" << std::endl;
+        else if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
             Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
         }
-        camera->update(player, stateManager);
     }
 }
 
