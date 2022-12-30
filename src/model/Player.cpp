@@ -19,9 +19,9 @@ void Model::Player::buttonAction(KeyEnum k, bool pressed) {
     }
 }
 
-void Model::Player::processInput(std::shared_ptr<Camera> camera) {
+void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
     Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
-    int currentX = plyPos.x;
+    float currentX = plyPos.x;
 
     if (keys.left) {
         if (jumpType == JumpType::toTheRight)
@@ -57,7 +57,7 @@ void Model::Player::processInput(std::shared_ptr<Camera> camera) {
             jumpType = JumpType::toTheRight;
             currentAcceleration = topSpeed;
             facingLeft = false;
-        } else if (state == PlyState::onRightWall) {
+        } else {
             jumpType = JumpType::toTheLeft;
             currentAcceleration = -topSpeed;
             facingLeft = true;
@@ -75,17 +75,14 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
 
     Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
 
-    int currentY = plyPos.y;
     if (currentJumpingTime > 0) {
-        if (jumpType == JumpType::normal || jumpType == JumpType::toTheLeft || jumpType == JumpType::toTheRight)
-            plyPos.y -= topSpeed;
+        plyPos.y -= topSpeed;
 
         // if one third of the jump -> deceleration
         if (currentJumpingTime < JUMPING_TOTAL_TIME / 3.f)
             plyPos.y += jumpDeceleration;
 
         currentJumpingTime -= TIME_PER_FRAME;
-
     } else
         plyPos.y += topSpeed; // apply gravity
 
@@ -93,7 +90,7 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
 
     // update sensor positions:
     float sensorOffset = 4.f;
-    Vec2 bounds(TILESIZE, TILESIZE);
+    Vec2 bounds(TILE_SIZE, TILE_SIZE);
     leftSensor.x = plyPos.x - sensorOffset;
     leftSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
     leftSensor.active = false;
@@ -104,15 +101,15 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
     bottomSensor.y = plyPos.y + (SCALE * bounds.y) + sensorOffset;
     bottomSensor.active = false;
 
-    World::floatRect r;
-    for (auto e : World::getInstance()->getEntities()) {
-        if (e->getType() == Type::wall) {
-            Vec2 ePos = camera->toPixels(e->getPosition()); // top left corner
+    World::floatRect r{};
+    for (const auto& entity : World::getInstance()->getEntities()) {
+        if (entity->getType() == Type::wall) {
+            Vec2 ePos = camera->toPixels(entity->getPosition()); // top left corner
 
             r.left = ePos.x;
             r.top = ePos.y;
-            r.height = TILESIZE * SCALE;
-            r.width = TILESIZE * SCALE;
+            r.height = TILE_SIZE * SCALE;
+            r.width = TILE_SIZE * SCALE;
 
             if (World::getInstance()->rectContainsPoint(r, Vec2(bottomSensor.x, bottomSensor.y)))
                 bottomSensor.active = true;
@@ -131,10 +128,10 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
     else
         state = PlyState::onAir;
 
-    for (auto e : World::getInstance()->getEntities()) {
+    for (const auto& entity : World::getInstance()->getEntities()) {
         // player with wall
-        if (e->getType() == Type::wall) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(e->getPosition()));
+        if (entity->getType() == Type::wall) {
+            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
 
             if (thereIsCollision) {
@@ -154,8 +151,8 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
             }
         }
         // player with goal (bandage girl)
-        else if (e->getType() == Type::goal) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(e->getPosition()));
+        else if (entity->getType() == Type::goal) {
+            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
             if (thereIsCollision)
                 reachedGoal = true;

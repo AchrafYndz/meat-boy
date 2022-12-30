@@ -34,18 +34,11 @@ public:
 
     // This method returns `true` if the application is in the menu state,
     // and `false` otherwise.
-    bool isInMenuState();
-
-    // This method returns `true` if the application is in a level state,
-    // and `false` otherwise.
-    bool isInLevelState();
-
-    // This method returns the number of the current level.
-    int getCurrentLevel() const { return currentLevel.current; }
+    [[nodiscard]] bool isInMenuState() const;
 
     // This method returns `true` if the current level has auto-scrolling
     // enabled, and `false` otherwise.
-    bool currentLevelHasAutoScroll() { return currentLevel.autoscroll; }
+    [[nodiscard]] bool currentLevelHasAutoScroll() const { return currentLevel.autoscroll; }
 };
 } // namespace Controller
 

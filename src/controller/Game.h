@@ -36,7 +36,7 @@ private:
     // Clears the last frame and displays new updates
     void render();
 
-    // Hanles inputs for menu
+    // Handles inputs for menu
     void handleMenuInput(sf::Keyboard::Key key);
 };
 } // namespace Controller

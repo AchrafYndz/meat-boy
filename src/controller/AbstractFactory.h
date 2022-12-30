@@ -9,7 +9,7 @@ class Entity;
 namespace Controller {
 class AbstractFactory {
 public:
-    ~AbstractFactory() {}
+    ~AbstractFactory() = default;
 
     virtual std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos) = 0;
 };

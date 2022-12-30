@@ -19,7 +19,7 @@ Controller::Game::Game() {
     camera = std::make_shared<Model::Camera>();
 
     stateManager->goToMenu();
-};
+}
 
 void Controller::Game::run() {
     std::shared_ptr<Utility::Stopwatch> stopwatch = Utility::Stopwatch::getInstance();
@@ -119,7 +119,7 @@ void Controller::Game::render() {
         for (int i = 1; i <= totalLevels; i++) {
             text.setString("Level " + std::to_string(i));
             text.setFillColor(i == selectedLevel ? sf::Color::White : sf::Color(100, 100, 100));
-            text.setPosition(sf::Vector2f(120, 60 + (i * 80)));
+            text.setPosition(sf::Vector2f(120.0f, 60.0f + (float(i) * 80.0f)));
             window.draw(text);
         }
     } else {

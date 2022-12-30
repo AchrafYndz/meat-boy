@@ -14,17 +14,17 @@ public:
     virtual ~Observer() = default;
 
     // This method is called when an entity's state changes
-    virtual void update(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) = 0;
+    virtual void update(float x, float y, std::shared_ptr<Camera> camera, bool facingLeft) = 0;
 };
 
 // The Subject class allows Observers to register and be notified of changes
 class Subject {
 public:
     // Register an Observer to be notified of changes
-    void registerObserver(std::shared_ptr<Observer> observer) { observers.push_back(observer); }
+    void registerObserver(const std::shared_ptr<Observer>& observer) { observers.push_back(observer); }
 
     // Notify all registered Observers of a change
-    void notifyObservers(int x, int y, std::shared_ptr<Camera> camera, bool facingLeft = false) {
+    void notifyObservers(float x, float y, const std::shared_ptr<Camera>& camera, bool facingLeft) {
         for (auto& observer : observers) {
             observer->update(x, y, camera, facingLeft);
         }

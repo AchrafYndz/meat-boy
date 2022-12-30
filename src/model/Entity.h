@@ -2,6 +2,7 @@
 #define INC_2022_PROJECT_ACHRAFYNDZ_ENTITY_H
 
 #include <memory>
+#include <utility>
 
 #include "World.h"
 
@@ -18,12 +19,12 @@ public:
     enum Type { none, player, wall, goal };
     Type type = none;
 
-    Entity(Type t) { type = t; }
-    virtual ~Entity() {}
+    explicit Entity(Type t) { type = t; }
+    virtual ~Entity() = default;
 
-    void assignView(std::shared_ptr<EntityView> v) { entView = v; }
+    void assignView(std::shared_ptr<EntityView>& v) { entView = v; }
 
-    Type getType() const { return type; }
+    [[nodiscard]] Type getType() const { return type; }
 
     virtual void update(std::shared_ptr<Camera> camera) = 0;
 

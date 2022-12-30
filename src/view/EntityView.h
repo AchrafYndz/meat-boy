@@ -19,10 +19,10 @@ private:
     sf::Sprite sprite;
 
 public:
-    EntityView(std::string filename);
-    ~EntityView() override {}
+    explicit EntityView(const std::string& filename);
+    ~EntityView() override = default;
 
-    void update(int x, int y, std::shared_ptr<Model::Camera> camera, bool facingLeft = false) override {
+    void update(float x, float y, std::shared_ptr<Model::Camera> camera, bool facingLeft) override {
         if (camera->entityIsVisible(y)) {
             sprite.setPosition(x, y);
             face(facingLeft);

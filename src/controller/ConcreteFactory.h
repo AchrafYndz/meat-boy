@@ -15,10 +15,10 @@ public:
     void operator=(const ConcreteFactory& other) = delete;
     static std::shared_ptr<ConcreteFactory> getInstance();
 
-    std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos);
+    std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos) override;
 
 private:
-    ConcreteFactory() {}
+    ConcreteFactory() = default;
     static std::shared_ptr<ConcreteFactory> concreteFactory;
 };
 } // namespace Controller

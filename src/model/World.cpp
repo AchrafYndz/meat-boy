@@ -1,6 +1,5 @@
 #include "World.h"
 #include "../controller/ConcreteFactory.h"
-#include "../controller/StateManager.h"
 #include "../util/json.hpp"
 #include "Camera.h"
 #include "Entity.h"
@@ -14,10 +13,10 @@ std::shared_ptr<Model::World> Model::World::world(new World);
 
 std::shared_ptr<Model::World> Model::World::getInstance() { return world; }
 
-void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> stateManager, std::shared_ptr<Camera> camera) {
+void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera) {
     clearEntities();
 
-    int tileSize = TILESIZE * SCALE;
+    float tileSize = TILE_SIZE * SCALE;
 
     std::ifstream levelsInfo("resources/levels/levels-info.json");
 
@@ -49,7 +48,7 @@ void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> 
     levelMap.clear();
     levelMap.seekg(0);                             // return to the beginning
     camera->setHeight(totalRows);                  // set total height of level
-    camera->setCameraCenter(totalRows * tileSize); // set initial camera position
+    camera->setCameraCenter(float(totalRows) * tileSize); // set initial camera position
 
     auto world_ = World::getInstance();
     std::string value;
@@ -58,7 +57,7 @@ void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> 
     while (getline(levelMap, line)) {           /* read entire line into line */
         std::stringstream ss(line);             /* create stringstream from line */
         while (getline(ss, value, delimiter)) { /* read each field from line */
-            Vec2 pos = camera->normalizedPosition(Vec2(column * tileSize, row * tileSize));
+            Vec2 pos = camera->normalizedPosition(Vec2(float(column) * tileSize, float(row) * tileSize));
             if (value == "0")
                 world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
             else if (value == "1") // goal
@@ -78,14 +77,14 @@ Model::Vec2 Model::World::getOverlap(Model::Vec2 aPos, Model::Vec2 bPos) {
 
     // X
     if (aPos.x < bPos.x)
-        result.x = (TILESIZE * SCALE) - (bPos.x - aPos.x);
+        result.x = (TILE_SIZE * SCALE) - (bPos.x - aPos.x);
     else
-        result.x = (TILESIZE * SCALE) - (aPos.x - bPos.x);
+        result.x = (TILE_SIZE * SCALE) - (aPos.x - bPos.x);
     // Y
     if (aPos.y < bPos.y)
-        result.y = (TILESIZE * SCALE) - (bPos.y - aPos.y);
+        result.y = (TILE_SIZE * SCALE) - (bPos.y - aPos.y);
     else
-        result.y = (TILESIZE * SCALE) - (aPos.y - bPos.y);
+        result.y = (TILE_SIZE * SCALE) - (aPos.y - bPos.y);
 
     return result;
 }
@@ -101,8 +100,8 @@ bool Model::World::rectContainsPoint(floatRect r, Vec2 point) {
 
 void Model::World::clearEntities() { entities.clear(); }
 
-void Model::World::update(std::shared_ptr<Camera> camera) {
-    for (auto entity : entities) {
+void Model::World::update(const std::shared_ptr<Camera>& camera) {
+    for (const auto& entity : entities) {
         entity->update(camera);
     }
 }

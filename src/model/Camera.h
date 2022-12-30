@@ -16,35 +16,35 @@ const int WINDOW_HEIGHT = 853;
 // const int WINDOW_WIDTH = 720;
 // const int WINDOW_HEIGHT = 1280;
 
-const double TIME_PER_FRAME = 1 / 60.0;
-const float TILESIZE = 256;
+const float TIME_PER_FRAME = 1 / 60.0f;
+const int TILE_SIZE = 256;
 // SCALE for 480p
-const float SCALE = (WINDOW_WIDTH / 15) / TILESIZE;
+const float SCALE = (WINDOW_WIDTH / 15.0f) / TILE_SIZE;
 
 namespace Model {
 class Camera {
 private:
-    double cameraCenter;
+    float cameraCenter = 0.0;
 
-    float totalHeight = 0; // total rows
+    int totalHeight = 0; // total rows
 public:
     Camera() = default;
 
     void setHeight(int rows) { totalHeight = rows; }
 
-    Vec2 normalizedPosition(Vec2 pos);
-    Vec2 toPixels(Vec2 pos) const;
+    [[nodiscard]] Vec2 normalizedPosition(Vec2 pos) const;
+    [[nodiscard]] Vec2 toPixels(Vec2 pos) const;
 
     // Getters
-    int getCameraCenter() const { return cameraCenter; }
+    [[nodiscard]] float getCameraCenter() const { return cameraCenter; }
 
-    void setCameraCenter(double h);
+    void setCameraCenter(float h);
 
-    void move(double diff);
+    void move(float diff);
 
-    bool entityIsVisible(int y);
+    [[nodiscard]] bool entityIsVisible(float y) const;
 
-    void update(std::shared_ptr<Player> player, std::shared_ptr<Controller::StateManager> stateManager);
+    void update(const std::shared_ptr<Player>& player, const std::shared_ptr<Controller::StateManager>& stateManager);
 };
 } // namespace Model
 

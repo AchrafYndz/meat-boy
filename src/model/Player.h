@@ -13,15 +13,15 @@ struct Vec2;
 class Player : public Entity, public Subject {
 private:
     struct Sensor {
-        int x;
-        int y;
+        float x;
+        float y;
         bool active = false;
     };
     Sensor leftSensor;
     Sensor rightSensor;
     Sensor bottomSensor;
 
-    enum PlyState { none, standingOnTile, onAir, onLeftWall, onRightWall };
+    enum PlyState { standingOnTile, onAir, onLeftWall, onRightWall };
     PlyState state = PlyState::onAir;
 
     const float speedMultiplier = WINDOW_WIDTH / 480.f;
@@ -36,7 +36,7 @@ private:
     bool jumpAvailable = true;
 
     enum JumpType { normal, toTheLeft, toTheRight };
-    JumpType jumpType;
+    JumpType jumpType{};
 
     bool reachedGoal = false;
 
@@ -50,17 +50,17 @@ private:
     Keys keys;
 
 public:
-    Player(Vec2 pos);
+    explicit Player(Vec2 pos);
 
     enum KeyEnum { left, right, space };
 
     void buttonAction(KeyEnum k, bool pressed);
 
-    void processInput(std::shared_ptr<Camera> camera);
+    void processInput(const std::shared_ptr<Camera>& camera);
 
     void update(std::shared_ptr<Model::Camera> camera) override;
 
-    bool hasReachedGoal() { return reachedGoal; }
+    [[nodiscard]] bool hasReachedGoal() const { return reachedGoal; }
 };
 } // namespace Model
 

@@ -9,8 +9,8 @@ struct Vec2;
 
 class Wall : public Entity, public Subject {
 public:
-    Wall(Vec2 pos);
-    ~Wall() {}
+    explicit Wall(Vec2 pos);
+    ~Wall() override = default;
 
     void update(std::shared_ptr<Camera> camera) override;
 };

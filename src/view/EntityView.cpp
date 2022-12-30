@@ -1,6 +1,6 @@
 #include "EntityView.h"
 
-EntityView::EntityView(std::string filepath) {
+EntityView::EntityView(const std::string& filepath) {
     if (!texture.loadFromFile(filepath)) {
         throw std::invalid_argument("Could not load file for Texture");
     }

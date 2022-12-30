@@ -51,11 +51,11 @@ public:
     static std::shared_ptr<World> getInstance();
 
     // Load a Level
-    void loadLevel(int lvl, std::shared_ptr<Controller::StateManager> stateManager, std::shared_ptr<Camera> camera);
+    void loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera);
 
-    Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
+    static Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
 
-    bool rectContainsPoint(floatRect r, Vec2 point);
+    static bool rectContainsPoint(floatRect r, Vec2 point);
 
     void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
 
@@ -63,11 +63,11 @@ public:
 
     std::shared_ptr<Player> getPlayer() { return player; };
 
-    void setPlayer(std::shared_ptr<Player> player_) { player = player_; }
+    void setPlayer(std::shared_ptr<Player>& player_) { player = player_; }
 
     void clearEntities();
 
-    void update(std::shared_ptr<Camera> camera);
+    void update(const std::shared_ptr<Camera>& camera);
 };
 } // namespace Model
 
