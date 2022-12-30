@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <system_error>
 
 std::shared_ptr<Model::World> Model::World::world(new World);
 
@@ -18,8 +19,11 @@ void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> 
 
     int tileSize = TILESIZE * SCALE;
 
-    std::ifstream levelMap;
     std::ifstream levelsInfo("resources/levels/levels-info.json");
+
+    if (!levelsInfo.is_open()) {
+        throw std::invalid_argument("Could not open file for levelsInfo");
+    }
 
     nlohmann::json j;
     levelsInfo >> j;
@@ -29,7 +33,11 @@ void Model::World::loadLevel(int lvl, std::shared_ptr<Controller::StateManager> 
 
     stateManager->goToLevel(lvl, autoScrolling);
 
-    levelMap.open(lvlPath);
+    std::ifstream levelMap(lvlPath);
+
+    if (!levelMap.is_open()) {
+        throw std::invalid_argument("Could not open file for levelMap");
+    }
 
     std::string line;
     char delimiter = ',';

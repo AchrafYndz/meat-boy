@@ -1,7 +1,9 @@
 #include "EntityView.h"
 
 EntityView::EntityView(std::string filepath) {
-    texture.loadFromFile(filepath);
+    if (!texture.loadFromFile(filepath)) {
+        throw std::invalid_argument("Could not load file for Texture");
+    }
 
     sprite.setTexture(texture);
     sprite.setScale(SCALE, SCALE);

@@ -9,7 +9,9 @@ sf::RenderWindow Controller::Game::window;
 Controller::Game::Game() {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Meat Boy");
 
-    game_font.loadFromFile("resources/fonts/meat-boy-font.ttf");
+    if (!game_font.loadFromFile("resources/fonts/meat-boy-font.ttf")) {
+        throw std::invalid_argument("Could not load game font");
+    }
     text.setFont(game_font);
 
     stateManager = std::make_shared<StateManager>();
