@@ -29,6 +29,7 @@ add_library(Logic STATIC
         src/model/Wall.h
         src/model/Goal.cpp
         src/model/Goal.h
+        src/model/AbstractFactory.h
         )
 
 
@@ -39,7 +40,6 @@ add_executable(Game
         src/controller/Game.h
         src/controller/StateManager.cpp
         src/controller/StateManager.h
-        src/controller/AbstractFactory.h
         src/controller/ConcreteFactory.cpp
         src/controller/ConcreteFactory.h
 

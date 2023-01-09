@@ -1,7 +1,7 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_ABSTRACTFACTORY_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_ABSTRACTFACTORY_H
 
-#include "../model/Entity.h"
+#include "Entity.h"
 #include <memory>
 
 class Entity;
@@ -11,7 +11,7 @@ class AbstractFactory {
 public:
     ~AbstractFactory() = default;
 
-    virtual std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos) = 0;
+    virtual std::shared_ptr<Model::Entity> CreateEntity(Model::Entity::Type type, Model::Vec2 pos) = 0;
 };
 } // namespace Controller
 

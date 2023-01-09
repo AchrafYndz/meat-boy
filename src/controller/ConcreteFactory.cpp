@@ -10,7 +10,7 @@ std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::concre
 
 std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::getInstance() { return concreteFactory; }
 
-std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateObject(Model::Entity::Type type, Model::Vec2 pos) {
+std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(Model::Entity::Type type, Model::Vec2 pos) {
     switch (type) {
     case Model::Entity::wall: {
         std::shared_ptr<EntityView> entView(new EntityView("resources/sprites/wall-sprite.png"));

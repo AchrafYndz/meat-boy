@@ -59,11 +59,11 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
         while (getline(ss, value, delimiter)) { /* read each field from line */
             Vec2 pos = camera->normalizedPosition(Vec2(float(column) * tileSize, float(row) * tileSize));
             if (value == "0")
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::wall, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::wall, pos));
             else if (value == "1") // goal
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::goal, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::goal, pos));
             else if (value == "2") // player position
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateObject(Entity::player, pos));
+                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::player, pos));
 
             column++;
         }

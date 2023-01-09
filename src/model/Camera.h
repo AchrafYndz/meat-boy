@@ -18,7 +18,6 @@ const int WINDOW_HEIGHT = 853;
 
 const float TIME_PER_FRAME = 1 / 60.0f;
 const int TILE_SIZE = 256;
-// SCALE for 480p
 const float SCALE = (WINDOW_WIDTH / 15.0f) / TILE_SIZE;
 
 namespace Model {

@@ -1,7 +1,7 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_CONCRETEFACTORY_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_CONCRETEFACTORY_H
 
-#include "AbstractFactory.h"
+#include "../model/AbstractFactory.h"
 
 #include "../model/Entity.h"
 
@@ -15,7 +15,7 @@ public:
     void operator=(const ConcreteFactory& other) = delete;
     static std::shared_ptr<ConcreteFactory> getInstance();
 
-    std::shared_ptr<Model::Entity> CreateObject(Model::Entity::Type type, Model::Vec2 pos) override;
+    std::shared_ptr<Model::Entity> CreateEntity(Model::Entity::Type type, Model::Vec2 pos) override;
 
 private:
     ConcreteFactory() = default;
