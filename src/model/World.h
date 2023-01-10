@@ -26,18 +26,14 @@ struct Vec2 {
     }
 };
 
-class World {
+class World : public std::enable_shared_from_this<World> {
 private:
-    World() = default;
-
-    static std::shared_ptr<World> world;
-
     std::vector<std::shared_ptr<Entity>> entities;
 
     std::shared_ptr<Player> player;
 
 public:
-    World(World& other) = delete;
+    World() = default;
 
     struct floatRect {
         float left;
@@ -45,11 +41,6 @@ public:
         float width;
         float height;
     };
-
-    void operator=(const World& other) = delete;
-
-    static std::shared_ptr<World> getInstance();
-
     // Load a Level
     void loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera);
 

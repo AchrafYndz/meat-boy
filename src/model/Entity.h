@@ -26,7 +26,7 @@ public:
 
     [[nodiscard]] Type getType() const { return type; }
 
-    virtual void update(std::shared_ptr<Camera> camera) = 0;
+    virtual void update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) = 0;
 
     Vec2 getPosition() { return position; }
 };

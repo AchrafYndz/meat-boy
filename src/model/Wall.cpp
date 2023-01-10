@@ -4,7 +4,7 @@
 
 Model::Wall::Wall(Vec2 pos) : Entity(Type::wall) { position = pos; }
 
-void Model::Wall::update(std::shared_ptr<Camera> camera) {
+void Model::Wall::update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) {
     Vec2 pos = camera->toPixels(position);
     notifyObservers(pos.x, pos.y, camera, false);
 }

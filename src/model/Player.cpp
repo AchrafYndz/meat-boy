@@ -70,7 +70,7 @@ void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
     position = camera->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
 }
 
-void Model::Player::update(std::shared_ptr<Camera> camera) {
+void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) {
     processInput(camera);
 
     Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
@@ -102,7 +102,7 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
     bottomSensor.active = false;
 
     World::floatRect r{};
-    for (const auto& entity : World::getInstance()->getEntities()) {
+    for (const auto& entity : world->getEntities()) {
         if (entity->getType() == Type::wall) {
             Vec2 ePos = camera->toPixels(entity->getPosition()); // top left corner
 
@@ -111,11 +111,11 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
             r.height = TILE_SIZE * SCALE;
             r.width = TILE_SIZE * SCALE;
 
-            if (World::getInstance()->rectContainsPoint(r, Vec2(bottomSensor.x, bottomSensor.y)))
+            if (world->rectContainsPoint(r, Vec2(bottomSensor.x, bottomSensor.y)))
                 bottomSensor.active = true;
-            else if (World::getInstance()->rectContainsPoint(r, Vec2(leftSensor.x, leftSensor.y)))
+            else if (world->rectContainsPoint(r, Vec2(leftSensor.x, leftSensor.y)))
                 leftSensor.active = true;
-            else if (World::getInstance()->rectContainsPoint(r, Vec2(rightSensor.x, rightSensor.y)))
+            else if (world->rectContainsPoint(r, Vec2(rightSensor.x, rightSensor.y)))
                 rightSensor.active = true;
         }
     }
@@ -128,10 +128,10 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
     else
         state = PlyState::onAir;
 
-    for (const auto& entity : World::getInstance()->getEntities()) {
+    for (const auto& entity : world->getEntities()) {
         // player with wall
         if (entity->getType() == Type::wall) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
+            Vec2 overlapPly = world->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
 
             if (thereIsCollision) {
@@ -152,7 +152,7 @@ void Model::Player::update(std::shared_ptr<Camera> camera) {
         }
         // player with goal (bandage girl)
         else if (entity->getType() == Type::goal) {
-            Vec2 overlapPly = World::getInstance()->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
+            Vec2 overlapPly = world->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
             bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
             if (thereIsCollision)
                 reachedGoal = true;

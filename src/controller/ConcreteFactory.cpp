@@ -10,7 +10,7 @@ std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::concre
 
 std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::getInstance() { return concreteFactory; }
 
-std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(Model::Entity::Type type, Model::Vec2 pos) {
+std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(const std::shared_ptr<Model::World>& world, Model::Entity::Type type, Model::Vec2 pos) {
     switch (type) {
     case Model::Entity::wall: {
         std::shared_ptr<EntityView> entView(new EntityView("resources/sprites/wall-sprite.png"));
@@ -30,7 +30,7 @@ std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(Model::
         std::shared_ptr<EntityView> entView(new EntityView("resources/sprites/player-sprite.png"));
         std::shared_ptr<Model::Player> player(new Model::Player(pos));
         player->registerObserver(entView);
-        Model::World::getInstance()->setPlayer(player);
+        world->setPlayer(player);
         player->assignView(entView);
         return player;
     }

@@ -10,7 +10,7 @@ public:
     explicit Goal(Vec2 pos);
     ~Goal() override = default;
 
-    void update(std::shared_ptr<Camera> camera) override;
+    void update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) override;
 };
 } // namespace Model
 

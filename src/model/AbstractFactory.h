@@ -11,7 +11,8 @@ class AbstractFactory {
 public:
     ~AbstractFactory() = default;
 
-    virtual std::shared_ptr<Model::Entity> CreateEntity(Model::Entity::Type type, Model::Vec2 pos) = 0;
+    virtual std::shared_ptr<Model::Entity> CreateEntity(const std::shared_ptr<Model::World>& world,
+                                                        Model::Entity::Type type, Model::Vec2 pos) = 0;
 };
 } // namespace Controller
 

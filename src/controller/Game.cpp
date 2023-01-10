@@ -18,7 +18,7 @@ Controller::Game::Game() {
 
     camera = std::make_shared<Model::Camera>();
 
-    stateManager->goToMenu();
+    world = std::make_shared<Model::World>();
 }
 
 void Controller::Game::run() {
@@ -61,8 +61,6 @@ void Controller::Game::process() {
                 window.close();
         }
 
-        auto world = Model::World::getInstance();
-
         auto player = world->getPlayer();
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -80,7 +78,7 @@ void Controller::Game::process() {
         else
             player->buttonAction(player->KeyEnum::space, false);
 
-        Model::World::getInstance()->update(camera);
+        world->update(camera);
         camera->update(player, stateManager);
 
         // WIN STATE -> go to Next Level or Main Menu if it's the last level
@@ -89,12 +87,12 @@ void Controller::Game::process() {
                 stateManager->goToMenu();
             else {
                 selectedLevel++;
-                Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+                world->loadLevel(selectedLevel, stateManager, camera);
             }
         }
         // DIE -> Restart Level
         else if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
-            Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+            world->loadLevel(selectedLevel, stateManager, camera);
         }
     }
 }
@@ -141,6 +139,6 @@ void Controller::Game::handleMenuInput(sf::Keyboard::Key key) {
         if (selectedLevel < totalLevels)
             selectedLevel++;
     } else if (key == sf::Keyboard::Enter) {
-        Model::World::getInstance()->loadLevel(selectedLevel, stateManager, camera);
+        world->loadLevel(selectedLevel, stateManager, camera);
     }
 }

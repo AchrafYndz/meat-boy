@@ -58,7 +58,7 @@ public:
 
     void processInput(const std::shared_ptr<Camera>& camera);
 
-    void update(std::shared_ptr<Model::Camera> camera) override;
+    void update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Model::Camera> camera) override;
 
     [[nodiscard]] bool hasReachedGoal() const { return reachedGoal; }
 };

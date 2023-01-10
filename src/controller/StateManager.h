@@ -10,8 +10,7 @@ private:
     struct Level {
         // The `current` variable is the number of the current level.
         // If `current` is 0, the application is in the menu state.
-        // If `current` is -1, there is no current level.
-        int current = -1;
+        int current = 0;
 
         // The `autoscroll` variable indicates whether the current level
         // has auto-scrolling enabled.

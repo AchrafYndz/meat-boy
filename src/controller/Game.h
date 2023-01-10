@@ -15,6 +15,8 @@ private:
 
     std::shared_ptr<Model::Camera> camera;
 
+    std::shared_ptr<Model::World> world;
+
     sf::Font game_font;
     sf::Text text;
 

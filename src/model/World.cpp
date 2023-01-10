@@ -9,10 +9,6 @@
 #include <sstream>
 #include <system_error>
 
-std::shared_ptr<Model::World> Model::World::world(new World);
-
-std::shared_ptr<Model::World> Model::World::getInstance() { return world; }
-
 void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera) {
     clearEntities();
 
@@ -50,7 +46,6 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
     camera->setHeight(totalRows);                  // set total height of level
     camera->setCameraCenter(float(totalRows) * tileSize); // set initial camera position
 
-    auto world_ = World::getInstance();
     std::string value;
     int column = 0;                             // top
     int row = 0;                                // left
@@ -58,12 +53,12 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
         std::stringstream ss(line);             /* create stringstream from line */
         while (getline(ss, value, delimiter)) { /* read each field from line */
             Vec2 pos = camera->normalizedPosition(Vec2(float(column) * tileSize, float(row) * tileSize));
-            if (value == "0")
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::wall, pos));
+            if (value == "0") // wall
+                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::wall, pos));
             else if (value == "1") // goal
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::goal, pos));
-            else if (value == "2") // player position
-                world_->addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(Entity::player, pos));
+                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::goal, pos));
+            else if (value == "2") // player
+                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::player, pos));
 
             column++;
         }
@@ -102,6 +97,6 @@ void Model::World::clearEntities() { entities.clear(); }
 
 void Model::World::update(const std::shared_ptr<Camera>& camera) {
     for (const auto& entity : entities) {
-        entity->update(camera);
+        entity->update(shared_from_this(), camera);
     }
 }

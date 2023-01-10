@@ -15,7 +15,8 @@ public:
     void operator=(const ConcreteFactory& other) = delete;
     static std::shared_ptr<ConcreteFactory> getInstance();
 
-    std::shared_ptr<Model::Entity> CreateEntity(Model::Entity::Type type, Model::Vec2 pos) override;
+    std::shared_ptr<Model::Entity> CreateEntity(const std::shared_ptr<Model::World>& world, Model::Entity::Type type,
+                                                Model::Vec2 pos) override;
 
 private:
     ConcreteFactory() = default;
