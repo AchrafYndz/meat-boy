@@ -2,53 +2,51 @@
 #include "Player.h"
 #include "World.h"
 
-Vec2 Model::Camera::normalizedPosition(Vec2 pos) const {
-    Vec2 result;
+floatVector2 Model::Camera::normalizePosition(floatVector2 position) const {
+    floatVector2 result;
 
-    float oldMin = 0;
+    float oldMin = 0.0f;
     float oldMax = float(totalHeight) * SCALE * TILE_SIZE;
-    float newMin = -1;
+    float newMin = -1.0f;
     float newMax = float(totalHeight);
 
-    float oldPercent = (pos.y - oldMin) / (oldMax - oldMin);
-    result.y = ((newMax - newMin) * oldPercent + newMin);
+    float oldPercent = (position.y - oldMin) / (oldMax - oldMin);
 
-    result.x = ((2.f * pos.x) / WINDOW_WIDTH) - 1.f;
+    result.y = ((newMax - newMin) * oldPercent + newMin);
+    result.x = ((2.0f * position.x) / WINDOW_WIDTH) - 1.0f;
 
     return result;
 }
 
-Vec2 Model::Camera::toPixels(Vec2 pos) const {
-    Vec2 result;
+floatVector2 Model::Camera::toPixels(floatVector2 position) const {
+    floatVector2 result;
 
-    float oldMin = -1;
+    float oldMin = -1.0f;
     float oldMax = float(totalHeight);
-    float newMin = 0;
+    float newMin = 0.0f;
     float newMax = float(totalHeight) * SCALE * TILE_SIZE;
 
-    float oldPercent = (pos.y - oldMin) / (oldMax - oldMin);
-    result.y = ((newMax - newMin) * oldPercent + newMin);
+    float oldPercent = (position.y - oldMin) / (oldMax - oldMin);
 
-    result.x = ((pos.x + 1.f) / 2.f) * WINDOW_WIDTH;
+    result.y = ((newMax - newMin) * oldPercent + newMin);
+    result.x = ((position.x + 1.0f) / 2.0f) * WINDOW_WIDTH;
 
     return result;
 }
 
-void Model::Camera::move(float diff) {
-    if (cameraCenter + diff - float(WINDOW_HEIGHT) / 2 >= 0)
-        cameraCenter += diff;
+void Model::Camera::move(float difference) {
+    if (cameraCenter + difference - float(WINDOW_HEIGHT) / 2.0f >= 0)
+        cameraCenter += difference;
 }
 
 bool Model::Camera::entityIsVisible(float y) const {
-    // x will always be visible
-
-    double upperLimit = cameraCenter - WINDOW_HEIGHT / 2.f;
-    double lowerLimit = cameraCenter + WINDOW_HEIGHT / 2.f;
+    double upperLimit = cameraCenter - WINDOW_HEIGHT / 2.0f;
+    double lowerLimit = cameraCenter + WINDOW_HEIGHT / 2.0f;
 
     return (y + SCALE * TILE_SIZE >= upperLimit && y <= lowerLimit);
 }
 
-void Model::Camera::setCameraCenter(float h) { cameraCenter = h - (WINDOW_HEIGHT / 2.f); }
+void Model::Camera::setCameraCenter(float height) { cameraCenter = height - (WINDOW_HEIGHT / 2.0f); }
 
 void Model::Camera::update(const std::shared_ptr<Player>& player, const std::shared_ptr<Controller::StateManager>& stateManager) {
     // Move if auto scrolling
@@ -57,7 +55,7 @@ void Model::Camera::update(const std::shared_ptr<Player>& player, const std::sha
     }
     // if player above 80% of the level, move also
     float playerHeight = toPixels(player->getPosition()).y;
-    float diff = playerHeight - (cameraCenter - (WINDOW_HEIGHT * 0.3f));
-    if (diff < 0.0f)
-        move(diff);
+    float difference = playerHeight - (cameraCenter - (WINDOW_HEIGHT * 0.3f));
+    if (difference < 0.0f)
+        move(difference);
 }

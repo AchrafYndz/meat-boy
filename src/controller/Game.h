@@ -17,7 +17,7 @@ private:
 
     std::shared_ptr<Model::World> world;
 
-    sf::Font game_font;
+    sf::Font gameFont;
     sf::Text text;
 
     int selectedLevel = 1;

@@ -3,6 +3,7 @@
 
 #include "../controller/ConcreteFactory.h"
 #include "../controller/StateManager.h"
+#include "../util/floatRectangle.h"
 #include <memory>
 #include <vector>
 
@@ -22,20 +23,15 @@ private:
 public:
     World() = default;
 
-    struct floatRect {
-        float left;
-        float top;
-        float width;
-        float height;
-    };
+
     // Load a Level
-    void loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera);
+    void loadLevel(int levelNumber, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera);
 
-    static Vec2 getOverlap(Vec2 aPos, Vec2 bPos);
+    static floatVector2 getOverlap(floatVector2 aPosition, floatVector2 bPosition);
 
-    static bool rectContainsPoint(floatRect r, Vec2 point);
+    static bool rectangleContains(floatRectangle rectangle, floatVector2 point);
 
-    void addEntity(const std::shared_ptr<Entity>& e) { entities.push_back(e); }
+    void addEntity(const std::shared_ptr<Entity>& entity) { entities.push_back(entity); }
 
     std::vector<std::shared_ptr<Entity>> getEntities() { return entities; }
 

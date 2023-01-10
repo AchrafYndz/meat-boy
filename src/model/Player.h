@@ -1,10 +1,10 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_PLAYER_H
 
+#include "../util/floatVector2.h"
 #include "Camera.h"
 #include "Entity.h"
 #include "ObserverPattern.h"
-#include "../util/Vec2.h"
 
 #include <memory>
 
@@ -20,15 +20,15 @@ private:
     Sensor rightSensor;
     Sensor bottomSensor;
 
-    enum PlyState { standingOnTile, onAir, onLeftWall, onRightWall };
-    PlyState state = PlyState::onAir;
+    enum State { standingOnTile, inAir, onLeftWall, onRightWall };
+    State state = State::inAir;
 
     const float speedMultiplier = WINDOW_WIDTH / 480.f;
     const float acceleration = 60.f * TIME_PER_FRAME * speedMultiplier;
     float currentAcceleration = 0.f;
     const float topSpeed = 300.f * TIME_PER_FRAME * speedMultiplier;
 
-    const float JUMPING_TOTAL_TIME = 0.8f;
+    const float jumpingTotalTime = 0.8f;
     float currentJumpingTime = 0.f;
     const float jumpDeceleration = 120.f * TIME_PER_FRAME * speedMultiplier;
 
@@ -49,11 +49,11 @@ private:
     Keys keys;
 
 public:
-    explicit Player(Vec2 pos);
+    explicit Player(floatVector2 pos);
 
     enum KeyEnum { left, right, space };
 
-    void buttonAction(KeyEnum k, bool pressed);
+    void buttonAction(KeyEnum key, bool pressed);
 
     void processInput(const std::shared_ptr<Camera>& camera);
 

@@ -1,11 +1,10 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_CAMERA_H
 
+#include "../util/floatVector2.h"
 #include "Entity.h"
 #include "World.h"
 #include <memory>
-#include "../util/Vec2.h"
-
 
 /// Constants
 // 480 p
@@ -23,7 +22,7 @@ const float SCALE = (WINDOW_WIDTH / 15.0f) / TILE_SIZE;
 namespace Model {
 class Camera {
 private:
-    float cameraCenter = 0.0;
+    float cameraCenter = WINDOW_HEIGHT / 2.0f;
 
     int totalHeight = 0; // total rows
 public:
@@ -31,15 +30,14 @@ public:
 
     void setHeight(int rows) { totalHeight = rows; }
 
-    [[nodiscard]] Vec2 normalizedPosition(Vec2 pos) const;
-    [[nodiscard]] Vec2 toPixels(Vec2 pos) const;
+    [[nodiscard]] floatVector2 normalizePosition(floatVector2 position) const;
+    [[nodiscard]] floatVector2 toPixels(floatVector2 position) const;
 
-    // Getters
     [[nodiscard]] float getCameraCenter() const { return cameraCenter; }
 
-    void setCameraCenter(float h);
+    void setCameraCenter(float height);
 
-    void move(float diff);
+    void move(float difference);
 
     [[nodiscard]] bool entityIsVisible(float y) const;
 

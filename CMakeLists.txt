@@ -17,7 +17,8 @@ add_library(Logic STATIC
         src/util/Stopwatch.cpp
         src/util/Stopwatch.h
         src/util/json.hpp
-        src/util/Vec2.h
+        src/util/floatVector2.h
+        src/util/floatRectangle.h
 
         src/model/World.cpp
         src/model/World.h

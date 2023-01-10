@@ -1,10 +1,10 @@
 #include "Player.h"
 #include "Camera.h"
 
-Model::Player::Player(Vec2 pos) : Entity(Type::player) { position = pos; }
+Model::Player::Player(floatVector2 pos) : Entity(Type::player) { position = pos; }
 
-void Model::Player::buttonAction(KeyEnum k, bool pressed) {
-    switch (k) {
+void Model::Player::buttonAction(KeyEnum key, bool pressed) {
+    switch (key) {
     case Player::left:
         keys.left = pressed;
         break;
@@ -20,8 +20,8 @@ void Model::Player::buttonAction(KeyEnum k, bool pressed) {
 }
 
 void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
-    Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
-    float currentX = plyPos.x;
+    floatVector2 playerPosition = camera->toPixels(getPosition()); // top left corner
+    float currentX = playerPosition.x;
 
     if (keys.left) {
         if (jumpType == JumpType::toTheRight)
@@ -49,11 +49,11 @@ void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
     else if (currentAcceleration < -topSpeed)
         currentAcceleration = -topSpeed;
 
-    if (jumpAvailable && keys.space && state != PlyState::onAir) {
+    if (jumpAvailable && keys.space && state != State::inAir) {
         jumpAvailable = false;
-        if (state == PlyState::standingOnTile)
+        if (state == State::standingOnTile)
             jumpType = JumpType::normal;
-        else if (state == PlyState::onLeftWall) {
+        else if (state == State::onLeftWall) {
             jumpType = JumpType::toTheRight;
             currentAcceleration = topSpeed;
             facingLeft = false;
@@ -63,102 +63,99 @@ void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
             facingLeft = true;
         }
 
-        currentJumpingTime = JUMPING_TOTAL_TIME;
+        currentJumpingTime = jumpingTotalTime;
     } else if (!keys.space)
         jumpAvailable = true;
 
-    position = camera->normalizedPosition(Vec2(currentX + currentAcceleration, plyPos.y));
+    position = camera->normalizePosition(floatVector2(currentX + currentAcceleration, playerPosition.y));
 }
 
 void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) {
     processInput(camera);
 
-    Vec2 plyPos = camera->toPixels(getPosition()); // top left corner
+    floatVector2 playerPosition = camera->toPixels(getPosition()); // top left corner
 
     if (currentJumpingTime > 0) {
-        plyPos.y -= topSpeed;
+        playerPosition.y -= topSpeed;
 
         // if one third of the jump -> deceleration
-        if (currentJumpingTime < JUMPING_TOTAL_TIME / 3.f)
-            plyPos.y += jumpDeceleration;
+        if (currentJumpingTime < jumpingTotalTime / 3.f)
+            playerPosition.y += jumpDeceleration;
 
         currentJumpingTime -= TIME_PER_FRAME;
     } else
-        plyPos.y += topSpeed; // apply gravity
+        playerPosition.y += topSpeed; // apply gravity
 
     /// collision
 
     // update sensor positions:
     float sensorOffset = 4.f;
-    Vec2 bounds(TILE_SIZE, TILE_SIZE);
-    leftSensor.x = plyPos.x - sensorOffset;
-    leftSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
+    floatVector2 bounds(TILE_SIZE, TILE_SIZE);
+    leftSensor.x = playerPosition.x - sensorOffset;
+    leftSensor.y = playerPosition.y + (SCALE * bounds.y / 4.f);
     leftSensor.active = false;
-    rightSensor.x = plyPos.x + (SCALE * bounds.x) + sensorOffset;
-    rightSensor.y = plyPos.y + (SCALE * bounds.y / 4.f);
+    rightSensor.x = playerPosition.x + (SCALE * bounds.x) + sensorOffset;
+    rightSensor.y = playerPosition.y + (SCALE * bounds.y / 4.f);
     rightSensor.active = false;
-    bottomSensor.x = plyPos.x + (SCALE * bounds.x / 2.f);
-    bottomSensor.y = plyPos.y + (SCALE * bounds.y) + sensorOffset;
+    bottomSensor.x = playerPosition.x + (SCALE * bounds.x / 2.f);
+    bottomSensor.y = playerPosition.y + (SCALE * bounds.y) + sensorOffset;
     bottomSensor.active = false;
 
-    World::floatRect r{};
+    floatRectangle rectangle{};
     for (const auto& entity : world->getEntities()) {
         if (entity->getType() == Type::wall) {
-            Vec2 ePos = camera->toPixels(entity->getPosition()); // top left corner
+            floatVector2 entityPosition = camera->toPixels(entity->getPosition()); // top left corner
 
-            r.left = ePos.x;
-            r.top = ePos.y;
-            r.height = TILE_SIZE * SCALE;
-            r.width = TILE_SIZE * SCALE;
+            rectangle.left = entityPosition.x;
+            rectangle.top = entityPosition.y;
+            rectangle.height = TILE_SIZE * SCALE;
+            rectangle.width = TILE_SIZE * SCALE;
 
-            if (world->rectContainsPoint(r, Vec2(bottomSensor.x, bottomSensor.y)))
+            if (world->rectangleContains(rectangle, floatVector2(bottomSensor.x, bottomSensor.y)))
                 bottomSensor.active = true;
-            else if (world->rectContainsPoint(r, Vec2(leftSensor.x, leftSensor.y)))
+            else if (world->rectangleContains(rectangle, floatVector2(leftSensor.x, leftSensor.y)))
                 leftSensor.active = true;
-            else if (world->rectContainsPoint(r, Vec2(rightSensor.x, rightSensor.y)))
+            else if (world->rectangleContains(rectangle, floatVector2(rightSensor.x, rightSensor.y)))
                 rightSensor.active = true;
         }
     }
     if (bottomSensor.active)
-        state = PlyState::standingOnTile;
+        state = State::standingOnTile;
     else if (leftSensor.active)
-        state = PlyState::onLeftWall;
+        state = State::onLeftWall;
     else if (rightSensor.active)
-        state = PlyState::onRightWall;
+        state = State::onRightWall;
     else
-        state = PlyState::onAir;
+        state = State::inAir;
 
     for (const auto& entity : world->getEntities()) {
         // player with wall
         if (entity->getType() == Type::wall) {
-            Vec2 overlapPly = world->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
-            bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
-
-            if (thereIsCollision) {
-                if (overlapPly.y < overlapPly.x) { // compensate only the shortest overlap, in this case y
+            floatVector2 playerOverlap = world->getOverlap(playerPosition, camera->toPixels(entity->getPosition()));
+            if (playerOverlap.x > 0.f && playerOverlap.y > 0.f) {
+                if (playerOverlap.y < playerOverlap.x) { // compensate only the shortest overlap, in this case y
                     if (bottomSensor.active) {     // player on top of tile
-                        plyPos.y -= overlapPly.y;
+                        playerPosition.y -= playerOverlap.y;
                     } else { // player hit tile from below
-                        plyPos.y += overlapPly.y;
+                        playerPosition.y += playerOverlap.y;
                     }
                 } else {                      // compensate only x
                     if (rightSensor.active) { // player colliding on right wall
-                        plyPos.x -= overlapPly.x;
+                        playerPosition.x -= playerOverlap.x;
                     } else if (leftSensor.active) { // player colliding on left wall
-                        plyPos.x += overlapPly.x;
+                        playerPosition.x += playerOverlap.x;
                     }
                 }
             }
         }
         // player with goal (bandage girl)
         else if (entity->getType() == Type::goal) {
-            Vec2 overlapPly = world->getOverlap(plyPos, camera->toPixels(entity->getPosition()));
-            bool thereIsCollision = overlapPly.x > 0.f && overlapPly.y > 0.f;
-            if (thereIsCollision)
+            floatVector2 playerOverlap = world->getOverlap(playerPosition, camera->toPixels(entity->getPosition()));
+            if (playerOverlap.x > 0.f && playerOverlap.y > 0.f)
                 reachedGoal = true;
         }
     }
 
-    notifyObservers(plyPos.x, plyPos.y, camera, facingLeft);
-    position = camera->normalizedPosition(Vec2(plyPos.x, plyPos.y));
+    notifyObservers(playerPosition.x, playerPosition.y, camera, facingLeft);
+    position = camera->normalizePosition(floatVector2(playerPosition.x, playerPosition.y));
 }

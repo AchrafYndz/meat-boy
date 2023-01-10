@@ -24,7 +24,7 @@ public:
     void operator=(const Stopwatch& other) = delete;
 
     // returns the only instance of stopwatch
-    static std::shared_ptr<Stopwatch> getInstance();
+    static std::shared_ptr<Stopwatch> getInstance() { return stopwatch; };
 
     // the time (in seconds) since reset() was last called
     double timeSinceLastUpdate();

@@ -6,7 +6,7 @@
 #include "../controller/Game.h"
 #include "../model/Camera.h"
 #include "../model/ObserverPattern.h"
-#include "../util/Vec2.h"
+#include "../util/floatVector2.h"
 
 #include <iostream>
 
@@ -19,7 +19,7 @@ private:
     sf::Sprite sprite;
 
 public:
-    explicit EntityView(const std::string& filename);
+    explicit EntityView(const std::string& filepath);
     ~EntityView() override = default;
 
     void update(float x, float y, std::shared_ptr<Model::Camera> camera, bool facingLeft) override {
@@ -30,7 +30,7 @@ public:
         }
     }
 
-    Vec2 size();
+    floatVector2 size();
 
     void face(bool left);
 };

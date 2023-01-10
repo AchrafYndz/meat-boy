@@ -9,7 +9,7 @@
 #include <sstream>
 #include <system_error>
 
-void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera) {
+void Model::World::loadLevel(int levelNumber, const std::shared_ptr<Controller::StateManager>& stateManager, const std::shared_ptr<Camera>& camera) {
     clearEntities();
 
     float tileSize = TILE_SIZE * SCALE;
@@ -23,12 +23,12 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
     nlohmann::json j;
     levelsInfo >> j;
 
-    std::string lvlPath = j["level-" + std::to_string(lvl)]["filePath"];
-    bool autoScrolling = j["level-" + std::to_string(lvl)]["autoScrolling"];
+    std::string levelPath = j["level-" + std::to_string(levelNumber)]["filePath"];
+    bool autoScrolling = j["level-" + std::to_string(levelNumber)]["autoScrolling"];
 
-    stateManager->goToLevel(lvl, autoScrolling);
+    stateManager->goToLevel(levelNumber, autoScrolling);
 
-    std::ifstream levelMap(lvlPath);
+    std::ifstream levelMap(levelPath);
 
     if (!levelMap.is_open()) {
         throw std::invalid_argument("Could not open file for levelMap");
@@ -50,15 +50,15 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
     int column = 0;                             // top
     int row = 0;                                // left
     while (getline(levelMap, line)) {           /* read entire line into line */
-        std::stringstream ss(line);             /* create stringstream from line */
-        while (getline(ss, value, delimiter)) { /* read each field from line */
-            Vec2 pos = camera->normalizedPosition(Vec2(float(column) * tileSize, float(row) * tileSize));
+        std::stringstream stringstream(line);             /* create stringstream from line */
+        while (getline(stringstream, value, delimiter)) { /* read each field from line */
+            floatVector2 pos = camera->normalizePosition(floatVector2(float(column) * tileSize, float(row) * tileSize));
             if (value == "0") // wall
-                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::wall, pos));
+                addEntity(concreteFactory->createEntity(shared_from_this(), Entity::wall, pos));
             else if (value == "1") // goal
-                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::goal, pos));
+                addEntity(concreteFactory->createEntity(shared_from_this(), Entity::goal, pos));
             else if (value == "2") // player
-                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::player, pos));
+                addEntity(concreteFactory->createEntity(shared_from_this(), Entity::player, pos));
 
             column++;
         }
@@ -67,28 +67,28 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
     }
 }
 
-Vec2 Model::World::getOverlap(Vec2 aPos, Vec2 bPos) {
-    Vec2 result = Vec2(-1, -1);
+floatVector2 Model::World::getOverlap(floatVector2 aPosition, floatVector2 bPosition) {
+    floatVector2 result = floatVector2(-1, -1);
 
     // X
-    if (aPos.x < bPos.x)
-        result.x = (TILE_SIZE * SCALE) - (bPos.x - aPos.x);
+    if (aPosition.x < bPosition.x)
+        result.x = (TILE_SIZE * SCALE) - (bPosition.x - aPosition.x);
     else
-        result.x = (TILE_SIZE * SCALE) - (aPos.x - bPos.x);
+        result.x = (TILE_SIZE * SCALE) - (aPosition.x - bPosition.x);
     // Y
-    if (aPos.y < bPos.y)
-        result.y = (TILE_SIZE * SCALE) - (bPos.y - aPos.y);
+    if (aPosition.y < bPosition.y)
+        result.y = (TILE_SIZE * SCALE) - (bPosition.y - aPosition.y);
     else
-        result.y = (TILE_SIZE * SCALE) - (aPos.y - bPos.y);
+        result.y = (TILE_SIZE * SCALE) - (aPosition.y - bPosition.y);
 
     return result;
 }
 
-bool Model::World::rectContainsPoint(floatRect r, Vec2 point) {
-    float minX = std::min(r.left, (r.left + r.width));
-    float maxX = std::max(r.left, (r.left + r.width));
-    float minY = std::min(r.top, (r.top + r.height));
-    float maxY = std::max(r.top, (r.top + r.height));
+bool Model::World::rectangleContains(floatRectangle rectangle, floatVector2 point) {
+    float minX = std::min(rectangle.left, (rectangle.left + rectangle.width));
+    float maxX = std::max(rectangle.left, (rectangle.left + rectangle.width));
+    float minY = std::min(rectangle.top, (rectangle.top + rectangle.height));
+    float maxY = std::max(rectangle.top, (rectangle.top + rectangle.height));
 
     return (point.x >= minX) && (point.x < maxX) && (point.y >= minY) && (point.y < maxY);
 }

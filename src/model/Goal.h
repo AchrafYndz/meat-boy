@@ -7,7 +7,7 @@
 namespace Model {
 class Goal : public Entity, public Subject {
 public:
-    explicit Goal(Vec2 pos);
+    explicit Goal(floatVector2 position_);
     ~Goal() override = default;
 
     void update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) override;

@@ -9,10 +9,10 @@ sf::RenderWindow Controller::Game::window;
 Controller::Game::Game() {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Meat Boy");
 
-    if (!game_font.loadFromFile("resources/fonts/meat-boy-font.ttf")) {
+    if (!gameFont.loadFromFile("resources/fonts/meat-boy-font.ttf")) {
         throw std::invalid_argument("Could not load game font");
     }
-    text.setFont(game_font);
+    text.setFont(gameFont);
 
     stateManager = std::make_shared<StateManager>();
 
@@ -45,9 +45,9 @@ void Controller::Game::process() {
             case sf::Event::Closed:
                 window.close();
                 break;
-            case sf::Event::KeyPressed: {
+            case sf::Event::KeyPressed:
                 handleMenuInput(event.key.code);
-            } break;
+                break;
             default:
                 break;
             }
@@ -61,7 +61,7 @@ void Controller::Game::process() {
                 window.close();
         }
 
-        auto player = world->getPlayer();
+        std::shared_ptr<Model::Player> player = world->getPlayer();
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             player->buttonAction(player->KeyEnum::left, true);
@@ -73,15 +73,12 @@ void Controller::Game::process() {
         else
             player->buttonAction(player->KeyEnum::right, false);
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             player->buttonAction(player->KeyEnum::space, true);
         else
             player->buttonAction(player->KeyEnum::space, false);
 
-        world->update(camera);
-        camera->update(player, stateManager);
-
-        // WIN STATE -> go to Next Level or Main Menu if it's the last level
+        // WIN STATE -> go to next Level or Main Menu if it's the last Level
         if (player->hasReachedGoal()) {
             if (selectedLevel == 3)
                 stateManager->goToMenu();
@@ -90,7 +87,7 @@ void Controller::Game::process() {
                 world->loadLevel(selectedLevel, stateManager, camera);
             }
         }
-        // DIE -> Restart Level
+        // DIE -> reload Level
         else if (!camera->entityIsVisible(camera->toPixels(player->getPosition()).y)) {
             world->loadLevel(selectedLevel, stateManager, camera);
         }
@@ -98,18 +95,17 @@ void Controller::Game::process() {
 }
 
 void Controller::Game::render() {
-
     if (stateManager->isInMenuState()) {
         // draw the game title
-        text.setCharacterSize(48);
+        text.setCharacterSize(int(400 * SCALE));
         text.setString("Meat Boy");
         text.setFillColor(sf::Color(100, 100, 100));
         text.setPosition(sf::Vector2f(10, 10));
 
-        // reposition View (in case we came from the level)
-        sf::View v = window.getView();
-        v.setCenter(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f);
-        window.setView(v);
+        // reposition View (for when we went from Level to Main Menu)
+        sf::View view = window.getView();
+        view.setCenter(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f);
+        window.setView(view);
 
         window.draw(text);
 
@@ -121,9 +117,12 @@ void Controller::Game::render() {
             window.draw(text);
         }
     } else {
-        float cameraCtr = camera->getCameraCenter();
+        world->update(camera);
+        camera->update(world->getPlayer(), stateManager);
+
+        float cameraCenter = camera->getCameraCenter();
         sf::View v = window.getView();
-        v.setCenter(WINDOW_WIDTH / 2.f, cameraCtr);
+        v.setCenter(WINDOW_WIDTH / 2.f, cameraCenter);
         window.setView(v);
     }
 }

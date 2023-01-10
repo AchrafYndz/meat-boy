@@ -10,7 +10,7 @@ private:
     struct Level {
         // The `current` variable is the number of the current level.
         // If `current` is 0, the application is in the menu state.
-        int current = 0;
+        int state = 0;
 
         // The `autoscroll` variable indicates whether the current level
         // has auto-scrolling enabled.
@@ -33,7 +33,7 @@ public:
 
     // This method returns `true` if the application is in the menu state,
     // and `false` otherwise.
-    [[nodiscard]] bool isInMenuState() const;
+    [[nodiscard]] bool isInMenuState() const { return currentLevel.state == 0; };
 
     // This method returns `true` if the current level has auto-scrolling
     // enabled, and `false` otherwise.

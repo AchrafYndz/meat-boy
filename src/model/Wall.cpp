@@ -2,9 +2,9 @@
 #include "Camera.h"
 #include "World.h"
 
-Model::Wall::Wall(Vec2 pos) : Entity(Type::wall) { position = pos; }
+Model::Wall::Wall(floatVector2 position_) : Entity(Type::wall) { position = position_; }
 
 void Model::Wall::update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) {
-    Vec2 pos = camera->toPixels(position);
-    notifyObservers(pos.x, pos.y, camera, false);
+    floatVector2 pixelPosition = camera->toPixels(position);
+    notifyObservers(pixelPosition.x, pixelPosition.y, camera, false);
 }

@@ -9,7 +9,7 @@ EntityView::EntityView(const std::string& filepath) {
     sprite.setScale(SCALE, SCALE);
 }
 
-Vec2 EntityView::size() { return {sprite.getLocalBounds().width, sprite.getLocalBounds().height}; }
+floatVector2 EntityView::size() { return {sprite.getLocalBounds().width, sprite.getLocalBounds().height}; }
 
 void EntityView::face(bool left) {
     if (left) {

@@ -2,8 +2,6 @@
 
 std::shared_ptr<Utility::Stopwatch> Utility::Stopwatch::stopwatch(new Stopwatch);
 
-std::shared_ptr<Utility::Stopwatch> Utility::Stopwatch::getInstance() { return stopwatch; }
-
 double Utility::Stopwatch::timeSinceLastUpdate() {
     return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - lastUpdate).count() /
            1e9;
