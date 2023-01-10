@@ -3,9 +3,10 @@
 
 #include "Entity.h"
 #include "ObserverPattern.h"
+#include "../util/Vec2.h"
+
 
 namespace Model {
-struct Vec2;
 
 class Wall : public Entity, public Subject {
 public:

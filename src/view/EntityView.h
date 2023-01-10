@@ -6,12 +6,12 @@
 #include "../controller/Game.h"
 #include "../model/Camera.h"
 #include "../model/ObserverPattern.h"
+#include "../util/Vec2.h"
 
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
 
-struct Vec2;
 
 class EntityView : public Model::Observer {
 private:
@@ -30,7 +30,7 @@ public:
         }
     }
 
-    Model::Vec2 size();
+    Vec2 size();
 
     void face(bool left);
 };

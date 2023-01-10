@@ -4,8 +4,8 @@
 #include "Entity.h"
 #include "World.h"
 #include <memory>
+#include "../util/Vec2.h"
 
-struct Vec2;
 
 /// Constants
 // 480 p

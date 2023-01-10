@@ -4,12 +4,11 @@
 #include "Camera.h"
 #include "Entity.h"
 #include "ObserverPattern.h"
+#include "../util/Vec2.h"
 
 #include <memory>
 
 namespace Model {
-struct Vec2;
-
 class Player : public Entity, public Subject {
 private:
     struct Sensor {

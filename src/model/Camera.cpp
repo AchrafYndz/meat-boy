@@ -2,7 +2,7 @@
 #include "Player.h"
 #include "World.h"
 
-Model::Vec2 Model::Camera::normalizedPosition(Vec2 pos) const {
+Vec2 Model::Camera::normalizedPosition(Vec2 pos) const {
     Vec2 result;
 
     float oldMin = 0;
@@ -18,7 +18,7 @@ Model::Vec2 Model::Camera::normalizedPosition(Vec2 pos) const {
     return result;
 }
 
-Model::Vec2 Model::Camera::toPixels(Vec2 pos) const {
+Vec2 Model::Camera::toPixels(Vec2 pos) const {
     Vec2 result;
 
     float oldMin = -1;

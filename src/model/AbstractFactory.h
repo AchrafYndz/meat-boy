@@ -12,7 +12,7 @@ public:
     ~AbstractFactory() = default;
 
     virtual std::shared_ptr<Model::Entity> CreateEntity(const std::shared_ptr<Model::World>& world,
-                                                        Model::Entity::Type type, Model::Vec2 pos) = 0;
+                                                        Model::Entity::Type type, Vec2 pos) = 0;
 };
 } // namespace Controller
 

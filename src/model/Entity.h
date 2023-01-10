@@ -3,12 +3,15 @@
 
 #include <memory>
 #include <utility>
+#include "../util/Vec2.h"
 
-#include "World.h"
 
+// namespace Model
 class EntityView;
 
 namespace Model {
+class World;
+class Camera;
 class Entity {
 protected:
     Vec2 position; // normalized position

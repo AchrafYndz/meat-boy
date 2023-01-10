@@ -54,11 +54,11 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
         while (getline(ss, value, delimiter)) { /* read each field from line */
             Vec2 pos = camera->normalizedPosition(Vec2(float(column) * tileSize, float(row) * tileSize));
             if (value == "0") // wall
-                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::wall, pos));
+                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::wall, pos));
             else if (value == "1") // goal
-                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::goal, pos));
+                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::goal, pos));
             else if (value == "2") // player
-                addEntity(Controller::ConcreteFactory::getInstance()->CreateEntity(shared_from_this(), Entity::player, pos));
+                addEntity(concreteFactory->CreateEntity(shared_from_this(), Entity::player, pos));
 
             column++;
         }
@@ -67,7 +67,7 @@ void Model::World::loadLevel(int lvl, const std::shared_ptr<Controller::StateMan
     }
 }
 
-Model::Vec2 Model::World::getOverlap(Model::Vec2 aPos, Model::Vec2 bPos) {
+Vec2 Model::World::getOverlap(Vec2 aPos, Vec2 bPos) {
     Vec2 result = Vec2(-1, -1);
 
     // X

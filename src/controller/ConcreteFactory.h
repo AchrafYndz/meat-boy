@@ -2,25 +2,17 @@
 #define INC_2022_PROJECT_ACHRAFYNDZ_CONCRETEFACTORY_H
 
 #include "../model/AbstractFactory.h"
-
-#include "../model/Entity.h"
+#include "../util/Vec2.h"
 
 #include <memory>
 
 namespace Controller {
-struct Vec2;
-class ConcreteFactory : public AbstractFactory {
+class ConcreteFactory : public Controller::AbstractFactory {
 public:
-    ConcreteFactory(ConcreteFactory& other) = delete;
-    void operator=(const ConcreteFactory& other) = delete;
-    static std::shared_ptr<ConcreteFactory> getInstance();
+    ConcreteFactory() = default;
 
     std::shared_ptr<Model::Entity> CreateEntity(const std::shared_ptr<Model::World>& world, Model::Entity::Type type,
-                                                Model::Vec2 pos) override;
-
-private:
-    ConcreteFactory() = default;
-    static std::shared_ptr<ConcreteFactory> concreteFactory;
+                                                Vec2 pos) override;
 };
 } // namespace Controller
 

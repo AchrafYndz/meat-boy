@@ -6,11 +6,7 @@
 
 #include "../view/EntityView.h"
 
-std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::concreteFactory(new ConcreteFactory);
-
-std::shared_ptr<Controller::ConcreteFactory> Controller::ConcreteFactory::getInstance() { return concreteFactory; }
-
-std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(const std::shared_ptr<Model::World>& world, Model::Entity::Type type, Model::Vec2 pos) {
+std::shared_ptr<Model::Entity> Controller::ConcreteFactory::CreateEntity(const std::shared_ptr<Model::World>& world, Model::Entity::Type type, Vec2 pos) {
     switch (type) {
     case Model::Entity::wall: {
         std::shared_ptr<EntityView> entView(new EntityView("resources/sprites/wall-sprite.png"));

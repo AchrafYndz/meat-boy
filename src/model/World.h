@@ -1,6 +1,7 @@
 #ifndef INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H
 #define INC_2022_PROJECT_ACHRAFYNDZ_WORLD_H
 
+#include "../controller/ConcreteFactory.h"
 #include "../controller/StateManager.h"
 #include <memory>
 #include <vector>
@@ -10,25 +11,11 @@ class Entity;
 class Player;
 class Camera;
 
-// Vector
-struct Vec2 {
-    float x;
-    float y;
-
-    Vec2() {
-        x = 0;
-        y = 0;
-    }
-
-    Vec2(float _x, float _y) {
-        x = _x;
-        y = _y;
-    }
-};
-
 class World : public std::enable_shared_from_this<World> {
 private:
     std::vector<std::shared_ptr<Entity>> entities;
+
+    std::shared_ptr<Controller::ConcreteFactory> concreteFactory = std::make_shared<Controller::ConcreteFactory>();
 
     std::shared_ptr<Player> player;
 
