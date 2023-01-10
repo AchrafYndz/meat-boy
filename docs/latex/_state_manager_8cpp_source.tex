@@ -1,0 +1,18 @@
+\hypertarget{_state_manager_8cpp_source}{}\doxysection{State\+Manager.\+cpp}
+\label{_state_manager_8cpp_source}\index{controller/StateManager.cpp@{controller/StateManager.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}StateManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00003}00003\ \textcolor{comment}{//\ This\ method\ changes\ the\ current\ level\ to\ the\ specified\ level,\ with\ the}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00004}00004\ \textcolor{comment}{//\ specified\ auto-\/scrolling\ setting.}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00005}\mbox{\hyperlink{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}{Controller::StateManager::goToLevel}}(\textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{bool}\ autoScrolling)\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00006}00006\ \ \ \ \ currentLevel.state\ =\ level;}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00007}00007\ \ \ \ \ currentLevel.autoscroll\ =\ autoScrolling;}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00010}00010\ \textcolor{comment}{//\ This\ method\ changes\ the\ current\ level\ to\ the\ menu\ state.}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00011}\mbox{\hyperlink{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}{00011}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}{Controller::StateManager::goToMenu}}()\ \{\ currentLevel.state\ =\ 0;\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8cpp_source_l00012}00012\ }
+
+\end{DoxyCode}

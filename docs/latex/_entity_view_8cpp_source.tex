@@ -1,0 +1,28 @@
+\hypertarget{_entity_view_8cpp_source}{}\doxysection{Entity\+View.\+cpp}
+\label{_entity_view_8cpp_source}\index{view/EntityView.cpp@{view/EntityView.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}EntityView.h"{}}}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00003}\mbox{\hyperlink{class_entity_view_a0fcb1a9151db3a3939693a6c6becdc75}{00003}}\ \mbox{\hyperlink{class_entity_view_a0fcb1a9151db3a3939693a6c6becdc75}{EntityView::EntityView}}(\textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{if}\ (!texture.loadFromFile(filepath))\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00005}00005\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ load\ file\ for\ Texture"{}});}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00006}00006\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00008}00008\ \ \ \ \ sprite.setTexture(texture);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00009}00009\ \ \ \ \ sprite.setScale(SCALE,\ SCALE);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00012}\mbox{\hyperlink{class_entity_view_a1d50d3ac429c1dcac7f899959cef5a3e}{00012}}\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_entity_view_a1d50d3ac429c1dcac7f899959cef5a3e}{EntityView::getSize}}()\ \{\ \textcolor{keywordflow}{return}\ \{sprite.getLocalBounds().width,\ sprite.getLocalBounds().height\};\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00014}\mbox{\hyperlink{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}{00014}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}{EntityView::faceLeft}}(\textcolor{keywordtype}{bool}\ left)\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (left)\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ sprite.setScale(-\/SCALE,\ SCALE);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ sprite.setOrigin(sprite.getLocalBounds().width,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00018}00018\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ sprite.setScale(SCALE,\ SCALE);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ sprite.setOrigin(0.f,\ 0.f);}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_entity_view_8cpp_source_l00022}00022\ \}}
+
+\end{DoxyCode}

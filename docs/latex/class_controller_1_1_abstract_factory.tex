@@ -1,0 +1,67 @@
+\hypertarget{class_controller_1_1_abstract_factory}{}\doxysection{Controller\+::Abstract\+Factory Class Reference}
+\label{class_controller_1_1_abstract_factory}\index{Controller::AbstractFactory@{Controller::AbstractFactory}}
+
+
+{\ttfamily \#include $<$Abstract\+Factory.\+h$>$}
+
+Inheritance diagram for Controller\+::Abstract\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_controller_1_1_abstract_factory}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_controller_1_1_abstract_factory_a6352c4be68396fe481b184be3eecd06e}{$\sim$\+Abstract\+Factory}} ()=default
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_controller_1_1_abstract_factory_adf967091f3f47193a20f821f9ec12238}{create\+Entity}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}} type, \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_controller_1_1_abstract_factory}{Abstract\+Factory} is an interface class that defines the methods that should be implemented by the \doxylink{class_controller_1_1_concrete_factory}{Concrete\+Factory} to create different types of entities 
+
+Definition at line \mbox{\hyperlink{_abstract_factory_8h_source_l00013}{13}} of file \mbox{\hyperlink{_abstract_factory_8h_source}{Abstract\+Factory.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_1_1_abstract_factory_a6352c4be68396fe481b184be3eecd06e}\label{class_controller_1_1_abstract_factory_a6352c4be68396fe481b184be3eecd06e}} 
+\index{Controller::AbstractFactory@{Controller::AbstractFactory}!````~AbstractFactory@{$\sim$AbstractFactory}}
+\index{````~AbstractFactory@{$\sim$AbstractFactory}!Controller::AbstractFactory@{Controller::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{$\sim$AbstractFactory()}{~AbstractFactory()}}
+{\footnotesize\ttfamily virtual Controller\+::\+Abstract\+Factory\+::$\sim$\+Abstract\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Default Destructor for the \doxylink{class_controller_1_1_abstract_factory}{Abstract\+Factory} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_1_1_abstract_factory_adf967091f3f47193a20f821f9ec12238}\label{class_controller_1_1_abstract_factory_adf967091f3f47193a20f821f9ec12238}} 
+\index{Controller::AbstractFactory@{Controller::AbstractFactory}!createEntity@{createEntity}}
+\index{createEntity@{createEntity}!Controller::AbstractFactory@{Controller::AbstractFactory}}
+\doxysubsubsection{\texorpdfstring{createEntity()}{createEntity()}}
+{\footnotesize\ttfamily virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Controller\+::\+Abstract\+Factory\+::create\+Entity (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}}}]{type,  }\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This pure virtual method defines the outline of how an entity should be created based on the specified type of entity, the position of the entity and the world it should be added to
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & A shared pointer to the world the entity should be added to \\
+\hline
+{\em type} & The type of entity to be created \\
+\hline
+{\em position} & The position of the entity\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the created entity 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}{Controller\+::\+Concrete\+Factory}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/Abstract\+Factory.\+h\end{DoxyCompactItemize}

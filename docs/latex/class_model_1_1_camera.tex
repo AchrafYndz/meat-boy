@@ -1,0 +1,283 @@
+\hypertarget{class_model_1_1_camera}{}\doxysection{Model\+::Camera Class Reference}
+\label{class_model_1_1_camera}\index{Model::Camera@{Model::Camera}}
+
+
+{\ttfamily \#include $<$Camera.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_camera_a227bde436fb839665053062b30d48983}{Camera}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_camera_a10c195c241c971f760121e7c8d1c2e44}{set\+Total\+Height}} (int rows)
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_camera_a8a7e64ad1b458a2073cca7bb47c15aa3}{normalize\+Position}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position) const
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_camera_a293d13c0634f64f67736d746b0801fff}{to\+Pixels}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position) const
+\item 
+float \mbox{\hyperlink{class_model_1_1_camera_a4c4d397ed8becbfae6d510212d40e552}{get\+Camera\+Height}} () const
+\item 
+void \mbox{\hyperlink{class_model_1_1_camera_ade39585a6663a3d5e362b2d5c53e7c14}{set\+Camera\+Height}} (float height)
+\item 
+void \mbox{\hyperlink{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}{move}} (float difference)
+\item 
+bool \mbox{\hyperlink{class_model_1_1_camera_a12f98fb699e1b543a05ae68181639ac0}{entity\+Is\+Visible}} (float y) const
+\item 
+void \mbox{\hyperlink{class_model_1_1_camera_aa59b9044eb694087d4b9a3c40691eb7a}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ \&player, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_1_1_state_manager}{Controller\+::\+State\+Manager}} $>$ \&state\+Manager)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_model_1_1_camera}{Camera} class is responsible for handling the camera position and movement in the game world 
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00014}{14}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_camera_a227bde436fb839665053062b30d48983}\label{class_model_1_1_camera_a227bde436fb839665053062b30d48983}} 
+\index{Model::Camera@{Model::Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Model\+::\+Camera\+::\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default constructor for the \doxylink{class_model_1_1_camera}{Camera} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_camera_a12f98fb699e1b543a05ae68181639ac0}\label{class_model_1_1_camera_a12f98fb699e1b543a05ae68181639ac0}} 
+\index{Model::Camera@{Model::Camera}!entityIsVisible@{entityIsVisible}}
+\index{entityIsVisible@{entityIsVisible}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{entityIsVisible()}{entityIsVisible()}}
+{\footnotesize\ttfamily bool Model\+::\+Camera\+::entity\+Is\+Visible (\begin{DoxyParamCaption}\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+Returns whether an entity is visible or not
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & The y-\/coordinate of the entity to check for visibility\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if entity is visible, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ upperLimit\ =\ cameraHeight\ -\/\ WINDOW\_HEIGHT\ /\ 2.0f;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ lowerLimit\ =\ cameraHeight\ +\ WINDOW\_HEIGHT\ /\ 2.0f;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ (y\ +\ SCALE\ *\ TILE\_SIZE\ >=\ upperLimit\ \&\&\ y\ <=\ lowerLimit);}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_a4c4d397ed8becbfae6d510212d40e552}\label{class_model_1_1_camera_a4c4d397ed8becbfae6d510212d40e552}} 
+\index{Model::Camera@{Model::Camera}!getCameraHeight@{getCameraHeight}}
+\index{getCameraHeight@{getCameraHeight}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{getCameraHeight()}{getCameraHeight()}}
+{\footnotesize\ttfamily float Model\+::\+Camera\+::get\+Camera\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the y-\/coordinate of the center of the camera
+
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the center of the camera 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00057}{57}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \{\ \textcolor{keywordflow}{return}\ cameraHeight;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}\label{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}} 
+\index{Model::Camera@{Model::Camera}!move@{move}}
+\index{move@{move}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Model\+::\+Camera\+::move (\begin{DoxyParamCaption}\item[{float}]{difference }\end{DoxyParamCaption})}
+
+Moves the camera up
+
+
+\begin{DoxyParams}{Parameters}
+{\em difference} & the number of pixels the camera should move \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (cameraHeight\ +\ difference\ -\/\ \textcolor{keywordtype}{float}(WINDOW\_HEIGHT)\ /\ 2.0f\ >=\ 0)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ cameraHeight\ +=\ difference;}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_a8a7e64ad1b458a2073cca7bb47c15aa3}\label{class_model_1_1_camera_a8a7e64ad1b458a2073cca7bb47c15aa3}} 
+\index{Model::Camera@{Model::Camera}!normalizePosition@{normalizePosition}}
+\index{normalizePosition@{normalizePosition}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{normalizePosition()}{normalizePosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Model\+::\+Camera\+::normalize\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position }\end{DoxyParamCaption}) const}
+
+Normalizes the position of an entity based on the camera position
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the entity\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The normalized position of the entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ result;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{float}\ oldMin\ =\ 0.0f;}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{float}\ oldMax\ =\ float(totalHeight)\ *\ SCALE\ *\ TILE\_SIZE;}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{float}\ newMin\ =\ -\/1.0f;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{float}\ newMax\ =\ float(totalHeight);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{float}\ oldPercent\ =\ (position.y\ -\/\ oldMin)\ /\ (oldMax\ -\/\ oldMin);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ result.y\ =\ ((newMax\ -\/\ newMin)\ *\ oldPercent\ +\ newMin);}
+\DoxyCodeLine{00016\ \ \ \ \ result.x\ =\ ((2.0f\ *\ position.x)\ /\ WINDOW\_WIDTH)\ -\/\ 1.0f;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00019\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_ade39585a6663a3d5e362b2d5c53e7c14}\label{class_model_1_1_camera_ade39585a6663a3d5e362b2d5c53e7c14}} 
+\index{Model::Camera@{Model::Camera}!setCameraHeight@{setCameraHeight}}
+\index{setCameraHeight@{setCameraHeight}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{setCameraHeight()}{setCameraHeight()}}
+{\footnotesize\ttfamily void Model\+::\+Camera\+::set\+Camera\+Height (\begin{DoxyParamCaption}\item[{float}]{height }\end{DoxyParamCaption})}
+
+Sets the camera height of the camera
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & the height of the camera \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \{\ cameraHeight\ =\ height\ -\/\ (WINDOW\_HEIGHT\ /\ 2.0f);\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_a10c195c241c971f760121e7c8d1c2e44}\label{class_model_1_1_camera_a10c195c241c971f760121e7c8d1c2e44}} 
+\index{Model::Camera@{Model::Camera}!setTotalHeight@{setTotalHeight}}
+\index{setTotalHeight@{setTotalHeight}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{setTotalHeight()}{setTotalHeight()}}
+{\footnotesize\ttfamily void Model\+::\+Camera\+::set\+Total\+Height (\begin{DoxyParamCaption}\item[{int}]{rows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets the total number of rows in the world as the total height
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & total number of rows \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8h_source_l00032}{32}} of file \mbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \{\ totalHeight\ =\ rows;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_a293d13c0634f64f67736d746b0801fff}\label{class_model_1_1_camera_a293d13c0634f64f67736d746b0801fff}} 
+\index{Model::Camera@{Model::Camera}!toPixels@{toPixels}}
+\index{toPixels@{toPixels}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{toPixels()}{toPixels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Model\+::\+Camera\+::to\+Pixels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position }\end{DoxyParamCaption}) const}
+
+Converts the normalized position of an entity to pixels
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The normalized position of the entity\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The position of the entity in pixels 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ result;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ oldMin\ =\ -\/1.0f;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ oldMax\ =\ float(totalHeight);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{float}\ newMin\ =\ 0.0f;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ newMax\ =\ float(totalHeight)\ *\ SCALE\ *\ TILE\_SIZE;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ oldPercent\ =\ (position.y\ -\/\ oldMin)\ /\ (oldMax\ -\/\ oldMin);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ result.y\ =\ ((newMax\ -\/\ newMin)\ *\ oldPercent\ +\ newMin);}
+\DoxyCodeLine{00032\ \ \ \ \ result.x\ =\ ((position.x\ +\ 1.0f)\ /\ 2.0f)\ *\ WINDOW\_WIDTH;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_camera_aa59b9044eb694087d4b9a3c40691eb7a}\label{class_model_1_1_camera_aa59b9044eb694087d4b9a3c40691eb7a}} 
+\index{Model::Camera@{Model::Camera}!update@{update}}
+\index{update@{update}!Model::Camera@{Model::Camera}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::\+Camera\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ \&}]{player,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_1_1_state_manager}{Controller\+::\+State\+Manager}} $>$ \&}]{state\+Manager }\end{DoxyParamCaption})}
+
+Updates the camera position if the conditions are met
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & A shared pointer to the player \\
+\hline
+{\em state\+Manager} & A shared pointer to the state manager \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_camera_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Move\ if\ auto\ scrolling}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (stateManager-\/>currentLevelHasAutoScroll())\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}{move}}(-\/0.5f);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ if\ player\ above\ 80\%\ of\ the\ level,\ move\ also}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ playerHeight\ =\ \mbox{\hyperlink{class_model_1_1_camera_a293d13c0634f64f67736d746b0801fff}{toPixels}}(player-\/>getPosition()).y;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ difference\ =\ playerHeight\ -\/\ (cameraHeight\ -\/\ (WINDOW\_HEIGHT\ *\ 0.3f));}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (difference\ <\ 0.0f)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}{move}}(difference);}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/Camera.\+h\item 
+model/Camera.\+cpp\end{DoxyCompactItemize}

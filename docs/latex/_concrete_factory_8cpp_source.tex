@@ -1,0 +1,42 @@
+\hypertarget{_concrete_factory_8cpp_source}{}\doxysection{Concrete\+Factory.\+cpp}
+\label{_concrete_factory_8cpp_source}\index{controller/ConcreteFactory.cpp@{controller/ConcreteFactory.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}ConcreteFactory.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../model/Goal.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../model/Player.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../model/Wall.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}../view/EntityView.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00007}\mbox{\hyperlink{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}{00007}}\ std::shared\_ptr<Model::Entity>\ \mbox{\hyperlink{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}{Controller::ConcreteFactory::createEntity}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model::Entity::Type}}\ type,}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::wall:\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/wall-\/sprite.png"{}}));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Wall>\ wall(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_wall}{Model::Wall}}(position));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ wall-\/>registerObserver(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ wall-\/>assignView(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ wall;}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::goal:\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/goal-\/sprite.png"{}}));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Goal>\ goal(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_goal}{Model::Goal}}(position));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ goal-\/>registerObserver(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ goal-\/>assignView(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ goal;}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::player:\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/player-\/sprite.png"{}}));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Player>\ player(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_player}{Model::Player}}(position));}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ player-\/>registerObserver(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ world-\/>setPlayer(player);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ player-\/>assignView(entityView);}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ player;}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8cpp_source_l00036}00036\ \}}
+
+\end{DoxyCode}

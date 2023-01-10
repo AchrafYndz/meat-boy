@@ -1,0 +1,51 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\label{_game_8h_source}\index{controller/Game.h@{controller/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_GAME\_H}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_GAME\_H}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../model/Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}../util/Stopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}StateManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }Controller\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00015}\mbox{\hyperlink{class_controller_1_1_game}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_controller_1_1_game}{Game}}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00016}00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{static}\ sf::RenderWindow\ window;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00021}00021\ \ \ \ \ std::shared\_ptr<StateManager>\ stateManager;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00024}00024\ \ \ \ \ std::shared\_ptr<Model::Camera>\ camera;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00027}00027\ \ \ \ \ std::shared\_ptr<Model::World>\ world;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00030}00030\ \ \ \ \ sf::Font\ gameFont;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00033}00033\ \ \ \ \ sf::Text\ text;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{int}\ selectedLevel\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{int}\ totalLevels\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00041}00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}{Game}}();}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}{run}}();}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00057}\mbox{\hyperlink{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}{00057}}\ \ \ \ \ \textcolor{keyword}{static}\ sf::RenderWindow*\ \mbox{\hyperlink{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}{getWindow}}()\ \{\ \textcolor{keywordflow}{return}\ \&window;\ \}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00059}00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{void}\ process();}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00068}00068\ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{void}\ handleMenuInput(sf::Keyboard::Key\ key);}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00075}00075\ \};}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00076}00076\ \}\ \textcolor{comment}{//\ namespace\ Controller}}
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_game_8h_source_l00078}00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_GAME\_H}}
+
+\end{DoxyCode}

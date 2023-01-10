@@ -43,8 +43,8 @@ void Model::World::loadLevel(int levelNumber, const std::shared_ptr<Controller::
         totalRows++;
     levelMap.clear();
     levelMap.seekg(0);                             // return to the beginning
-    camera->setHeight(totalRows);                  // set total height of level
-    camera->setCameraCenter(float(totalRows) * tileSize); // set initial camera position
+    camera->setTotalHeight(totalRows);                  // set total height of level
+    camera->setCameraHeight(float(totalRows) * tileSize); // set initial camera position
 
     std::string value;
     int column = 0;                             // top

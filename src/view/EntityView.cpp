@@ -9,9 +9,9 @@ EntityView::EntityView(const std::string& filepath) {
     sprite.setScale(SCALE, SCALE);
 }
 
-floatVector2 EntityView::size() { return {sprite.getLocalBounds().width, sprite.getLocalBounds().height}; }
+floatVector2 EntityView::getSize() { return {sprite.getLocalBounds().width, sprite.getLocalBounds().height}; }
 
-void EntityView::face(bool left) {
+void EntityView::faceLeft(bool left) {
     if (left) {
         sprite.setScale(-SCALE, SCALE);
         sprite.setOrigin(sprite.getLocalBounds().width, 0.f);

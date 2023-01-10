@@ -1,0 +1,166 @@
+\hypertarget{_player_8cpp_source}{}\doxysection{Player.\+cpp}
+\label{_player_8cpp_source}\index{model/Player.cpp@{model/Player.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00004}\mbox{\hyperlink{class_model_1_1_player_a2c3e3ebb01bf432b2a35efa086989d58}{00004}}\ \mbox{\hyperlink{class_model_1_1_player_a2c3e3ebb01bf432b2a35efa086989d58}{Model::Player::Player}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position\_)\ :\ \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}::player)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00006}\mbox{\hyperlink{class_model_1_1_player_a482cb08ba16a290d15592affe1843178}{00006}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_player_a482cb08ba16a290d15592affe1843178}{Model::Player::buttonAction}}(\mbox{\hyperlink{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}{KeyEnum}}\ key,\ \textcolor{keywordtype}{bool}\ pressed)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{keywordflow}{switch}\ (key)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::left:}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ keys.left\ =\ pressed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::right:}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ keys.right\ =\ pressed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::space:}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ keys.space\ =\ pressed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00022}\mbox{\hyperlink{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}{Model::Player::processInput}}(\textcolor{keyword}{const}\ std::shared\_ptr<Camera>\&\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerPosition\ =\ camera-\/>toPixels(getPosition());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{float}\ currentX\ =\ playerPosition.x;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (keys.left)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpType\ ==\ JumpType::toTheRight)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration\ /\ 3.f;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00032}00032\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (keys.right)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpType\ ==\ JumpType::toTheLeft)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration\ /\ 3.f;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00038}00038\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentJumpingTime\ <=\ 0.f)\ \{\ \textcolor{comment}{//\ deceleration\ if\ not\ jumping}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ 0.34f\ \&\&\ currentAcceleration\ >\ -\/0.34f)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ 0.f;\ \textcolor{comment}{//\ correction}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ >\ 0.f)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ 0.f)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ >\ topSpeed)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ currentAcceleration\ =\ topSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ -\/topSpeed)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ currentAcceleration\ =\ -\/topSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpAvailable\ \&\&\ keys.space\ \&\&\ state\ !=\ State::inAir)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ jumpAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ State::standingOnTile)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::normal;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ State::onLeftWall)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::toTheRight;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ topSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::toTheLeft;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ -\/topSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ currentJumpingTime\ =\ jumpingTotalTime;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00067}00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!keys.space)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ jumpAvailable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00070}00070\ \ \ \ \ position\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(currentX\ +\ currentAcceleration,\ playerPosition.y));}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00073}\mbox{\hyperlink{class_model_1_1_player_aabf2972e2ba8ced0266ba40300dce405}{00073}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_player_aabf2972e2ba8ced0266ba40300dce405}{Model::Player::update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ std::shared\_ptr<Camera>\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00074}00074\ \ \ \ \ processInput(camera);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerPosition\ =\ camera-\/>toPixels(getPosition());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentJumpingTime\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ playerPosition.y\ -\/=\ topSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ one\ third\ of\ the\ jump\ -\/>\ deceleration}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentJumpingTime\ <\ jumpingTotalTime\ /\ 3.f)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ jumpDeceleration;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ currentJumpingTime\ -\/=\ TIME\_PER\_FRAME;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00086}00086\ \ \ \ \ \}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ topSpeed;\ \textcolor{comment}{//\ apply\ gravity}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ update\ sensor\ positions:}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{float}\ sensorOffset\ =\ 4.f;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ bounds(TILE\_SIZE,\ TILE\_SIZE);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00094}00094\ \ \ \ \ leftSensor.x\ =\ playerPosition.x\ -\/\ sensorOffset;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00095}00095\ \ \ \ \ leftSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y\ /\ 4.f);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00096}00096\ \ \ \ \ leftSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00097}00097\ \ \ \ \ rightSensor.x\ =\ playerPosition.x\ +\ (SCALE\ *\ bounds.x)\ +\ sensorOffset;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00098}00098\ \ \ \ \ rightSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y\ /\ 4.f);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00099}00099\ \ \ \ \ rightSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00100}00100\ \ \ \ \ bottomSensor.x\ =\ playerPosition.x\ +\ (SCALE\ *\ bounds.x\ /\ 2.f);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00101}00101\ \ \ \ \ bottomSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y)\ +\ sensorOffset;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00102}00102\ \ \ \ \ bottomSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00104}00104\ \ \ \ \ \mbox{\hyperlink{structfloat_rectangle}{floatRectangle}}\ rectangle\{\};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ world-\/>getEntities())\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::wall)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ entityPosition\ =\ camera-\/>toPixels(entity-\/>getPosition());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.left\ =\ entityPosition.x;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.top\ =\ entityPosition.y;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.height\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.width\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(bottomSensor.x,\ bottomSensor.y)))}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bottomSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(leftSensor.x,\ leftSensor.y)))}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(rightSensor.x,\ rightSensor.y)))}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{if}\ (bottomSensor.active)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ state\ =\ State::standingOnTile;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (leftSensor.active)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ state\ =\ State::onLeftWall;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rightSensor.active)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ state\ =\ State::onRightWall;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ state\ =\ State::inAir;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ world-\/>getEntities())\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ player\ with\ wall}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::wall)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerOverlap\ =\ world-\/>getOverlap(playerPosition,\ camera-\/>toPixels(entity-\/>getPosition()));}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.x\ >\ 0.f\ \&\&\ playerOverlap.y\ >\ 0.f)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.y\ <\ playerOverlap.x)\ \{\ \textcolor{comment}{//\ compensate\ only\ the\ shortest\ overlap,\ in\ this\ case\ y}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bottomSensor.active)\ \{\ \ \ \ \ \textcolor{comment}{//\ player\ on\ top\ of\ tile}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ -\/=\ playerOverlap.y;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ player\ hit\ tile\ from\ below}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ playerOverlap.y;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compensate\ only\ x}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rightSensor.active)\ \{\ \textcolor{comment}{//\ player\ colliding\ on\ right\ wall}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.x\ -\/=\ playerOverlap.x;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (leftSensor.active)\ \{\ \textcolor{comment}{//\ player\ colliding\ on\ left\ wall}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.x\ +=\ playerOverlap.x;}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ player\ with\ goal\ (bandage\ girl)}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::goal)\ \{}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerOverlap\ =\ world-\/>getOverlap(playerPosition,\ camera-\/>toPixels(entity-\/>getPosition()));}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.x\ >\ 0.f\ \&\&\ playerOverlap.y\ >\ 0.f)}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reachedGoal\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00159}00159\ \ \ \ \ notifyObservers(playerPosition.x,\ playerPosition.y,\ camera,\ facingLeft);}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00160}00160\ \ \ \ \ position\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(playerPosition.x,\ playerPosition.y));}
+\DoxyCodeLine{\Hypertarget{_player_8cpp_source_l00161}00161\ \}}
+
+\end{DoxyCode}

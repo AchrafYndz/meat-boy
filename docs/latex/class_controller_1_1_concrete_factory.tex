@@ -1,0 +1,112 @@
+\hypertarget{class_controller_1_1_concrete_factory}{}\doxysection{Controller\+::Concrete\+Factory Class Reference}
+\label{class_controller_1_1_concrete_factory}\index{Controller::ConcreteFactory@{Controller::ConcreteFactory}}
+
+
+{\ttfamily \#include $<$Concrete\+Factory.\+h$>$}
+
+Inheritance diagram for Controller\+::Concrete\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_controller_1_1_concrete_factory}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_controller_1_1_concrete_factory_a6a2517ace243caa8d38547343deaa73c}{Concrete\+Factory}} ()=default
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}{create\+Entity}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}} type, \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_controller_1_1_abstract_factory}{Controller\+::\+Abstract\+Factory}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_controller_1_1_abstract_factory_a6352c4be68396fe481b184be3eecd06e}{$\sim$\+Abstract\+Factory}} ()=default
+\item 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ \mbox{\hyperlink{class_controller_1_1_abstract_factory_adf967091f3f47193a20f821f9ec12238}{create\+Entity}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}} type, \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_controller_1_1_concrete_factory}{Concrete\+Factory} is a concrete implementation of the \doxylink{class_controller_1_1_abstract_factory}{Abstract\+Factory} interface that creates different types of entities based on the specified type and position 
+
+Definition at line \mbox{\hyperlink{_concrete_factory_8h_source_l00015}{15}} of file \mbox{\hyperlink{_concrete_factory_8h_source}{Concrete\+Factory.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_1_1_concrete_factory_a6a2517ace243caa8d38547343deaa73c}\label{class_controller_1_1_concrete_factory_a6a2517ace243caa8d38547343deaa73c}} 
+\index{Controller::ConcreteFactory@{Controller::ConcreteFactory}!ConcreteFactory@{ConcreteFactory}}
+\index{ConcreteFactory@{ConcreteFactory}!Controller::ConcreteFactory@{Controller::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{ConcreteFactory()}{ConcreteFactory()}}
+{\footnotesize\ttfamily Controller\+::\+Concrete\+Factory\+::\+Concrete\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default constructor for the \doxylink{class_controller_1_1_concrete_factory}{Concrete\+Factory} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}\label{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}} 
+\index{Controller::ConcreteFactory@{Controller::ConcreteFactory}!createEntity@{createEntity}}
+\index{createEntity@{createEntity}!Controller::ConcreteFactory@{Controller::ConcreteFactory}}
+\doxysubsubsection{\texorpdfstring{createEntity()}{createEntity()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}} $>$ Controller\+::\+Concrete\+Factory\+::create\+Entity (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}}}]{type,  }\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Creates an Entity based on the specified type, position and the world
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & A shared pointer to the world the entity should be added to \\
+\hline
+{\em type} & The type of entity to be created \\
+\hline
+{\em position} & The position of the entity\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the created entity 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_controller_1_1_abstract_factory_adf967091f3f47193a20f821f9ec12238}{Controller\+::\+Abstract\+Factory}}.
+
+
+
+Definition at line \mbox{\hyperlink{_concrete_factory_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_concrete_factory_8cpp_source}{Concrete\+Factory.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::wall:\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/wall-\/sprite.png"{}}));}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Wall>\ wall(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_wall}{Model::Wall}}(position));}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ wall-\/>registerObserver(entityView);}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ wall-\/>assignView(entityView);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ wall;}
+\DoxyCodeLine{00016\ \ \ \ \ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::goal:\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/goal-\/sprite.png"{}}));}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Goal>\ goal(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_goal}{Model::Goal}}(position));}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ goal-\/>registerObserver(entityView);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ goal-\/>assignView(entityView);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ goal;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{case}\ Model::Entity::player:\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::shared\_ptr<EntityView>\ entityView(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_entity_view}{EntityView}}(\textcolor{stringliteral}{"{}resources/sprites/player-\/sprite.png"{}}));}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Player>\ player(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model_1_1_player}{Model::Player}}(position));}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ player-\/>registerObserver(entityView);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ world-\/>setPlayer(player);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ player-\/>assignView(entityView);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ player;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller/Concrete\+Factory.\+h\item 
+controller/Concrete\+Factory.\+cpp\end{DoxyCompactItemize}

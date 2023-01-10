@@ -1,0 +1,92 @@
+\hypertarget{classnlohmann_1_1detail_1_1wide__string__input__adapter}{}\doxysection{nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+adapter\texorpdfstring{$<$}{<} Wide\+String\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classnlohmann_1_1detail_1_1wide__string__input__adapter}\index{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$@{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$}}
+Inheritance diagram for nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+adapter\texorpdfstring{$<$}{<} Wide\+String\+Type \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classnlohmann_1_1detail_1_1wide__string__input__adapter}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1wide__string__input__adapter_a85c8bddae20bc00d64dd7a2c87109357}{wide\+\_\+string\+\_\+input\+\_\+adapter}} (const Wide\+String\+Type \&w) noexcept
+\item 
+std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type \mbox{\hyperlink{classnlohmann_1_1detail_1_1wide__string__input__adapter_a6a584f8de6b64737e263d8927dedce0a}{get\+\_\+character}} () noexcept override
+\begin{DoxyCompactList}\small\item\em get a character \mbox{[}0,255\mbox{]} or std\+::char\+\_\+traits$<$char$>$\+::eof(). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type \mbox{\hyperlink{structnlohmann_1_1detail_1_1input__adapter__protocol_ac4acb1eac715f3f63a427e44517d31b6}{get\+\_\+character}} ()=0
+\begin{DoxyCompactList}\small\item\em get a character \mbox{[}0,255\mbox{]} or std\+::char\+\_\+traits$<$char$>$\+::eof(). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Wide\+String\+Type$>$\newline
+class nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+adapter$<$ Wide\+String\+Type $>$}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l03732}{3732}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1wide__string__input__adapter_a85c8bddae20bc00d64dd7a2c87109357}\label{classnlohmann_1_1detail_1_1wide__string__input__adapter_a85c8bddae20bc00d64dd7a2c87109357}} 
+\index{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$@{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$}!wide\_string\_input\_adapter@{wide\_string\_input\_adapter}}
+\index{wide\_string\_input\_adapter@{wide\_string\_input\_adapter}!nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$@{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$}}
+\doxysubsubsection{\texorpdfstring{wide\_string\_input\_adapter()}{wide\_string\_input\_adapter()}}
+{\footnotesize\ttfamily template$<$typename Wide\+String\+Type $>$ \\
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1wide__string__input__adapter}{nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+adapter}}$<$ Wide\+String\+Type $>$\+::wide\+\_\+string\+\_\+input\+\_\+adapter (\begin{DoxyParamCaption}\item[{const Wide\+String\+Type \&}]{w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l03734}{3734}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{03734\ :\ str(w)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1wide__string__input__adapter_a6a584f8de6b64737e263d8927dedce0a}\label{classnlohmann_1_1detail_1_1wide__string__input__adapter_a6a584f8de6b64737e263d8927dedce0a}} 
+\index{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$@{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$}!get\_character@{get\_character}}
+\index{get\_character@{get\_character}!nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$@{nlohmann::detail::wide\_string\_input\_adapter$<$ WideStringType $>$}}
+\doxysubsubsection{\texorpdfstring{get\_character()}{get\_character()}}
+{\footnotesize\ttfamily template$<$typename Wide\+String\+Type $>$ \\
+std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type \mbox{\hyperlink{classnlohmann_1_1detail_1_1wide__string__input__adapter}{nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+adapter}}$<$ Wide\+String\+Type $>$\+::get\+\_\+character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+get a character \mbox{[}0,255\mbox{]} or std\+::char\+\_\+traits$<$char$>$\+::eof(). 
+
+
+
+Implements \mbox{\hyperlink{structnlohmann_1_1detail_1_1input__adapter__protocol_ac4acb1eac715f3f63a427e44517d31b6}{nlohmann\+::detail\+::input\+\_\+adapter\+\_\+protocol}}.
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l03736}{3736}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{03736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{03737\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ buffer\ needs\ to\ be\ filled}}
+\DoxyCodeLine{03738\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (utf8\_bytes\_index\ ==\ utf8\_bytes\_filled)\ \{}
+\DoxyCodeLine{03739\ \ \ \ \ \ \ \ \ \ \ \ \ fill\_buffer<sizeof(typename\ WideStringType::value\_type)>();}
+\DoxyCodeLine{03740\ }
+\DoxyCodeLine{03741\ \ \ \ \ \ \ \ \ \ \ \ \ assert(utf8\_bytes\_filled\ >\ 0);}
+\DoxyCodeLine{03742\ \ \ \ \ \ \ \ \ \ \ \ \ assert(utf8\_bytes\_index\ ==\ 0);}
+\DoxyCodeLine{03743\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{03744\ }
+\DoxyCodeLine{03745\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ buffer}}
+\DoxyCodeLine{03746\ \ \ \ \ \ \ \ \ assert(utf8\_bytes\_filled\ >\ 0);}
+\DoxyCodeLine{03747\ \ \ \ \ \ \ \ \ assert(utf8\_bytes\_index\ <\ utf8\_bytes\_filled);}
+\DoxyCodeLine{03748\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ utf8\_bytes[utf8\_bytes\_index++];}
+\DoxyCodeLine{03749\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/json.\+hpp\end{DoxyCompactItemize}

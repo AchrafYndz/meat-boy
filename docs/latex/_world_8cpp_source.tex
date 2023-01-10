@@ -1,0 +1,108 @@
+\hypertarget{_world_8cpp_source}{}\doxysection{World.\+cpp}
+\label{_world_8cpp_source}\index{model/World.cpp@{model/World.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}World.h"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../controller/ConcreteFactory.h"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../util/json.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <system\_error>}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00012}\mbox{\hyperlink{class_model_1_1_world_ad78be3b7c45e3cd467375fa1f7f34d9c}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_world_ad78be3b7c45e3cd467375fa1f7f34d9c}{Model::World::loadLevel}}(\textcolor{keywordtype}{int}\ levelNumber,\ \textcolor{keyword}{const}\ std::shared\_ptr<Controller::StateManager>\&\ stateManager,\ \textcolor{keyword}{const}\ std::shared\_ptr<Camera>\&\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}{clearEntities}}();}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{float}\ tileSize\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00017}00017\ \ \ \ \ std::ifstream\ levelsInfo(\textcolor{stringliteral}{"{}resources/levels/levels-\/info.json"{}});}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!levelsInfo.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ for\ levelsInfo"{}});}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1basic__json}{nlohmann::json}}\ j;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00024}00024\ \ \ \ \ levelsInfo\ >>\ j;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00026}00026\ \ \ \ \ std::string\ levelPath\ =\ j[\textcolor{stringliteral}{"{}level-\/"{}}\ +\ std::to\_string(levelNumber)][\textcolor{stringliteral}{"{}filePath"{}}];}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ autoScrolling\ =\ j[\textcolor{stringliteral}{"{}level-\/"{}}\ +\ std::to\_string(levelNumber)][\textcolor{stringliteral}{"{}autoScrolling"{}}];}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00029}00029\ \ \ \ \ stateManager-\/>goToLevel(levelNumber,\ autoScrolling);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00031}00031\ \ \ \ \ std::ifstream\ levelMap(levelPath);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (!levelMap.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ for\ levelMap"{}});}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00037}00037\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{char}\ delimiter\ =\ \textcolor{charliteral}{','};}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ get\ amount\ of\ rows}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ totalRows\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(levelMap,\ line))}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ totalRows++;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00044}00044\ \ \ \ \ levelMap.clear();}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00045}00045\ \ \ \ \ levelMap.seekg(0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ to\ the\ beginning}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00046}00046\ \ \ \ \ camera-\/>setTotalHeight(totalRows);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ total\ height\ of\ level}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00047}00047\ \ \ \ \ camera-\/>setCameraHeight(\textcolor{keywordtype}{float}(totalRows)\ *\ tileSize);\ \textcolor{comment}{//\ set\ initial\ camera\ position}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00049}00049\ \ \ \ \ std::string\ value;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ column\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ top}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ left}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(levelMap,\ line))\ \{\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ read\ entire\ line\ into\ line\ */}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ std::stringstream\ stringstream(line);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ create\ stringstream\ from\ line\ */}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(stringstream,\ value,\ delimiter))\ \{\ \textcolor{comment}{/*\ read\ each\ field\ from\ line\ */}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pos\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(\textcolor{keywordtype}{float}(column)\ *\ tileSize,\ \textcolor{keywordtype}{float}(row)\ *\ tileSize));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \textcolor{comment}{//\ wall}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::wall,\ pos));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}1"{}})\ \textcolor{comment}{//\ goal}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::goal,\ pos));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}2"{}})\ \textcolor{comment}{//\ player}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::player,\ pos));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ column++;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ row++;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ column\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00070}\mbox{\hyperlink{class_model_1_1_world_a58ab0594932962d4d0f1fb33bef0531d}{00070}}\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_model_1_1_world_a58ab0594932962d4d0f1fb33bef0531d}{Model::World::getOverlap}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ aPosition,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ bPosition)\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00071}00071\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ result\ =\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(-\/1,\ -\/1);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ X}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (aPosition.x\ <\ bPosition.x)}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ result.x\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (bPosition.x\ -\/\ aPosition.x);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ result.x\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (aPosition.x\ -\/\ bPosition.x);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Y}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (aPosition.y\ <\ bPosition.y)}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ result.y\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (bPosition.y\ -\/\ aPosition.y);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ result.y\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (aPosition.y\ -\/\ bPosition.y);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00085}00085\ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00087}\mbox{\hyperlink{class_model_1_1_world_a19b002cce1c9dd5757933e2f88b28085}{00087}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_model_1_1_world_a19b002cce1c9dd5757933e2f88b28085}{Model::World::rectangleContains}}(\mbox{\hyperlink{structfloat_rectangle}{floatRectangle}}\ rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ point)\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{float}\ minX\ =\ std::min(rectangle.left,\ (rectangle.left\ +\ rectangle.width));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{float}\ maxX\ =\ std::max(rectangle.left,\ (rectangle.left\ +\ rectangle.width));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{float}\ minY\ =\ std::min(rectangle.top,\ (rectangle.top\ +\ rectangle.height));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{float}\ maxY\ =\ std::max(rectangle.top,\ (rectangle.top\ +\ rectangle.height));}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{return}\ (point.x\ >=\ minX)\ \&\&\ (point.x\ <\ maxX)\ \&\&\ (point.y\ >=\ minY)\ \&\&\ (point.y\ <\ maxY);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00096}\mbox{\hyperlink{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}{00096}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}{Model::World::clearEntities}}()\ \{\ entities.clear();\ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00098}\mbox{\hyperlink{class_model_1_1_world_a8d7a7d4a38cd4932fedd5d30846ed31b}{00098}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_world_a8d7a7d4a38cd4932fedd5d30846ed31b}{Model::World::update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Camera>\&\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ entities)\ \{}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ entity-\/>update(shared\_from\_this(),\ camera);}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world_8cpp_source_l00102}00102\ \}}
+
+\end{DoxyCode}

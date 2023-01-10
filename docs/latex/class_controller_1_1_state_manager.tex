@@ -1,0 +1,126 @@
+\hypertarget{class_controller_1_1_state_manager}{}\doxysection{Controller\+::State\+Manager Class Reference}
+\label{class_controller_1_1_state_manager}\index{Controller::StateManager@{Controller::StateManager}}
+
+
+{\ttfamily \#include $<$State\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_controller_1_1_state_manager_a95e66292d4791807a1bae94e482efabe}{State\+Manager}} ()=default
+\item 
+void \mbox{\hyperlink{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}{go\+To\+Level}} (int level, bool auto\+Scrolling)
+\item 
+void \mbox{\hyperlink{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}{go\+To\+Menu}} ()
+\item 
+bool \mbox{\hyperlink{class_controller_1_1_state_manager_aa3d8599108509b7fdbfea2c5fa48f9fe}{is\+In\+Menu\+State}} () const
+\item 
+bool \mbox{\hyperlink{class_controller_1_1_state_manager_adce3d15627e6135e64cffd7c6b12eacb}{current\+Level\+Has\+Auto\+Scroll}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_controller_1_1_state_manager}{State\+Manager} is a class that handles the different states of the game, namely the level states and menu states 
+
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00011}{11}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_1_1_state_manager_a95e66292d4791807a1bae94e482efabe}\label{class_controller_1_1_state_manager_a95e66292d4791807a1bae94e482efabe}} 
+\index{Controller::StateManager@{Controller::StateManager}!StateManager@{StateManager}}
+\index{StateManager@{StateManager}!Controller::StateManager@{Controller::StateManager}}
+\doxysubsubsection{\texorpdfstring{StateManager()}{StateManager()}}
+{\footnotesize\ttfamily Controller\+::\+State\+Manager\+::\+State\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default constructor for the \doxylink{class_controller_1_1_state_manager}{State\+Manager} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_1_1_state_manager_adce3d15627e6135e64cffd7c6b12eacb}\label{class_controller_1_1_state_manager_adce3d15627e6135e64cffd7c6b12eacb}} 
+\index{Controller::StateManager@{Controller::StateManager}!currentLevelHasAutoScroll@{currentLevelHasAutoScroll}}
+\index{currentLevelHasAutoScroll@{currentLevelHasAutoScroll}!Controller::StateManager@{Controller::StateManager}}
+\doxysubsubsection{\texorpdfstring{currentLevelHasAutoScroll()}{currentLevelHasAutoScroll()}}
+{\footnotesize\ttfamily bool Controller\+::\+State\+Manager\+::current\+Level\+Has\+Auto\+Scroll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method returns {\ttfamily true} if the current level has auto-\/scrolling enabled, and {\ttfamily false} otherwise.
+
+\begin{DoxyReturn}{Returns}
+true if auto-\/scrolling is enabled, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00069}{69}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \{\ \textcolor{keywordflow}{return}\ currentLevel.autoscroll;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}\label{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}} 
+\index{Controller::StateManager@{Controller::StateManager}!goToLevel@{goToLevel}}
+\index{goToLevel@{goToLevel}!Controller::StateManager@{Controller::StateManager}}
+\doxysubsubsection{\texorpdfstring{goToLevel()}{goToLevel()}}
+{\footnotesize\ttfamily void Controller\+::\+State\+Manager\+::go\+To\+Level (\begin{DoxyParamCaption}\item[{int}]{level,  }\item[{bool}]{auto\+Scrolling }\end{DoxyParamCaption})}
+
+This method changes the current level to the specified level, with the specified auto-\/scrolling setting.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The level number to change to \\
+\hline
+{\em auto\+Scrolling} & Whether auto-\/scrolling is enabled on the level or not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ currentLevel.state\ =\ level;}
+\DoxyCodeLine{00007\ \ \ \ \ currentLevel.autoscroll\ =\ autoScrolling;}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}\label{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}} 
+\index{Controller::StateManager@{Controller::StateManager}!goToMenu@{goToMenu}}
+\index{goToMenu@{goToMenu}!Controller::StateManager@{Controller::StateManager}}
+\doxysubsubsection{\texorpdfstring{goToMenu()}{goToMenu()}}
+{\footnotesize\ttfamily void Controller\+::\+State\+Manager\+::go\+To\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method changes the current level to the menu state. 
+
+Definition at line \mbox{\hyperlink{_state_manager_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_state_manager_8cpp_source}{State\+Manager.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \{\ currentLevel.state\ =\ 0;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controller_1_1_state_manager_aa3d8599108509b7fdbfea2c5fa48f9fe}\label{class_controller_1_1_state_manager_aa3d8599108509b7fdbfea2c5fa48f9fe}} 
+\index{Controller::StateManager@{Controller::StateManager}!isInMenuState@{isInMenuState}}
+\index{isInMenuState@{isInMenuState}!Controller::StateManager@{Controller::StateManager}}
+\doxysubsubsection{\texorpdfstring{isInMenuState()}{isInMenuState()}}
+{\footnotesize\ttfamily bool Controller\+::\+State\+Manager\+::is\+In\+Menu\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method returns {\ttfamily true} if the application is in the menu state, and {\ttfamily false} otherwise.
+
+\begin{DoxyReturn}{Returns}
+True if in menu state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_state_manager_8h_source_l00061}{61}} of file \mbox{\hyperlink{_state_manager_8h_source}{State\+Manager.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \{\ \textcolor{keywordflow}{return}\ currentLevel.state\ ==\ 0;\ \};}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller/State\+Manager.\+h\item 
+controller/State\+Manager.\+cpp\end{DoxyCompactItemize}

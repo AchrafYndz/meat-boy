@@ -1,0 +1,47 @@
+\hypertarget{_entity_8h_source}{}\doxysection{Entity.\+h}
+\label{_entity_8h_source}\index{model/Entity.h@{model/Entity.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_ENTITY\_H}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_ENTITY\_H}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../util/floatVector2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00008}00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_entity_view}{EntityView}};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00010}00010\ \textcolor{comment}{//\ namespace\ Model}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00011}00011\ \textcolor{keyword}{namespace\ }Model\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00013}00013\ \textcolor{keyword}{class\ }World;}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00014}00014\ \textcolor{keyword}{class\ }Camera;}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00020}\mbox{\hyperlink{class_model_1_1_entity}{00020}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model_1_1_entity}{Entity}}\ \{}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00021}00021\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00023}\mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{00023}}\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00026}\mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{00026}}\ \ \ \ \ std::shared\_ptr<EntityView>\ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entityView}};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00028}00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00030}\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{00030}}\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}\ \{\ player,\ wall,\ goal\ \};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00033}\mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{00033}}\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}\ \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00040}\mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{00040}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}}(\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}\ type\_)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}\ =\ type\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00045}\mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{00045}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{\string~Entity}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00052}\mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{00052}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{assignView}}(std::shared\_ptr<EntityView>\&\ view)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entityView}}\ =\ view;\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00059}\mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{00059}}\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}\ \mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{getType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}};\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00067}\mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{00067}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ std::shared\_ptr<Camera>\ camera)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00074}\mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{00074}}\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{getPosition}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}};\ \}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00075}00075\ \};}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00076}00076\ \}\ \textcolor{comment}{//\ namespace\ Model}}
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_entity_8h_source_l00078}00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_ENTITY\_H}}
+
+\end{DoxyCode}

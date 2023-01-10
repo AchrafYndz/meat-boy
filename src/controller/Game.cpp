@@ -120,7 +120,7 @@ void Controller::Game::render() {
         world->update(camera);
         camera->update(world->getPlayer(), stateManager);
 
-        float cameraCenter = camera->getCameraCenter();
+        float cameraCenter = camera->getCameraHeight();
         sf::View v = window.getView();
         v.setCenter(WINDOW_WIDTH / 2.f, cameraCenter);
         window.setView(v);

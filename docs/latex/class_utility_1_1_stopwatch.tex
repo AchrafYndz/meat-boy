@@ -1,0 +1,100 @@
+\hypertarget{class_utility_1_1_stopwatch}{}\doxysection{Utility\+::Stopwatch Class Reference}
+\label{class_utility_1_1_stopwatch}\index{Utility::Stopwatch@{Utility::Stopwatch}}
+
+
+{\ttfamily \#include $<$Stopwatch.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_utility_1_1_stopwatch_a4f3cc617811a1a0b88071813e4032c49}\label{class_utility_1_1_stopwatch_a4f3cc617811a1a0b88071813e4032c49}} 
+{\bfseries Stopwatch} (\mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em singletons cannot be cloneable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utility_1_1_stopwatch_a1d732b9ed458591827edcaf67d5a2587}\label{class_utility_1_1_stopwatch_a1d732b9ed458591827edcaf67d5a2587}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}} \&other)=delete
+\begin{DoxyCompactList}\small\item\em singletons cannot be assignable \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}{time\+Since\+Last\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{reset}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}} $>$ \mbox{\hyperlink{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em returns the only instance of stopwatch \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_utility_1_1_stopwatch}{Stopwatch} class is a singleton class for measuring the time elapsed since last reset. It is used to assure the game runs at a reasonable constant framerate on all machines. 
+
+Definition at line \mbox{\hyperlink{_stopwatch_8h_source_l00014}{14}} of file \mbox{\hyperlink{_stopwatch_8h_source}{Stopwatch.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}\label{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}} 
+\index{Utility::Stopwatch@{Utility::Stopwatch}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Utility::Stopwatch@{Utility::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}} $>$ Utility\+::\+Stopwatch\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+returns the only instance of stopwatch 
+
+\begin{DoxyReturn}{Returns}
+the only instance of stopwatch 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_stopwatch_8h_source_l00042}{42}} of file \mbox{\hyperlink{_stopwatch_8h_source}{Stopwatch.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \{\ \textcolor{keywordflow}{return}\ stopwatch;\ \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}\label{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}} 
+\index{Utility::Stopwatch@{Utility::Stopwatch}!reset@{reset}}
+\index{reset@{reset}!Utility::Stopwatch@{Utility::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Utility\+::\+Stopwatch\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+resets the time since last update to now 
+
+Definition at line \mbox{\hyperlink{_stopwatch_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{_stopwatch_8cpp_source}{Stopwatch.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \{\ lastUpdate\ =\ std::chrono::steady\_clock::now();\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}\label{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}} 
+\index{Utility::Stopwatch@{Utility::Stopwatch}!timeSinceLastUpdate@{timeSinceLastUpdate}}
+\index{timeSinceLastUpdate@{timeSinceLastUpdate}!Utility::Stopwatch@{Utility::Stopwatch}}
+\doxysubsubsection{\texorpdfstring{timeSinceLastUpdate()}{timeSinceLastUpdate()}}
+{\footnotesize\ttfamily double Utility\+::\+Stopwatch\+::time\+Since\+Last\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns the time in seconds since \doxylink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{reset()} was last called
+
+\begin{DoxyReturn}{Returns}
+the time (in seconds) since \doxylink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{reset()} was last called 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_stopwatch_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_stopwatch_8cpp_source}{Stopwatch.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordflow}{return}\ std::chrono::duration\_cast<std::chrono::nanoseconds>(std::chrono::steady\_clock::now()\ -\/\ lastUpdate).count()\ /}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ 1e9;}
+\DoxyCodeLine{00008\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+util/Stopwatch.\+h\item 
+util/Stopwatch.\+cpp\end{DoxyCompactItemize}

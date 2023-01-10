@@ -1,0 +1,111 @@
+\hypertarget{class_controller_1_1_game}{}\doxysection{Controller\+::Game Class Reference}
+\label{class_controller_1_1_game}\index{Controller::Game@{Controller::Game}}
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}{Game}} ()
+\item 
+void \mbox{\hyperlink{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}{run}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static sf\+::\+Render\+Window $\ast$ \mbox{\hyperlink{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}{get\+Window}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_controller_1_1_game}{Game} class is the main class that controls the game loop, input handling and rendering. It controls the game state through the \doxylink{class_controller_1_1_state_manager}{State\+Manager} and renders the game through the SFML library 
+
+Definition at line \mbox{\hyperlink{_game_8h_source_l00015}{15}} of file \mbox{\hyperlink{_game_8h_source}{Game.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}\label{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}} 
+\index{Controller::Game@{Controller::Game}!Game@{Game}}
+\index{Game@{Game}!Controller::Game@{Controller::Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Controller\+::\+Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor for the \doxylink{class_controller_1_1_game}{Game} class 
+
+Definition at line \mbox{\hyperlink{_game_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_game_8cpp_source}{Game.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ window.create(sf::VideoMode(WINDOW\_WIDTH,\ WINDOW\_HEIGHT),\ \textcolor{stringliteral}{"{}Meat\ Boy"{}});}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gameFont.loadFromFile(\textcolor{stringliteral}{"{}resources/fonts/meat-\/boy-\/font.ttf"{}}))\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ load\ game\ font"{}});}
+\DoxyCodeLine{00014\ \ \ \ \ \}}
+\DoxyCodeLine{00015\ \ \ \ \ text.setFont(gameFont);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ stateManager\ =\ std::make\_shared<StateManager>();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ camera\ =\ std::make\_shared<Model::Camera>();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ world\ =\ std::make\_shared<Model::World>();}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}\label{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}} 
+\index{Controller::Game@{Controller::Game}!getWindow@{getWindow}}
+\index{getWindow@{getWindow}!Controller::Game@{Controller::Game}}
+\doxysubsubsection{\texorpdfstring{getWindow()}{getWindow()}}
+{\footnotesize\ttfamily static sf\+::\+Render\+Window $\ast$ Controller\+::\+Game\+::get\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Returns a pointer to the SFML window used to render the game
+
+\begin{DoxyReturn}{Returns}
+A pointer to the SFML window 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_game_8h_source_l00057}{57}} of file \mbox{\hyperlink{_game_8h_source}{Game.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \{\ \textcolor{keywordflow}{return}\ \&window;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}\label{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}} 
+\index{Controller::Game@{Controller::Game}!run@{run}}
+\index{run@{run}!Controller::Game@{Controller::Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Controller\+::\+Game\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Main game loop that updates, processes, and renders the game 
+
+Definition at line \mbox{\hyperlink{_game_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_game_8cpp_source}{Game.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ std::shared\_ptr<Utility::Stopwatch>\ stopwatch\ =\ \mbox{\hyperlink{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}{Utility::Stopwatch::getInstance}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stopwatch-\/>timeSinceLastUpdate()\ >\ TIME\_PER\_FRAME)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ stopwatch-\/>reset();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ window.clear();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ process();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ render();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ window.display();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller/Game.\+h\item 
+controller/Game.\+cpp\end{DoxyCompactItemize}

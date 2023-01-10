@@ -1,0 +1,365 @@
+\hypertarget{class_model_1_1_player}{}\doxysection{Model\+::Player Class Reference}
+\label{class_model_1_1_player}\index{Model::Player@{Model::Player}}
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+Inheritance diagram for Model\+::Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}{Key\+Enum}} \{ {\bfseries left}
+, {\bfseries right}
+, {\bfseries space}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \{ {\bfseries player}
+, {\bfseries wall}
+, {\bfseries goal}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_player_a2c3e3ebb01bf432b2a35efa086989d58}{Player}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position\+\_\+)
+\item 
+void \mbox{\hyperlink{class_model_1_1_player_a482cb08ba16a290d15592affe1843178}{button\+Action}} (\mbox{\hyperlink{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}{Key\+Enum}} key, bool pressed)
+\item 
+void \mbox{\hyperlink{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}{process\+Input}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera)
+\item 
+void \mbox{\hyperlink{class_model_1_1_player_aabf2972e2ba8ced0266ba40300dce405}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Model\+::\+Camera}} $>$ camera) override
+\item 
+bool \mbox{\hyperlink{class_model_1_1_player_a09674729ae87fca27a06925c8327cd79}{has\+Reached\+Goal}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}} (\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} type\+\_\+)
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{$\sim$\+Entity}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{assign\+View}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \&view)
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{get\+Type}} () const
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera)=0
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{get\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_subject}{Model\+::\+Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{register\+Observer}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_observer}{Observer}} $>$ \&observer)
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notify\+Observers}} (float x, float y, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera, bool facing\+Left)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entity\+View}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_model_1_1_player}{Player} class represents the playable character in the game. It inherits from the \doxylink{class_model_1_1_entity}{Entity} base class and also implements the \doxylink{class_model_1_1_subject}{Subject} interface for the observer pattern. 
+
+Definition at line \mbox{\hyperlink{_player_8h_source_l00016}{16}} of file \mbox{\hyperlink{_player_8h_source}{Player.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}\label{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}} 
+\index{Model::Player@{Model::Player}!KeyEnum@{KeyEnum}}
+\index{KeyEnum@{KeyEnum}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{KeyEnum}{KeyEnum}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}{Model\+::\+Player\+::\+Key\+Enum}}}
+
+Enumeration representing the keys 
+
+Definition at line \mbox{\hyperlink{_player_8h_source_l00082}{82}} of file \mbox{\hyperlink{_player_8h_source}{Player.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \{\ left,\ right,\ space\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_player_a2c3e3ebb01bf432b2a35efa086989d58}\label{class_model_1_1_player_a2c3e3ebb01bf432b2a35efa086989d58}} 
+\index{Model::Player@{Model::Player}!Player@{Player}}
+\index{Player@{Player}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Model\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor for creating a new player object 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+} & The initial position of the player \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ :\ \mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}}(Type::player)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_player_a482cb08ba16a290d15592affe1843178}\label{class_model_1_1_player_a482cb08ba16a290d15592affe1843178}} 
+\index{Model::Player@{Model::Player}!buttonAction@{buttonAction}}
+\index{buttonAction@{buttonAction}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{buttonAction()}{buttonAction()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::button\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_player_a74cedad601871ad63ade937affb982e1}{Key\+Enum}}}]{key,  }\item[{bool}]{pressed }\end{DoxyParamCaption})}
+
+Method to handle button actions (press or release) 
+\begin{DoxyParams}{Parameters}
+{\em key} & The key which is pressed/released \\
+\hline
+{\em pressed} & Boolean indicating if the key is pressed or released \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{switch}\ (key)\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::left:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ keys.left\ =\ pressed;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::right:}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ keys.right\ =\ pressed;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{case}\ Player::space:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ keys.space\ =\ pressed;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00019\ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_player_a09674729ae87fca27a06925c8327cd79}\label{class_model_1_1_player_a09674729ae87fca27a06925c8327cd79}} 
+\index{Model::Player@{Model::Player}!hasReachedGoal@{hasReachedGoal}}
+\index{hasReachedGoal@{hasReachedGoal}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{hasReachedGoal()}{hasReachedGoal()}}
+{\footnotesize\ttfamily bool Model\+::\+Player\+::has\+Reached\+Goal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Method to check if the player has reached the goal \begin{DoxyReturn}{Returns}
+Boolean value indicating if the goal has been reached or not 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_player_8h_source_l00108}{108}} of file \mbox{\hyperlink{_player_8h_source}{Player.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00108\ \{\ \textcolor{keywordflow}{return}\ reachedGoal;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}\label{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}} 
+\index{Model::Player@{Model::Player}!processInput@{processInput}}
+\index{processInput@{processInput}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::process\+Input (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&}]{camera }\end{DoxyParamCaption})}
+
+Method to process input from the player 
+\begin{DoxyParams}{Parameters}
+{\em camera} & A shared pointer to the camera \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerPosition\ =\ camera-\/>toPixels(\mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{getPosition}}());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ currentX\ =\ playerPosition.x;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (keys.left)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpType\ ==\ JumpType::toTheRight)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration\ /\ 3.f;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00032\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (keys.right)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpType\ ==\ JumpType::toTheLeft)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration\ /\ 3.f;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentJumpingTime\ <=\ 0.f)\ \{\ \textcolor{comment}{//\ deceleration\ if\ not\ jumping}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ 0.34f\ \&\&\ currentAcceleration\ >\ -\/0.34f)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ 0.f;\ \textcolor{comment}{//\ correction}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ >\ 0.f)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ -\/=\ acceleration;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ 0.f)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ +=\ acceleration;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentAcceleration\ >\ topSpeed)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ currentAcceleration\ =\ topSpeed;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentAcceleration\ <\ -\/topSpeed)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ currentAcceleration\ =\ -\/topSpeed;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (jumpAvailable\ \&\&\ keys.space\ \&\&\ state\ !=\ State::inAir)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ jumpAvailable\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ State::standingOnTile)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::normal;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (state\ ==\ State::onLeftWall)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::toTheRight;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ topSpeed;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ jumpType\ =\ JumpType::toTheLeft;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ currentAcceleration\ =\ -\/topSpeed;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ facingLeft\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ currentJumpingTime\ =\ jumpingTotalTime;}
+\DoxyCodeLine{00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!keys.space)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ jumpAvailable\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(currentX\ +\ currentAcceleration,\ playerPosition.y));}
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_player_aabf2972e2ba8ced0266ba40300dce405}\label{class_model_1_1_player_aabf2972e2ba8ced0266ba40300dce405}} 
+\index{Model::Player@{Model::Player}!update@{update}}
+\index{update@{update}!Model::Player@{Model::Player}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::\+Player\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Model\+::\+Camera}} $>$}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Update method which updates the player\textquotesingle{}s state and position 
+\begin{DoxyParams}{Parameters}
+{\em world} & A shared pointer to the game\textquotesingle{}s world \\
+\hline
+{\em camera} & A shared pointer to the camera \\
+\hline
+\end{DoxyParams}
+collision
+
+Definition at line \mbox{\hyperlink{_player_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{_player_8cpp_source}{Player.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_player_a17c471f38880843e5ffe75424b2ecdfc}{processInput}}(camera);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerPosition\ =\ camera-\/>toPixels(\mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{getPosition}}());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentJumpingTime\ >\ 0)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ playerPosition.y\ -\/=\ topSpeed;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ one\ third\ of\ the\ jump\ -\/>\ deceleration}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentJumpingTime\ <\ jumpingTotalTime\ /\ 3.f)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ jumpDeceleration;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ currentJumpingTime\ -\/=\ TIME\_PER\_FRAME;}
+\DoxyCodeLine{00086\ \ \ \ \ \}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ topSpeed;\ \textcolor{comment}{//\ apply\ gravity}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ update\ sensor\ positions:}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ sensorOffset\ =\ 4.f;}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ bounds(TILE\_SIZE,\ TILE\_SIZE);}
+\DoxyCodeLine{00094\ \ \ \ \ leftSensor.x\ =\ playerPosition.x\ -\/\ sensorOffset;}
+\DoxyCodeLine{00095\ \ \ \ \ leftSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y\ /\ 4.f);}
+\DoxyCodeLine{00096\ \ \ \ \ leftSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00097\ \ \ \ \ rightSensor.x\ =\ playerPosition.x\ +\ (SCALE\ *\ bounds.x)\ +\ sensorOffset;}
+\DoxyCodeLine{00098\ \ \ \ \ rightSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y\ /\ 4.f);}
+\DoxyCodeLine{00099\ \ \ \ \ rightSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00100\ \ \ \ \ bottomSensor.x\ =\ playerPosition.x\ +\ (SCALE\ *\ bounds.x\ /\ 2.f);}
+\DoxyCodeLine{00101\ \ \ \ \ bottomSensor.y\ =\ playerPosition.y\ +\ (SCALE\ *\ bounds.y)\ +\ sensorOffset;}
+\DoxyCodeLine{00102\ \ \ \ \ bottomSensor.active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{structfloat_rectangle}{floatRectangle}}\ rectangle\{\};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ world-\/>getEntities())\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::wall)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ entityPosition\ =\ camera-\/>toPixels(entity-\/>getPosition());\ \textcolor{comment}{//\ top\ left\ corner}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.left\ =\ entityPosition.x;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.top\ =\ entityPosition.y;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.height\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ rectangle.width\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(bottomSensor.x,\ bottomSensor.y)))}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bottomSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(leftSensor.x,\ leftSensor.y)))}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leftSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (world-\/>rectangleContains(rectangle,\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(rightSensor.x,\ rightSensor.y)))}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rightSensor.active\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{if}\ (bottomSensor.active)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ state\ =\ State::standingOnTile;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (leftSensor.active)}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ state\ =\ State::onLeftWall;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (rightSensor.active)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ state\ =\ State::onRightWall;}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ state\ =\ State::inAir;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ world-\/>getEntities())\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ player\ with\ wall}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::wall)\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerOverlap\ =\ world-\/>getOverlap(playerPosition,\ camera-\/>toPixels(entity-\/>getPosition()));}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.x\ >\ 0.f\ \&\&\ playerOverlap.y\ >\ 0.f)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.y\ <\ playerOverlap.x)\ \{\ \textcolor{comment}{//\ compensate\ only\ the\ shortest\ overlap,\ in\ this\ case\ y}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bottomSensor.active)\ \{\ \ \ \ \ \textcolor{comment}{//\ player\ on\ top\ of\ tile}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ -\/=\ playerOverlap.y;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ player\ hit\ tile\ from\ below}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.y\ +=\ playerOverlap.y;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compensate\ only\ x}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rightSensor.active)\ \{\ \textcolor{comment}{//\ player\ colliding\ on\ right\ wall}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.x\ -\/=\ playerOverlap.x;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (leftSensor.active)\ \{\ \textcolor{comment}{//\ player\ colliding\ on\ left\ wall}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerPosition.x\ +=\ playerOverlap.x;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ player\ with\ goal\ (bandage\ girl)}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (entity-\/>getType()\ ==\ Type::goal)\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ playerOverlap\ =\ world-\/>getOverlap(playerPosition,\ camera-\/>toPixels(entity-\/>getPosition()));}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerOverlap.x\ >\ 0.f\ \&\&\ playerOverlap.y\ >\ 0.f)}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reachedGoal\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notifyObservers}}(playerPosition.x,\ playerPosition.y,\ camera,\ facingLeft);}
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(playerPosition.x,\ playerPosition.y));}
+\DoxyCodeLine{00161\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/Player.\+h\item 
+model/Player.\+cpp\end{DoxyCompactItemize}

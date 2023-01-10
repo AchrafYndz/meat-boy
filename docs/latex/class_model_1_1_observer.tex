@@ -1,0 +1,66 @@
+\hypertarget{class_model_1_1_observer}{}\doxysection{Model\+::Observer Class Reference}
+\label{class_model_1_1_observer}\index{Model::Observer@{Model::Observer}}
+
+
+{\ttfamily \#include $<$Observer\+Pattern.\+h$>$}
+
+Inheritance diagram for Model\+::Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}{$\sim$\+Observer}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}{update}} (float x, float y, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera, bool facing\+Left)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_model_1_1_observer}{Observer} class defines an interface for observing the \doxylink{class_model_1_1_player}{Player}\textquotesingle{}s state 
+
+Definition at line \mbox{\hyperlink{_observer_pattern_8h_source_l00014}{14}} of file \mbox{\hyperlink{_observer_pattern_8h_source}{Observer\+Pattern.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}\label{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}} 
+\index{Model::Observer@{Model::Observer}!````~Observer@{$\sim$Observer}}
+\index{````~Observer@{$\sim$Observer}!Model::Observer@{Model::Observer}}
+\doxysubsubsection{\texorpdfstring{$\sim$Observer()}{~Observer()}}
+{\footnotesize\ttfamily virtual Model\+::\+Observer\+::$\sim$\+Observer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Virtual Default Destructor for the \doxylink{class_model_1_1_observer}{Observer} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}\label{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}} 
+\index{Model::Observer@{Model::Observer}!update@{update}}
+\index{update@{update}!Model::Observer@{Model::Observer}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Model\+::\+Observer\+::update (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$}]{camera,  }\item[{bool}]{facing\+Left }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+This method is called when an entity\textquotesingle{}s state changes
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate of the entity \\
+\hline
+{\em y} & y-\/coordinate of the entity \\
+\hline
+{\em camera} & the game camera \\
+\hline
+{\em facing\+Left} & whether the entity is facing left \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_entity_view_ad98400bca731b20b578725681ce058b8}{Entity\+View}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/Observer\+Pattern.\+h\end{DoxyCompactItemize}

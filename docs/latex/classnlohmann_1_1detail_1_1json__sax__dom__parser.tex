@@ -1,0 +1,440 @@
+\hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser}{}\doxysection{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser\texorpdfstring{$<$}{<} Basic\+Json\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classnlohmann_1_1detail_1_1json__sax__dom__parser}\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+
+
+SAX implementation to create a JSON value from SAX events.  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a3d5cd67d179aa7422ce90e54984a441e}{number\+\_\+integer\+\_\+t}} = typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t
+\item 
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a90f19b272530a479db81db11be2ea15c}{number\+\_\+unsigned\+\_\+t}} = typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t
+\item 
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad8da3aad0147b18b3cb76868480300fe}{number\+\_\+float\+\_\+t}} = typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t
+\item 
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_afd4d961ab2a6b01cbe6e840f7fb90cdc}{string\+\_\+t}} = typename Basic\+Json\+Type\+::string\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_afc50fee0a92ce84afb84041ebbdfba80}{json\+\_\+sax\+\_\+dom\+\_\+parser}} (Basic\+Json\+Type \&r, const bool allow\+\_\+exceptions\+\_\+=true)
+\item 
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a0a00cd158d678e294f6e974cd9373c4b}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a0a00cd158d678e294f6e974cd9373c4b}} 
+{\bfseries json\+\_\+sax\+\_\+dom\+\_\+parser} (const \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \&)=delete
+\item 
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad6e588652d5a9cb647a3c32a6221f13e}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad6e588652d5a9cb647a3c32a6221f13e}} 
+{\bfseries json\+\_\+sax\+\_\+dom\+\_\+parser} (\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_adb1091806f82603a2151472039a2ab56}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_adb1091806f82603a2151472039a2ab56}} 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \& {\bfseries operator=} (const \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \&)=delete
+\item 
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a1acf25a05470af22173805ff171bcfbf}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a1acf25a05470af22173805ff171bcfbf}} 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \& {\bfseries operator=} (\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{json\+\_\+sax\+\_\+dom\+\_\+parser}} \&\&)=default
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_abb06babaa861f123d8d0cb443b887d8a}{null}} ()
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a476c4634b93546a1a555725e551c2b33}{boolean}} (bool val)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_aff77f861ba336df48c9786a993941397}{number\+\_\+integer}} (number\+\_\+integer\+\_\+t val)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a2b4ff5146ed46993527e4a67d99c1355}{number\+\_\+unsigned}} (number\+\_\+unsigned\+\_\+t val)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_aef4652c0e81d6c052acb5d36afe09499}{number\+\_\+float}} (number\+\_\+float\+\_\+t val, const string\+\_\+t \&)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a851d965082d20a726138f5d0330dc7d8}{string}} (string\+\_\+t \&val)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a9929b4cc92d471c49bd0a92802629f90}{start\+\_\+object}} (std\+::size\+\_\+t len)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad427febda4997cbd8345a2596af66649}{key}} (string\+\_\+t \&val)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a88de4907ad5668d0358af2135236101f}{end\+\_\+object}} ()
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a056b895d011efaf48ea096c024aca0d4}{start\+\_\+array}} (std\+::size\+\_\+t len)
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_af7cb5e5fe06ea908b0ce4ed762919759}{end\+\_\+array}} ()
+\item 
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_a7d3bf1f361ebb817c694ba45b3814fa6}{parse\+\_\+error}} (std\+::size\+\_\+t, const std\+::string \&, const \mbox{\hyperlink{classnlohmann_1_1detail_1_1exception}{detail\+::exception}} \&ex)
+\item 
+constexpr bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad1b9f3681fadbbb2e0127f5c8a99c662}{is\+\_\+errored}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type$>$\newline
+class nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser$<$ Basic\+Json\+Type $>$}
+SAX implementation to create a JSON value from SAX events. 
+
+This class implements the \doxylink{structnlohmann_1_1json__sax}{json\+\_\+sax} interface and processes the SAX events to create a JSON value which makes it basically a DOM parser. The structure or hierarchy of the JSON value is managed by the stack {\ttfamily ref\+\_\+stack} which contains a pointer to the respective array or object for each recursion depth.
+
+After successful parsing, the value that is passed by reference to the constructor contains the parsed value.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Basic\+Json\+Type} & the JSON type \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04005}{4005}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad8da3aad0147b18b3cb76868480300fe}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad8da3aad0147b18b3cb76868480300fe}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_float\_t@{number\_float\_t}}
+\index{number\_float\_t@{number\_float\_t}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_float\_t}{number\_float\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+float\+\_\+t =  typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04009}{4009}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a3d5cd67d179aa7422ce90e54984a441e}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a3d5cd67d179aa7422ce90e54984a441e}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_integer\_t@{number\_integer\_t}}
+\index{number\_integer\_t@{number\_integer\_t}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_integer\_t}{number\_integer\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+integer\+\_\+t =  typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04007}{4007}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a90f19b272530a479db81db11be2ea15c}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a90f19b272530a479db81db11be2ea15c}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_unsigned\_t@{number\_unsigned\_t}}
+\index{number\_unsigned\_t@{number\_unsigned\_t}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_unsigned\_t}{number\_unsigned\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+unsigned\+\_\+t =  typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04008}{4008}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_afd4d961ab2a6b01cbe6e840f7fb90cdc}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_afd4d961ab2a6b01cbe6e840f7fb90cdc}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!string\_t@{string\_t}}
+\index{string\_t@{string\_t}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{string\_t}{string\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::string\+\_\+t =  typename Basic\+Json\+Type\+::string\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04010}{4010}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_afc50fee0a92ce84afb84041ebbdfba80}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_afc50fee0a92ce84afb84041ebbdfba80}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!json\_sax\_dom\_parser@{json\_sax\_dom\_parser}}
+\index{json\_sax\_dom\_parser@{json\_sax\_dom\_parser}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{json\_sax\_dom\_parser()}{json\_sax\_dom\_parser()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::json\+\_\+sax\+\_\+dom\+\_\+parser (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type \&}]{r,  }\item[{const bool}]{allow\+\_\+exceptions\+\_\+ = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em r} & reference to a JSON value that is manipulated while parsing \\
+\hline
+\mbox{\texttt{ in}}  & {\em allow\+\_\+exceptions\+\_\+} & whether parse errors yield exceptions \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04017}{4017}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04018\ \ \ \ \ \ \ \ \ :\ root(r),\ allow\_exceptions(allow\_exceptions\_)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a476c4634b93546a1a555725e551c2b33}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a476c4634b93546a1a555725e551c2b33}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!boolean@{boolean}}
+\index{boolean@{boolean}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{boolean()}{boolean()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::boolean (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04032}{4032}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04033\ \ \ \ \ \ \ \ \ handle\_value(val);}
+\DoxyCodeLine{04034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04035\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_af7cb5e5fe06ea908b0ce4ed762919759}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_af7cb5e5fe06ea908b0ce4ed762919759}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!end\_array@{end\_array}}
+\index{end\_array@{end\_array}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{end\_array()}{end\_array()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::end\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04088}{4088}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04089\ \ \ \ \ \ \ \ \ ref\_stack.pop\_back();}
+\DoxyCodeLine{04090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04091\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a88de4907ad5668d0358af2135236101f}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a88de4907ad5668d0358af2135236101f}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!end\_object@{end\_object}}
+\index{end\_object@{end\_object}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{end\_object()}{end\_object()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::end\+\_\+object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04073}{4073}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04074\ \ \ \ \ \ \ \ \ ref\_stack.pop\_back();}
+\DoxyCodeLine{04075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04076\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad1b9f3681fadbbb2e0127f5c8a99c662}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad1b9f3681fadbbb2e0127f5c8a99c662}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!is\_errored@{is\_errored}}
+\index{is\_errored@{is\_errored}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{is\_errored()}{is\_errored()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+constexpr bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::is\+\_\+errored (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04117}{4117}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04117\ \{\ \textcolor{keywordflow}{return}\ errored;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad427febda4997cbd8345a2596af66649}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_ad427febda4997cbd8345a2596af66649}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!key@{key}}
+\index{key@{key}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::key (\begin{DoxyParamCaption}\item[{string\+\_\+t \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04067}{4067}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ null\ at\ given\ key\ and\ store\ the\ reference\ for\ later}}
+\DoxyCodeLine{04069\ \ \ \ \ \ \ \ \ object\_element\ =\ \&(ref\_stack.back()-\/>m\_value.object-\/>operator[](val));}
+\DoxyCodeLine{04070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04071\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_abb06babaa861f123d8d0cb443b887d8a}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_abb06babaa861f123d8d0cb443b887d8a}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!null@{null}}
+\index{null@{null}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{null()}{null()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04027}{4027}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04028\ \ \ \ \ \ \ \ \ handle\_value(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{04029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04030\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_aef4652c0e81d6c052acb5d36afe09499}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_aef4652c0e81d6c052acb5d36afe09499}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_float@{number\_float}}
+\index{number\_float@{number\_float}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_float()}{number\_float()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+float (\begin{DoxyParamCaption}\item[{number\+\_\+float\+\_\+t}]{val,  }\item[{const string\+\_\+t \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04047}{4047}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04048\ \ \ \ \ \ \ \ \ handle\_value(val);}
+\DoxyCodeLine{04049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04050\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_aff77f861ba336df48c9786a993941397}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_aff77f861ba336df48c9786a993941397}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_integer@{number\_integer}}
+\index{number\_integer@{number\_integer}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_integer()}{number\_integer()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+integer (\begin{DoxyParamCaption}\item[{number\+\_\+integer\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04037}{4037}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04038\ \ \ \ \ \ \ \ \ handle\_value(val);}
+\DoxyCodeLine{04039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04040\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a2b4ff5146ed46993527e4a67d99c1355}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a2b4ff5146ed46993527e4a67d99c1355}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!number\_unsigned@{number\_unsigned}}
+\index{number\_unsigned@{number\_unsigned}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{number\_unsigned()}{number\_unsigned()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::number\+\_\+unsigned (\begin{DoxyParamCaption}\item[{number\+\_\+unsigned\+\_\+t}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04042}{4042}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04043\ \ \ \ \ \ \ \ \ handle\_value(val);}
+\DoxyCodeLine{04044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04045\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a7d3bf1f361ebb817c694ba45b3814fa6}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a7d3bf1f361ebb817c694ba45b3814fa6}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!parse\_error@{parse\_error}}
+\index{parse\_error@{parse\_error}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{parse\_error()}{parse\_error()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+error (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{,  }\item[{const std\+::string \&}]{,  }\item[{const \mbox{\hyperlink{classnlohmann_1_1detail_1_1exception}{detail\+::exception}} \&}]{ex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04093}{4093}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04094\ \ \ \ \ \ \ \ \ errored\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (allow\_exceptions)\ \{}
+\DoxyCodeLine{04096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ determine\ the\ proper\ exception\ type\ from\ the\ id}}
+\DoxyCodeLine{04097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ ((ex.id\ /\ 100)\ \%\ 100)\ \{}
+\DoxyCodeLine{04098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{04099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }detail::parse\_error*\textcolor{keyword}{>}(\&ex));}
+\DoxyCodeLine{04100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{04101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }detail::out\_of\_range*\textcolor{keyword}{>}(\&ex));}
+\DoxyCodeLine{04102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_START}}
+\DoxyCodeLine{04103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{04104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }detail::invalid\_iterator*\textcolor{keyword}{>}(\&ex));}
+\DoxyCodeLine{04105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{04106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }detail::type\_error*\textcolor{keyword}{>}(\&ex));}
+\DoxyCodeLine{04107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 5:}
+\DoxyCodeLine{04108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(*\textcolor{keyword}{static\_cast<}\textcolor{keyword}{const\ }detail::other\_error*\textcolor{keyword}{>}(\&ex));}
+\DoxyCodeLine{04109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{04110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{04111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{04112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{04113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{04114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{04115\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a056b895d011efaf48ea096c024aca0d4}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a056b895d011efaf48ea096c024aca0d4}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!start\_array@{start\_array}}
+\index{start\_array@{start\_array}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{start\_array()}{start\_array()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::start\+\_\+array (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04078}{4078}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04079\ \ \ \ \ \ \ \ \ ref\_stack.push\_back(handle\_value(BasicJsonType::value\_t::array));}
+\DoxyCodeLine{04080\ }
+\DoxyCodeLine{04081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_UNLIKELY(len\ !=\ std::size\_t(-\/1)\ and\ len\ >\ ref\_stack.back()-\/>max\_size()))\ \{}
+\DoxyCodeLine{04082\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(out\_of\_range::create(408,\ \textcolor{stringliteral}{"{}excessive\ array\ size:\ "{}}\ +\ std::to\_string(len)));}
+\DoxyCodeLine{04083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{04084\ }
+\DoxyCodeLine{04085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04086\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a9929b4cc92d471c49bd0a92802629f90}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a9929b4cc92d471c49bd0a92802629f90}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!start\_object@{start\_object}}
+\index{start\_object@{start\_object}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{start\_object()}{start\_object()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::start\+\_\+object (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04057}{4057}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04058\ \ \ \ \ \ \ \ \ ref\_stack.push\_back(handle\_value(BasicJsonType::value\_t::object));}
+\DoxyCodeLine{04059\ }
+\DoxyCodeLine{04060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_UNLIKELY(len\ !=\ std::size\_t(-\/1)\ and\ len\ >\ ref\_stack.back()-\/>max\_size()))\ \{}
+\DoxyCodeLine{04061\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(out\_of\_range::create(408,\ \textcolor{stringliteral}{"{}excessive\ object\ size:\ "{}}\ +\ std::to\_string(len)));}
+\DoxyCodeLine{04062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{04063\ }
+\DoxyCodeLine{04064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04065\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1json__sax__dom__parser_a851d965082d20a726138f5d0330dc7d8}\label{classnlohmann_1_1detail_1_1json__sax__dom__parser_a851d965082d20a726138f5d0330dc7d8}} 
+\index{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}!string@{string}}
+\index{string@{string}!nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$@{nlohmann::detail::json\_sax\_dom\_parser$<$ BasicJsonType $>$}}
+\doxysubsubsection{\texorpdfstring{string()}{string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \mbox{\hyperlink{classnlohmann_1_1detail_1_1json__sax__dom__parser}{nlohmann\+::detail\+::json\+\_\+sax\+\_\+dom\+\_\+parser}}$<$ Basic\+Json\+Type $>$\+::string (\begin{DoxyParamCaption}\item[{string\+\_\+t \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l04052}{4052}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{04052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{04053\ \ \ \ \ \ \ \ \ handle\_value(val);}
+\DoxyCodeLine{04054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{04055\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/json.\+hpp\end{DoxyCompactItemize}

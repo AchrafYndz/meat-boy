@@ -1,0 +1,330 @@
+\hypertarget{class_model_1_1_world}{}\doxysection{Model\+::World Class Reference}
+\label{class_model_1_1_world}\index{Model::World@{Model::World}}
+
+
+{\ttfamily \#include $<$World.\+h$>$}
+
+Inheritance diagram for Model\+::World\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_world}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_world_a264f716d6666dd1eb55f7ed6236f489c}{World}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_world_ad78be3b7c45e3cd467375fa1f7f34d9c}{load\+Level}} (int level\+Number, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_1_1_state_manager}{Controller\+::\+State\+Manager}} $>$ \&state\+Manager, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera)
+\item 
+void \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{add\+Entity}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Entity}} $>$ \&entity)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Entity}} $>$ $>$ \mbox{\hyperlink{class_model_1_1_world_a2b75cf13cc7b1733ac005fcd29a7437c}{get\+Entities}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ \mbox{\hyperlink{class_model_1_1_world_a0151196da76b69c7b489aa7087c05af2}{get\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_model_1_1_world_ae9ff1c14c11c10f14754cafeba4ca2c4}{set\+Player}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ \&player\+\_\+)
+\item 
+void \mbox{\hyperlink{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}{clear\+Entities}} ()
+\item 
+void \mbox{\hyperlink{class_model_1_1_world_a8d7a7d4a38cd4932fedd5d30846ed31b}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_world_a58ab0594932962d4d0f1fb33bef0531d}{get\+Overlap}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} a\+Position, \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} b\+Position)
+\item 
+static bool \mbox{\hyperlink{class_model_1_1_world_a19b002cce1c9dd5757933e2f88b28085}{rectangle\+Contains}} (\mbox{\hyperlink{structfloat_rectangle}{float\+Rectangle}} rectangle, \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} point)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_model_1_1_world}{World} class is responsible for maintaining the game state and updating the entities. It inherits from std\+::enable\+\_\+shared\+\_\+from\+\_\+this$<$\+World$>$, so it\textquotesingle{}s possible to pass a shared pointer of the class directly to the methods that are called within this class. 
+
+Definition at line \mbox{\hyperlink{_world_8h_source_l00020}{20}} of file \mbox{\hyperlink{_world_8h_source}{World.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_world_a264f716d6666dd1eb55f7ed6236f489c}\label{class_model_1_1_world_a264f716d6666dd1eb55f7ed6236f489c}} 
+\index{Model::World@{Model::World}!World@{World}}
+\index{World@{World}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily Model\+::\+World\+::\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default Constructor for the Game class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}\label{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}} 
+\index{Model::World@{Model::World}!addEntity@{addEntity}}
+\index{addEntity@{addEntity}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
+{\footnotesize\ttfamily void Model\+::\+World\+::add\+Entity (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Entity}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add an entity to the world 
+\begin{DoxyParams}{Parameters}
+{\em entity} & shared\+\_\+ptr of the entity to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_world_8h_source_l00066}{66}} of file \mbox{\hyperlink{_world_8h_source}{World.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \{\ entities.push\_back(entity);\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}\label{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}} 
+\index{Model::World@{Model::World}!clearEntities@{clearEntities}}
+\index{clearEntities@{clearEntities}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{clearEntities()}{clearEntities()}}
+{\footnotesize\ttfamily void Model\+::\+World\+::clear\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears the vector of shared\+\_\+ptrs of entities 
+
+Definition at line \mbox{\hyperlink{_world_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_world_8cpp_source}{World.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00096\ \{\ entities.clear();\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a2b75cf13cc7b1733ac005fcd29a7437c}\label{class_model_1_1_world_a2b75cf13cc7b1733ac005fcd29a7437c}} 
+\index{Model::World@{Model::World}!getEntities@{getEntities}}
+\index{getEntities@{getEntities}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{getEntities()}{getEntities()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_entity}{Entity}} $>$ $>$ Model\+::\+World\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the list of entities in the world \begin{DoxyReturn}{Returns}
+vector of shared\+\_\+ptr of entities 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_world_8h_source_l00072}{72}} of file \mbox{\hyperlink{_world_8h_source}{World.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \{\ \textcolor{keywordflow}{return}\ entities;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a58ab0594932962d4d0f1fb33bef0531d}\label{class_model_1_1_world_a58ab0594932962d4d0f1fb33bef0531d}} 
+\index{Model::World@{Model::World}!getOverlap@{getOverlap}}
+\index{getOverlap@{getOverlap}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{getOverlap()}{getOverlap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Model\+::\+World\+::get\+Overlap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{a\+Position,  }\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{b\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get the overlap between two rectangles 
+\begin{DoxyParams}{Parameters}
+{\em a\+Position} & position of rectangle A \\
+\hline
+{\em b\+Position} & position of rectangle B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structfloat_vector2}{float\+Vector2} of the overlapped area 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_world_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_world_8cpp_source}{World.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ result\ =\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}(-\/1,\ -\/1);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ X}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (aPosition.x\ <\ bPosition.x)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ result.x\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (bPosition.x\ -\/\ aPosition.x);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ result.x\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (aPosition.x\ -\/\ bPosition.x);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Y}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (aPosition.y\ <\ bPosition.y)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ result.y\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (bPosition.y\ -\/\ aPosition.y);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ result.y\ =\ (TILE\_SIZE\ *\ SCALE)\ -\/\ (aPosition.y\ -\/\ bPosition.y);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00085\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a0151196da76b69c7b489aa7087c05af2}\label{class_model_1_1_world_a0151196da76b69c7b489aa7087c05af2}} 
+\index{Model::World@{Model::World}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ Model\+::\+World\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get a shared pointer to the player \begin{DoxyReturn}{Returns}
+shared\+\_\+ptr of player 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_world_8h_source_l00078}{78}} of file \mbox{\hyperlink{_world_8h_source}{World.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \{\ \textcolor{keywordflow}{return}\ player;\ \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_ad78be3b7c45e3cd467375fa1f7f34d9c}\label{class_model_1_1_world_ad78be3b7c45e3cd467375fa1f7f34d9c}} 
+\index{Model::World@{Model::World}!loadLevel@{loadLevel}}
+\index{loadLevel@{loadLevel}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{loadLevel()}{loadLevel()}}
+{\footnotesize\ttfamily void Model\+::\+World\+::load\+Level (\begin{DoxyParamCaption}\item[{int}]{level\+Number,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_controller_1_1_state_manager}{Controller\+::\+State\+Manager}} $>$ \&}]{state\+Manager,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&}]{camera }\end{DoxyParamCaption})}
+
+Load a Level 
+\begin{DoxyParams}{Parameters}
+{\em level\+Number} & int, representing the level number to load \\
+\hline
+{\em state\+Manager} & shared\+\_\+ptr of the current state manager object \\
+\hline
+{\em camera} & shared\+\_\+ptr of the current camera object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_world_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_world_8cpp_source}{World.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_a47b895ff7629a31d81bd88cdf371d9a4}{clearEntities}}();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{float}\ tileSize\ =\ TILE\_SIZE\ *\ SCALE;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ std::ifstream\ levelsInfo(\textcolor{stringliteral}{"{}resources/levels/levels-\/info.json"{}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (!levelsInfo.is\_open())\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ for\ levelsInfo"{}});}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1basic__json}{nlohmann::json}}\ j;}
+\DoxyCodeLine{00024\ \ \ \ \ levelsInfo\ >>\ j;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ levelPath\ =\ j[\textcolor{stringliteral}{"{}level-\/"{}}\ +\ std::to\_string(levelNumber)][\textcolor{stringliteral}{"{}filePath"{}}];}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ autoScrolling\ =\ j[\textcolor{stringliteral}{"{}level-\/"{}}\ +\ std::to\_string(levelNumber)][\textcolor{stringliteral}{"{}autoScrolling"{}}];}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ stateManager-\/>goToLevel(levelNumber,\ autoScrolling);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::ifstream\ levelMap(levelPath);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (!levelMap.is\_open())\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ open\ file\ for\ levelMap"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{char}\ delimiter\ =\ \textcolor{charliteral}{','};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ get\ amount\ of\ rows}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ totalRows\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(levelMap,\ line))}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ totalRows++;}
+\DoxyCodeLine{00044\ \ \ \ \ levelMap.clear();}
+\DoxyCodeLine{00045\ \ \ \ \ levelMap.seekg(0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ to\ the\ beginning}}
+\DoxyCodeLine{00046\ \ \ \ \ camera-\/>setTotalHeight(totalRows);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ total\ height\ of\ level}}
+\DoxyCodeLine{00047\ \ \ \ \ camera-\/>setCameraHeight(\textcolor{keywordtype}{float}(totalRows)\ *\ tileSize);\ \textcolor{comment}{//\ set\ initial\ camera\ position}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ std::string\ value;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ column\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ top}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ left}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(levelMap,\ line))\ \{\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ read\ entire\ line\ into\ line\ */}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::stringstream\ stringstream(line);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ create\ stringstream\ from\ line\ */}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(stringstream,\ value,\ delimiter))\ \{\ \textcolor{comment}{/*\ read\ each\ field\ from\ line\ */}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pos\ =\ camera-\/>normalizePosition(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}(\textcolor{keywordtype}{float}(column)\ *\ tileSize,\ \textcolor{keywordtype}{float}(row)\ *\ tileSize));}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}0"{}})\ \textcolor{comment}{//\ wall}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::wall,\ pos));}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}1"{}})\ \textcolor{comment}{//\ goal}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::goal,\ pos));}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (value\ ==\ \textcolor{stringliteral}{"{}2"{}})\ \textcolor{comment}{//\ player}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model_1_1_world_ad5b62e331f41b57319975b3609d85d37}{addEntity}}(concreteFactory-\/>createEntity(shared\_from\_this(),\ Entity::player,\ pos));}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ column++;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ row++;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ column\ =\ 0;}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a19b002cce1c9dd5757933e2f88b28085}\label{class_model_1_1_world_a19b002cce1c9dd5757933e2f88b28085}} 
+\index{Model::World@{Model::World}!rectangleContains@{rectangleContains}}
+\index{rectangleContains@{rectangleContains}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{rectangleContains()}{rectangleContains()}}
+{\footnotesize\ttfamily bool Model\+::\+World\+::rectangle\+Contains (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_rectangle}{float\+Rectangle}}}]{rectangle,  }\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Check if a point is inside a rectangle 
+\begin{DoxyParams}{Parameters}
+{\em rectangle} & the rectangle \\
+\hline
+{\em point} & the point to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool\+: whether the point is inside the rectangle or not 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_world_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_world_8cpp_source}{World.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{float}\ minX\ =\ std::min(rectangle.left,\ (rectangle.left\ +\ rectangle.width));}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ maxX\ =\ std::max(rectangle.left,\ (rectangle.left\ +\ rectangle.width));}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{float}\ minY\ =\ std::min(rectangle.top,\ (rectangle.top\ +\ rectangle.height));}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{float}\ maxY\ =\ std::max(rectangle.top,\ (rectangle.top\ +\ rectangle.height));}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{return}\ (point.x\ >=\ minX)\ \&\&\ (point.x\ <\ maxX)\ \&\&\ (point.y\ >=\ minY)\ \&\&\ (point.y\ <\ maxY);}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_ae9ff1c14c11c10f14754cafeba4ca2c4}\label{class_model_1_1_world_ae9ff1c14c11c10f14754cafeba4ca2c4}} 
+\index{Model::World@{Model::World}!setPlayer@{setPlayer}}
+\index{setPlayer@{setPlayer}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{setPlayer()}{setPlayer()}}
+{\footnotesize\ttfamily void Model\+::\+World\+::set\+Player (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_player}{Player}} $>$ \&}]{player\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adds the player pointer to the world 
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+} & shared\+\_\+ptr of player to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_world_8h_source_l00084}{84}} of file \mbox{\hyperlink{_world_8h_source}{World.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \{\ player\ =\ player\_;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_world_a8d7a7d4a38cd4932fedd5d30846ed31b}\label{class_model_1_1_world_a8d7a7d4a38cd4932fedd5d30846ed31b}} 
+\index{Model::World@{Model::World}!update@{update}}
+\index{update@{update}!Model::World@{Model::World}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::\+World\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&}]{camera }\end{DoxyParamCaption})}
+
+Updates all the entities stored in the world 
+\begin{DoxyParams}{Parameters}
+{\em camera} & game\textquotesingle{}s camera \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_world_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_world_8cpp_source}{World.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entity\ :\ entities)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ entity-\/>update(shared\_from\_this(),\ camera);}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/World.\+h\item 
+model/World.\+cpp\end{DoxyCompactItemize}

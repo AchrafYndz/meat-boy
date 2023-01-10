@@ -1,0 +1,39 @@
+\hypertarget{_observer_pattern_8h_source}{}\doxysection{Observer\+Pattern.\+h}
+\label{_observer_pattern_8h_source}\index{model/ObserverPattern.h@{model/ObserverPattern.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_OBSERVERPATTERN\_H}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_OBSERVERPATTERN\_H}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00010}00010\ \textcolor{keyword}{namespace\ }Model\ \{}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00014}\mbox{\hyperlink{class_model_1_1_observer}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model_1_1_observer}{Observer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00015}00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00019}\mbox{\hyperlink{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}{00019}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}{\string~Observer}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00029}\mbox{\hyperlink{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}{00029}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}{update}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ std::shared\_ptr<Camera>\ camera,\ \textcolor{keywordtype}{bool}\ facingLeft)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00030}00030\ \};}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00035}\mbox{\hyperlink{class_model_1_1_subject}{00035}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model_1_1_subject}{Subject}}\ \{}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00036}00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00041}\mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{00041}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{registerObserver}}(\textcolor{keyword}{const}\ std::shared\_ptr<Observer>\&\ observer)\ \{\ observers.push\_back(observer);\ \}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00051}\mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{00051}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notifyObservers}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keyword}{const}\ std::shared\_ptr<Camera>\&\ camera,\ \textcolor{keywordtype}{bool}\ facingLeft)\ \{}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ observer\ :\ observers)\ \{}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ observer-\/>update(x,\ y,\ camera,\ facingLeft);}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00057}00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00059}00059\ \ \ \ \ std::vector<std::shared\_ptr<Observer>>\ observers;}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00060}00060\ \};}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00061}00061\ \}\ \textcolor{comment}{//\ namespace\ Model}}
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_observer_pattern_8h_source_l00063}00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_OBSERVERPATTERN\_H}}
+
+\end{DoxyCode}

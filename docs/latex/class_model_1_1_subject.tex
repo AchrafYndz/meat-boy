@@ -1,0 +1,86 @@
+\hypertarget{class_model_1_1_subject}{}\doxysection{Model\+::Subject Class Reference}
+\label{class_model_1_1_subject}\index{Model::Subject@{Model::Subject}}
+
+
+{\ttfamily \#include $<$Observer\+Pattern.\+h$>$}
+
+Inheritance diagram for Model\+::Subject\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_subject}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{register\+Observer}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_observer}{Observer}} $>$ \&observer)
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notify\+Observers}} (float x, float y, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera, bool facing\+Left)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_model_1_1_subject}{Subject} class allows Observers to register and be notified of changes 
+
+Definition at line \mbox{\hyperlink{_observer_pattern_8h_source_l00035}{35}} of file \mbox{\hyperlink{_observer_pattern_8h_source}{Observer\+Pattern.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}\label{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}} 
+\index{Model::Subject@{Model::Subject}!notifyObservers@{notifyObservers}}
+\index{notifyObservers@{notifyObservers}!Model::Subject@{Model::Subject}}
+\doxysubsubsection{\texorpdfstring{notifyObservers()}{notifyObservers()}}
+{\footnotesize\ttfamily void Model\+::\+Subject\+::notify\+Observers (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&}]{camera,  }\item[{bool}]{facing\+Left }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Notify all registered Observers of a change
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate of the entity \\
+\hline
+{\em y} & y-\/coordinate of the entity \\
+\hline
+{\em camera} & the game camera \\
+\hline
+{\em facing\+Left} & whether the entity is facing left \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_observer_pattern_8h_source_l00051}{51}} of file \mbox{\hyperlink{_observer_pattern_8h_source}{Observer\+Pattern.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ observer\ :\ observers)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ observer-\/>update(x,\ y,\ camera,\ facingLeft);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}\label{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}} 
+\index{Model::Subject@{Model::Subject}!registerObserver@{registerObserver}}
+\index{registerObserver@{registerObserver}!Model::Subject@{Model::Subject}}
+\doxysubsubsection{\texorpdfstring{registerObserver()}{registerObserver()}}
+{\footnotesize\ttfamily void Model\+::\+Subject\+::register\+Observer (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_observer}{Observer}} $>$ \&}]{observer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Register an \doxylink{class_model_1_1_observer}{Observer} to be notified of changes 
+\begin{DoxyParams}{Parameters}
+{\em observer} & the observer that will be registered \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_observer_pattern_8h_source_l00041}{41}} of file \mbox{\hyperlink{_observer_pattern_8h_source}{Observer\+Pattern.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \{\ observers.push\_back(observer);\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/Observer\+Pattern.\+h\end{DoxyCompactItemize}

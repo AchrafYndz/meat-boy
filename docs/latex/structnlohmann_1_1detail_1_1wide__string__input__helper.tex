@@ -1,0 +1,75 @@
+\hypertarget{structnlohmann_1_1detail_1_1wide__string__input__helper}{}\doxysection{nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+helper\texorpdfstring{$<$}{<} Wide\+String\+Type, T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{structnlohmann_1_1detail_1_1wide__string__input__helper}\index{nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$@{nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{structnlohmann_1_1detail_1_1wide__string__input__helper_ae82d79118fa319a97e4a40568186a922}{fill\+\_\+buffer}} (const Wide\+String\+Type \&str, size\+\_\+t \&current\+\_\+wchar, std\+::array$<$ std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type, 4 $>$ \&utf8\+\_\+bytes, size\+\_\+t \&utf8\+\_\+bytes\+\_\+index, size\+\_\+t \&utf8\+\_\+bytes\+\_\+filled)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Wide\+String\+Type, size\+\_\+t T$>$\newline
+struct nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+helper$<$ Wide\+String\+Type, T $>$}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l03641}{3641}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structnlohmann_1_1detail_1_1wide__string__input__helper_ae82d79118fa319a97e4a40568186a922}\label{structnlohmann_1_1detail_1_1wide__string__input__helper_ae82d79118fa319a97e4a40568186a922}} 
+\index{nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$@{nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$}!fill\_buffer@{fill\_buffer}}
+\index{fill\_buffer@{fill\_buffer}!nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$@{nlohmann::detail::wide\_string\_input\_helper$<$ WideStringType, T $>$}}
+\doxysubsubsection{\texorpdfstring{fill\_buffer()}{fill\_buffer()}}
+{\footnotesize\ttfamily template$<$typename Wide\+String\+Type , size\+\_\+t T$>$ \\
+static void \mbox{\hyperlink{structnlohmann_1_1detail_1_1wide__string__input__helper}{nlohmann\+::detail\+::wide\+\_\+string\+\_\+input\+\_\+helper}}$<$ Wide\+String\+Type, T $>$\+::fill\+\_\+buffer (\begin{DoxyParamCaption}\item[{const Wide\+String\+Type \&}]{str,  }\item[{size\+\_\+t \&}]{current\+\_\+wchar,  }\item[{std\+::array$<$ std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type, 4 $>$ \&}]{utf8\+\_\+bytes,  }\item[{size\+\_\+t \&}]{utf8\+\_\+bytes\+\_\+index,  }\item[{size\+\_\+t \&}]{utf8\+\_\+bytes\+\_\+filled }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l03643}{3643}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{03645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{03646\ \ \ \ \ \ \ \ \ utf8\_bytes\_index\ =\ 0;}
+\DoxyCodeLine{03647\ }
+\DoxyCodeLine{03648\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current\_wchar\ ==\ str.size())\ \{}
+\DoxyCodeLine{03649\ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ std::char\_traits<char>::eof();}
+\DoxyCodeLine{03650\ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 1;}
+\DoxyCodeLine{03651\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{03652\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ the\ current\ character}}
+\DoxyCodeLine{03653\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ wc\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(str[current\_wchar++]);}
+\DoxyCodeLine{03654\ }
+\DoxyCodeLine{03655\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UTF-\/32\ to\ UTF-\/8\ encoding}}
+\DoxyCodeLine{03656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wc\ <\ 0x80)\ \{}
+\DoxyCodeLine{03657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(wc);}
+\DoxyCodeLine{03658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 1;}
+\DoxyCodeLine{03659\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wc\ <=\ 0x7FF)\ \{}
+\DoxyCodeLine{03660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0xC0u\ |\ ((wc\ >>\ 6u)\ \&\ 0x1Fu));}
+\DoxyCodeLine{03661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[1]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ (wc\ \&\ 0x3Fu));}
+\DoxyCodeLine{03662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 2;}
+\DoxyCodeLine{03663\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wc\ <=\ 0xFFFF)\ \{}
+\DoxyCodeLine{03664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0xE0u\ |\ ((wc\ >>\ 12u)\ \&\ 0x0Fu));}
+\DoxyCodeLine{03665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[1]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ ((wc\ >>\ 6u)\ \&\ 0x3Fu));}
+\DoxyCodeLine{03666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[2]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ (wc\ \&\ 0x3Fu));}
+\DoxyCodeLine{03667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 3;}
+\DoxyCodeLine{03668\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (wc\ <=\ 0x10FFFF)\ \{}
+\DoxyCodeLine{03669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0xF0u\ |\ ((wc\ >>\ 18u)\ \&\ 0x07u));}
+\DoxyCodeLine{03670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[1]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ ((wc\ >>\ 12u)\ \&\ 0x3Fu));}
+\DoxyCodeLine{03671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[2]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ ((wc\ >>\ 6u)\ \&\ 0x3Fu));}
+\DoxyCodeLine{03672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[3]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(0x80u\ |\ (wc\ \&\ 0x3Fu));}
+\DoxyCodeLine{03673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 4;}
+\DoxyCodeLine{03674\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{03675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unknown\ character}}
+\DoxyCodeLine{03676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes[0]\ =\ \textcolor{keyword}{static\_cast<}std::char\_traits<char>::int\_type\textcolor{keyword}{>}(wc);}
+\DoxyCodeLine{03677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ utf8\_bytes\_filled\ =\ 1;}
+\DoxyCodeLine{03678\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{03679\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{03680\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/json.\+hpp\end{DoxyCompactItemize}

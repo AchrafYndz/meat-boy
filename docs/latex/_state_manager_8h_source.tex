@@ -1,0 +1,37 @@
+\hypertarget{_state_manager_8h_source}{}\doxysection{State\+Manager.\+h}
+\label{_state_manager_8h_source}\index{controller/StateManager.h@{controller/StateManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STATEMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STATEMANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00006}00006\ \textcolor{keyword}{namespace\ }Controller\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00011}\mbox{\hyperlink{class_controller_1_1_state_manager}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_controller_1_1_state_manager}{StateManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00012}00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{struct\ }Level\ \{}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ state\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ autoscroll;}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00027}00027\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00033}00033\ \ \ \ \ Level\ currentLevel;}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00035}00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00039}\mbox{\hyperlink{class_controller_1_1_state_manager_a95e66292d4791807a1bae94e482efabe}{00039}}\ \ \ \ \ \mbox{\hyperlink{class_controller_1_1_state_manager_a95e66292d4791807a1bae94e482efabe}{StateManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_state_manager_abc29f559230938fd068418254d6412b1}{goToLevel}}(\textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{bool}\ autoScrolling);}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_state_manager_affaeae0f96e2c8b8435d2d9f0a9df9c4}{goToMenu}}();}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00061}\mbox{\hyperlink{class_controller_1_1_state_manager_aa3d8599108509b7fdbfea2c5fa48f9fe}{00061}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_1_1_state_manager_aa3d8599108509b7fdbfea2c5fa48f9fe}{isInMenuState}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ currentLevel.state\ ==\ 0;\ \};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00069}\mbox{\hyperlink{class_controller_1_1_state_manager_adce3d15627e6135e64cffd7c6b12eacb}{00069}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_1_1_state_manager_adce3d15627e6135e64cffd7c6b12eacb}{currentLevelHasAutoScroll}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ currentLevel.autoscroll;\ \}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00070}00070\ \};}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00071}00071\ \}\ \textcolor{comment}{//\ namespace\ Controller}}
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_state_manager_8h_source_l00073}00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STATEMANAGER\_H}}
+
+\end{DoxyCode}

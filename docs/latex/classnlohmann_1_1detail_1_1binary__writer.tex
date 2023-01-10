@@ -1,0 +1,728 @@
+\hypertarget{classnlohmann_1_1detail_1_1binary__writer}{}\doxysection{nlohmann\+::detail\+::binary\+\_\+writer\texorpdfstring{$<$}{<} Basic\+Json\+Type, Char\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classnlohmann_1_1detail_1_1binary__writer}\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+
+
+serialization to CBOR and Message\+Pack values  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a373289af95a946c19bb4a58a5df71a78}{binary\+\_\+writer}} (\mbox{\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}}$<$ Char\+Type $>$ adapter)
+\begin{DoxyCompactList}\small\item\em create a binary writer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a9ffc566db5219b473762462234b47db9}{write\+\_\+bson}} (const Basic\+Json\+Type \&j)
+\item 
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}{write\+\_\+cbor}} (const Basic\+Json\+Type \&j)
+\item 
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}{write\+\_\+msgpack}} (const Basic\+Json\+Type \&j)
+\item 
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a0f6c65053d859269f88eb4ebb0cd7060}{write\+\_\+ubjson}} (const Basic\+Json\+Type \&j, const bool use\+\_\+count, const bool use\+\_\+type, const bool add\+\_\+prefix=true)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+signed$<$ char $>$\+::value $>$ $\ast$  = nullptr$>$ }\\static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}{to\+\_\+char\+\_\+type}} (std\+::uint8\+\_\+t x) noexcept
+\item 
+{\footnotesize template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+unsigned$<$ char $>$\+::value $>$ $\ast$  = nullptr$>$ }\\static Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a5e46f0dd3550901b15cf85265808d1ec}{to\+\_\+char\+\_\+type}} (std\+::uint8\+\_\+t x) noexcept
+\item 
+{\footnotesize template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+unsigned$<$ C $>$\+::value $>$ $\ast$  = nullptr$>$ }\\static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}{to\+\_\+char\+\_\+type}} (std\+::uint8\+\_\+t x) noexcept
+\item 
+{\footnotesize template$<$typename Input\+Char\+Type , typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+signed$<$ char $>$\+::value and std\+::is\+\_\+same$<$ char, typename std\+::remove\+\_\+cv$<$ Input\+Char\+Type $>$\+::type $>$\+::value $>$ $\ast$  = nullptr$>$ }\\static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a2c2b2132ce56b3b45593374b622baa67}{to\+\_\+char\+\_\+type}} (Input\+Char\+Type x) noexcept
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type, typename Char\+Type$>$\newline
+class nlohmann\+::detail\+::binary\+\_\+writer$<$ Basic\+Json\+Type, Char\+Type $>$}
+serialization to CBOR and Message\+Pack values 
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l09983}{9983}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_a373289af95a946c19bb4a58a5df71a78}\label{classnlohmann_1_1detail_1_1binary__writer_a373289af95a946c19bb4a58a5df71a78}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!binary\_writer@{binary\_writer}}
+\index{binary\_writer@{binary\_writer}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{binary\_writer()}{binary\_writer()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::binary\+\_\+writer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}}$<$ Char\+Type $>$}]{adapter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+create a binary writer 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em adapter} & output adapter to write to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l09992}{9992}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{09992\ :\ oa(adapter)\ \{\ assert(oa);\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_a2c2b2132ce56b3b45593374b622baa67}\label{classnlohmann_1_1detail_1_1binary__writer_a2c2b2132ce56b3b45593374b622baa67}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!to\_char\_type@{to\_char\_type}}
+\index{to\_char\_type@{to\_char\_type}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{to\_char\_type()}{to\_char\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+template$<$typename Input\+Char\+Type , typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+signed$<$ char $>$\+::value and std\+::is\+\_\+same$<$ char, typename std\+::remove\+\_\+cv$<$ Input\+Char\+Type $>$\+::type $>$\+::value $>$ $\ast$  = nullptr$>$ \\
+static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::to\+\_\+char\+\_\+type (\begin{DoxyParamCaption}\item[{Input\+Char\+Type}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l11005}{11005}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{11006\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{11007\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}\label{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!to\_char\_type@{to\_char\_type}}
+\index{to\_char\_type@{to\_char\_type}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{to\_char\_type()}{to\_char\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+signed$<$ char $>$\+::value $>$ $\ast$  = nullptr$>$ \\
+static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::to\+\_\+char\+\_\+type (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10984}{10984}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10985\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&x);}
+\DoxyCodeLine{10986\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_a5e46f0dd3550901b15cf85265808d1ec}\label{classnlohmann_1_1detail_1_1binary__writer_a5e46f0dd3550901b15cf85265808d1ec}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!to\_char\_type@{to\_char\_type}}
+\index{to\_char\_type@{to\_char\_type}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{to\_char\_type()}{to\_char\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+signed$<$ C $>$\+::value and std\+::is\+\_\+unsigned$<$ char $>$\+::value $>$ $\ast$  = nullptr$>$ \\
+static Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::to\+\_\+char\+\_\+type (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10989}{10989}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10990\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(\textcolor{keyword}{sizeof}(std::uint8\_t)\ ==\ \textcolor{keyword}{sizeof}(CharType),\ \textcolor{stringliteral}{"{}size\ of\ CharType\ must\ be\ equal\ to\ std::uint8\_t"{}});}
+\DoxyCodeLine{10991\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_pod<CharType>::value,\ \textcolor{stringliteral}{"{}CharType\ must\ be\ POD"{}});}
+\DoxyCodeLine{10992\ \ \ \ \ \ \ \ \ CharType\ result;}
+\DoxyCodeLine{10993\ \ \ \ \ \ \ \ \ std::memcpy(\&result,\ \&x,\ \textcolor{keyword}{sizeof}(x));}
+\DoxyCodeLine{10994\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{10995\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}\label{classnlohmann_1_1detail_1_1binary__writer_ab77aa48692bd4e64e4f051ce6aeb6d2d}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!to\_char\_type@{to\_char\_type}}
+\index{to\_char\_type@{to\_char\_type}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{to\_char\_type()}{to\_char\_type()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+template$<$typename C  = Char\+Type, enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+unsigned$<$ C $>$\+::value $>$ $\ast$  = nullptr$>$ \\
+static constexpr Char\+Type \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::to\+\_\+char\+\_\+type (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10998}{10998}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10999\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{11000\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_a9ffc566db5219b473762462234b47db9}\label{classnlohmann_1_1detail_1_1binary__writer_a9ffc566db5219b473762462234b47db9}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!write\_bson@{write\_bson}}
+\index{write\_bson@{write\_bson}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{write\_bson()}{write\_bson()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+bson (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em j} & JSON value to serialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+j.\+type() == \doxylink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\+\_\+t\+::object} 
+\end{DoxyPrecond}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l09998}{9998}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{09998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{09999\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (j.type())\ \{}
+\DoxyCodeLine{10000\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:\ \{}
+\DoxyCodeLine{10001\ \ \ \ \ \ \ \ \ \ \ \ \ write\_bson\_object(*j.m\_value.object);}
+\DoxyCodeLine{10002\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10003\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10004\ }
+\DoxyCodeLine{10005\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{10006\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(type\_error::create(317,\ \textcolor{stringliteral}{"{}to\ serialize\ to\ BSON,\ top-\/level\ type\ must\ be\ object,\ but\ is\ "{}}\ +}
+\DoxyCodeLine{10007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string(j.type\_name())));}
+\DoxyCodeLine{10008\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10009\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10010\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}\label{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!write\_cbor@{write\_cbor}}
+\index{write\_cbor@{write\_cbor}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{write\_cbor()}{write\_cbor()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+cbor (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em j} & JSON value to serialize \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10015}{10015}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (j.type())\ \{}
+\DoxyCodeLine{10017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:\ \{}
+\DoxyCodeLine{10018\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xF6));}
+\DoxyCodeLine{10019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10021\ }
+\DoxyCodeLine{10022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:\ \{}
+\DoxyCodeLine{10023\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(j.m\_value.boolean\ ?\ to\_char\_type(0xF5)\ :\ to\_char\_type(0xF4));}
+\DoxyCodeLine{10024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10026\ }
+\DoxyCodeLine{10027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:\ \{}
+\DoxyCodeLine{10028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ 0)\ \{}
+\DoxyCodeLine{10029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CBOR\ does\ not\ differentiate\ between\ positive\ signed}}
+\DoxyCodeLine{10030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ integers\ and\ unsigned\ integers.\ Therefore,\ we\ used\ the}}
+\DoxyCodeLine{10031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ code\ from\ the\ value\_t::number\_unsigned\ case\ here.}}
+\DoxyCodeLine{10032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ <=\ 0x17)\ \{}
+\DoxyCodeLine{10033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x18));}
+\DoxyCodeLine{10036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x19));}
+\DoxyCodeLine{10039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x1A));}
+\DoxyCodeLine{10042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{10044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x1B));}
+\DoxyCodeLine{10045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10047\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{10048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ conversions\ below\ encode\ the\ sign\ in\ the\ first}}
+\DoxyCodeLine{10049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ byte,\ and\ the\ value\ is\ converted\ to\ a\ positive\ number.}}
+\DoxyCodeLine{10050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ positive\_number\ =\ -\/1\ -\/\ j.m\_value.number\_integer;}
+\DoxyCodeLine{10051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ -\/24)\ \{}
+\DoxyCodeLine{10052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0x20\ +\ positive\_number));}
+\DoxyCodeLine{10053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (positive\_number\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x38));}
+\DoxyCodeLine{10055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(positive\_number));}
+\DoxyCodeLine{10056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (positive\_number\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x39));}
+\DoxyCodeLine{10058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(positive\_number));}
+\DoxyCodeLine{10059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (positive\_number\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x3A));}
+\DoxyCodeLine{10061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(positive\_number));}
+\DoxyCodeLine{10062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{10063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x3B));}
+\DoxyCodeLine{10064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(positive\_number));}
+\DoxyCodeLine{10065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10069\ }
+\DoxyCodeLine{10070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:\ \{}
+\DoxyCodeLine{10071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ 0x17)\ \{}
+\DoxyCodeLine{10072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_unsigned));}
+\DoxyCodeLine{10073\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x18));}
+\DoxyCodeLine{10075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_unsigned));}
+\DoxyCodeLine{10076\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x19));}
+\DoxyCodeLine{10078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(j.m\_value.number\_unsigned));}
+\DoxyCodeLine{10079\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x1A));}
+\DoxyCodeLine{10081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(j.m\_value.number\_unsigned));}
+\DoxyCodeLine{10082\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{10083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x1B));}
+\DoxyCodeLine{10084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(j.m\_value.number\_unsigned));}
+\DoxyCodeLine{10085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10088\ }
+\DoxyCodeLine{10089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:\ \{}
+\DoxyCodeLine{10090\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(get\_cbor\_float\_prefix(j.m\_value.number\_float));}
+\DoxyCodeLine{10091\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(j.m\_value.number\_float);}
+\DoxyCodeLine{10092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10094\ }
+\DoxyCodeLine{10095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:\ \{}
+\DoxyCodeLine{10096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ string\ length}}
+\DoxyCodeLine{10097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.string-\/>size();}
+\DoxyCodeLine{10098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 0x17)\ \{}
+\DoxyCodeLine{10099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0x60\ +\ N));}
+\DoxyCodeLine{10100\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x78));}
+\DoxyCodeLine{10102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10103\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x79));}
+\DoxyCodeLine{10105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10106\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x7A));}
+\DoxyCodeLine{10108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_START}}
+\DoxyCodeLine{10111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint64\_t>::max)())\ \{}
+\DoxyCodeLine{10112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x7B));}
+\DoxyCodeLine{10113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{10116\ }
+\DoxyCodeLine{10117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ the\ string}}
+\DoxyCodeLine{10118\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_characters(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }CharType*\textcolor{keyword}{>}(j.m\_value.string-\/>c\_str()),}
+\DoxyCodeLine{10119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.string-\/>size());}
+\DoxyCodeLine{10120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10122\ }
+\DoxyCodeLine{10123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:\ \{}
+\DoxyCodeLine{10124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ array\ size}}
+\DoxyCodeLine{10125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.array-\/>size();}
+\DoxyCodeLine{10126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 0x17)\ \{}
+\DoxyCodeLine{10127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0x80\ +\ N));}
+\DoxyCodeLine{10128\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x98));}
+\DoxyCodeLine{10130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10131\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x99));}
+\DoxyCodeLine{10133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10134\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x9A));}
+\DoxyCodeLine{10136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10137\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_START}}
+\DoxyCodeLine{10139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint64\_t>::max)())\ \{}
+\DoxyCodeLine{10140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0x9B));}
+\DoxyCodeLine{10141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{10144\ }
+\DoxyCodeLine{10145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ each\ element}}
+\DoxyCodeLine{10146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.array)\ \{}
+\DoxyCodeLine{10147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}{write\_cbor}}(el);}
+\DoxyCodeLine{10148\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10151\ }
+\DoxyCodeLine{10152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:\ \{}
+\DoxyCodeLine{10153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ object\ size}}
+\DoxyCodeLine{10154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.object-\/>size();}
+\DoxyCodeLine{10155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 0x17)\ \{}
+\DoxyCodeLine{10156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0xA0\ +\ N));}
+\DoxyCodeLine{10157\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xB8));}
+\DoxyCodeLine{10159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10160\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xB9));}
+\DoxyCodeLine{10162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10163\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xBA));}
+\DoxyCodeLine{10165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_START}}
+\DoxyCodeLine{10168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint64\_t>::max)())\ \{}
+\DoxyCodeLine{10169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xBB));}
+\DoxyCodeLine{10170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10171\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{10173\ }
+\DoxyCodeLine{10174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ each\ element}}
+\DoxyCodeLine{10175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.object)\ \{}
+\DoxyCodeLine{10176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}{write\_cbor}}(el.first);}
+\DoxyCodeLine{10177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_aa0ab8d27fd88a33a2f801413ac4c7fbc}{write\_cbor}}(el.second);}
+\DoxyCodeLine{10178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10181\ }
+\DoxyCodeLine{10182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{10183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10185\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}\label{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!write\_msgpack@{write\_msgpack}}
+\index{write\_msgpack@{write\_msgpack}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{write\_msgpack()}{write\_msgpack()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+msgpack (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em j} & JSON value to serialize \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10190}{10190}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (j.type())\ \{}
+\DoxyCodeLine{10192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:\ \textcolor{comment}{//\ nil}}
+\DoxyCodeLine{10193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10194\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xC0));}
+\DoxyCodeLine{10195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10197\ }
+\DoxyCodeLine{10198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:\ \textcolor{comment}{//\ true\ and\ false}}
+\DoxyCodeLine{10199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10200\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(j.m\_value.boolean\ ?\ to\_char\_type(0xC3)\ :\ to\_char\_type(0xC2));}
+\DoxyCodeLine{10201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10203\ }
+\DoxyCodeLine{10204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:\ \{}
+\DoxyCodeLine{10205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ 0)\ \{}
+\DoxyCodeLine{10206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MessagePack\ does\ not\ differentiate\ between\ positive}}
+\DoxyCodeLine{10207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ signed\ integers\ and\ unsigned\ integers.\ Therefore,\ we\ used}}
+\DoxyCodeLine{10208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ code\ from\ the\ value\_t::number\_unsigned\ case\ here.}}
+\DoxyCodeLine{10209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <\ 128)\ \{}
+\DoxyCodeLine{10210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ positive\ fixnum}}
+\DoxyCodeLine{10211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 8}}
+\DoxyCodeLine{10214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCC));}
+\DoxyCodeLine{10215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 16}}
+\DoxyCodeLine{10218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCD));}
+\DoxyCodeLine{10219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 32}}
+\DoxyCodeLine{10222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCE));}
+\DoxyCodeLine{10223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint64\_t>::max)())\ \{}
+\DoxyCodeLine{10225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 64}}
+\DoxyCodeLine{10226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCF));}
+\DoxyCodeLine{10227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10229\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{10230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ -\/32)\ \{}
+\DoxyCodeLine{10231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ negative\ fixnum}}
+\DoxyCodeLine{10232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::int8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ (std::numeric\_limits<std::int8\_t>::min)()\ and}
+\DoxyCodeLine{10234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::int8\_t>::max)())\ \{}
+\DoxyCodeLine{10235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ 8}}
+\DoxyCodeLine{10236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xD0));}
+\DoxyCodeLine{10237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::int8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ (std::numeric\_limits<std::int16\_t>::min)()\ and}
+\DoxyCodeLine{10239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::int16\_t>::max)())\ \{}
+\DoxyCodeLine{10240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ 16}}
+\DoxyCodeLine{10241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xD1));}
+\DoxyCodeLine{10242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::int16\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ (std::numeric\_limits<std::int32\_t>::min)()\ and}
+\DoxyCodeLine{10244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::int32\_t>::max)())\ \{}
+\DoxyCodeLine{10245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ 32}}
+\DoxyCodeLine{10246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xD2));}
+\DoxyCodeLine{10247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::int32\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_integer\ >=\ (std::numeric\_limits<std::int64\_t>::min)()\ and}
+\DoxyCodeLine{10249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.number\_integer\ <=\ (std::numeric\_limits<std::int64\_t>::max)())\ \{}
+\DoxyCodeLine{10250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ 64}}
+\DoxyCodeLine{10251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xD3));}
+\DoxyCodeLine{10252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::int64\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10254\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10256\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10257\ }
+\DoxyCodeLine{10258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:\ \{}
+\DoxyCodeLine{10259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <\ 128)\ \{}
+\DoxyCodeLine{10260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ positive\ fixnum}}
+\DoxyCodeLine{10261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10262\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 8}}
+\DoxyCodeLine{10264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCC));}
+\DoxyCodeLine{10265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10266\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 16}}
+\DoxyCodeLine{10268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCD));}
+\DoxyCodeLine{10269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10270\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 32}}
+\DoxyCodeLine{10272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCE));}
+\DoxyCodeLine{10273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10274\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j.m\_value.number\_unsigned\ <=\ (std::numeric\_limits<std::uint64\_t>::max)())\ \{}
+\DoxyCodeLine{10275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint\ 64}}
+\DoxyCodeLine{10276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xCF));}
+\DoxyCodeLine{10277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint64\_t\textcolor{keyword}{>}(j.m\_value.number\_integer));}
+\DoxyCodeLine{10278\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10281\ }
+\DoxyCodeLine{10282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:\ \{}
+\DoxyCodeLine{10283\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(get\_msgpack\_float\_prefix(j.m\_value.number\_float));}
+\DoxyCodeLine{10284\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(j.m\_value.number\_float);}
+\DoxyCodeLine{10285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10287\ }
+\DoxyCodeLine{10288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:\ \{}
+\DoxyCodeLine{10289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ string\ length}}
+\DoxyCodeLine{10290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.string-\/>size();}
+\DoxyCodeLine{10291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 31)\ \{}
+\DoxyCodeLine{10292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fixstr}}
+\DoxyCodeLine{10293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0xA0\ |\ N));}
+\DoxyCodeLine{10294\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint8\_t>::max)())\ \{}
+\DoxyCodeLine{10295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ str\ 8}}
+\DoxyCodeLine{10296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xD9));}
+\DoxyCodeLine{10297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10298\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ str\ 16}}
+\DoxyCodeLine{10300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDA));}
+\DoxyCodeLine{10301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10302\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ str\ 32}}
+\DoxyCodeLine{10304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDB));}
+\DoxyCodeLine{10305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10306\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10307\ }
+\DoxyCodeLine{10308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ the\ string}}
+\DoxyCodeLine{10309\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_characters(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }CharType*\textcolor{keyword}{>}(j.m\_value.string-\/>c\_str()),}
+\DoxyCodeLine{10310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.string-\/>size());}
+\DoxyCodeLine{10311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10313\ }
+\DoxyCodeLine{10314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:\ \{}
+\DoxyCodeLine{10315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ array\ size}}
+\DoxyCodeLine{10316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.array-\/>size();}
+\DoxyCodeLine{10317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 15)\ \{}
+\DoxyCodeLine{10318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fixarray}}
+\DoxyCodeLine{10319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0x90\ |\ N));}
+\DoxyCodeLine{10320\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ array\ 16}}
+\DoxyCodeLine{10322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDC));}
+\DoxyCodeLine{10323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10324\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ array\ 32}}
+\DoxyCodeLine{10326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDD));}
+\DoxyCodeLine{10327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10328\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10329\ }
+\DoxyCodeLine{10330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ each\ element}}
+\DoxyCodeLine{10331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.array)\ \{}
+\DoxyCodeLine{10332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}{write\_msgpack}}(el);}
+\DoxyCodeLine{10333\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10335\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10336\ }
+\DoxyCodeLine{10337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:\ \{}
+\DoxyCodeLine{10338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ write\ control\ byte\ and\ the\ object\ size}}
+\DoxyCodeLine{10339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ N\ =\ j.m\_value.object-\/>size();}
+\DoxyCodeLine{10340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (N\ <=\ 15)\ \{}
+\DoxyCodeLine{10341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fixmap}}
+\DoxyCodeLine{10342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint8\_t\textcolor{keyword}{>}(0x80\ |\ (N\ \&\ 0xF)));}
+\DoxyCodeLine{10343\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint16\_t>::max)())\ \{}
+\DoxyCodeLine{10344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ map\ 16}}
+\DoxyCodeLine{10345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDE));}
+\DoxyCodeLine{10346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint16\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10347\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (N\ <=\ (std::numeric\_limits<std::uint32\_t>::max)())\ \{}
+\DoxyCodeLine{10348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ map\ 32}}
+\DoxyCodeLine{10349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(0xDF));}
+\DoxyCodeLine{10350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number(\textcolor{keyword}{static\_cast<}std::uint32\_t\textcolor{keyword}{>}(N));}
+\DoxyCodeLine{10351\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10352\ }
+\DoxyCodeLine{10353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ step\ 2:\ write\ each\ element}}
+\DoxyCodeLine{10354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.object)\ \{}
+\DoxyCodeLine{10355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}{write\_msgpack}}(el.first);}
+\DoxyCodeLine{10356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_ae4e0852b64102ce4b07d99f08f828b7c}{write\_msgpack}}(el.second);}
+\DoxyCodeLine{10357\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10358\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10359\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10360\ }
+\DoxyCodeLine{10361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{10362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10363\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10364\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__writer_a0f6c65053d859269f88eb4ebb0cd7060}\label{classnlohmann_1_1detail_1_1binary__writer_a0f6c65053d859269f88eb4ebb0cd7060}} 
+\index{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}!write\_ubjson@{write\_ubjson}}
+\index{write\_ubjson@{write\_ubjson}!nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$@{nlohmann::detail::binary\_writer$<$ BasicJsonType, CharType $>$}}
+\doxysubsubsection{\texorpdfstring{write\_ubjson()}{write\_ubjson()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Char\+Type $>$ \\
+void \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer}}$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+ubjson (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{j,  }\item[{const bool}]{use\+\_\+count,  }\item[{const bool}]{use\+\_\+type,  }\item[{const bool}]{add\+\_\+prefix = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em j} & JSON value to serialize \\
+\hline
+\mbox{\texttt{ in}}  & {\em use\+\_\+count} & whether to use \textquotesingle{}\#\textquotesingle{} prefixes (optimized format) \\
+\hline
+\mbox{\texttt{ in}}  & {\em use\+\_\+type} & whether to use \textquotesingle{}\$\textquotesingle{} prefixes (optimized format) \\
+\hline
+\mbox{\texttt{ in}}  & {\em add\+\_\+prefix} & whether prefixes need to be used for this value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{json_8hpp_source_l10372}{10372}} of file \mbox{\hyperlink{json_8hpp_source}{json.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{10373\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (j.type())\ \{}
+\DoxyCodeLine{10374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:\ \{}
+\DoxyCodeLine{10375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add\_prefix)\ \{}
+\DoxyCodeLine{10376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'Z'}));}
+\DoxyCodeLine{10377\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10378\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10379\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10380\ }
+\DoxyCodeLine{10381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:\ \{}
+\DoxyCodeLine{10382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add\_prefix)\ \{}
+\DoxyCodeLine{10383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(j.m\_value.boolean\ ?\ to\_char\_type(\textcolor{charliteral}{'T'})\ :\ to\_char\_type(\textcolor{charliteral}{'F'}));}
+\DoxyCodeLine{10384\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10385\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10386\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10387\ }
+\DoxyCodeLine{10388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:\ \{}
+\DoxyCodeLine{10389\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.number\_integer,\ add\_prefix);}
+\DoxyCodeLine{10390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10392\ }
+\DoxyCodeLine{10393\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:\ \{}
+\DoxyCodeLine{10394\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.number\_unsigned,\ add\_prefix);}
+\DoxyCodeLine{10395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10396\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10397\ }
+\DoxyCodeLine{10398\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:\ \{}
+\DoxyCodeLine{10399\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.number\_float,\ add\_prefix);}
+\DoxyCodeLine{10400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10401\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10402\ }
+\DoxyCodeLine{10403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:\ \{}
+\DoxyCodeLine{10404\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add\_prefix)\ \{}
+\DoxyCodeLine{10405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'S'}));}
+\DoxyCodeLine{10406\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10407\ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.string-\/>size(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{10408\ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_characters(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }CharType*\textcolor{keyword}{>}(j.m\_value.string-\/>c\_str()),}
+\DoxyCodeLine{10409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j.m\_value.string-\/>size());}
+\DoxyCodeLine{10410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10411\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10412\ }
+\DoxyCodeLine{10413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:\ \{}
+\DoxyCodeLine{10414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add\_prefix)\ \{}
+\DoxyCodeLine{10415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'['}));}
+\DoxyCodeLine{10416\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10417\ }
+\DoxyCodeLine{10418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ prefix\_required\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{10419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (use\_type\ and\ not\ j.m\_value.array-\/>empty())\ \{}
+\DoxyCodeLine{10420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(use\_count);}
+\DoxyCodeLine{10421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CharType\ first\_prefix\ =\ ubjson\_prefix(j.front());}
+\DoxyCodeLine{10422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ same\_prefix\ =}
+\DoxyCodeLine{10423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::all\_of(j.begin()\ +\ 1,\ j.end(),\ [\textcolor{keyword}{this},\ first\_prefix](\textcolor{keyword}{const}\ BasicJsonType\&\ v)\ \{}
+\DoxyCodeLine{10424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ ubjson\_prefix(v)\ ==\ first\_prefix;}
+\DoxyCodeLine{10425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{10426\ }
+\DoxyCodeLine{10427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (same\_prefix)\ \{}
+\DoxyCodeLine{10428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefix\_required\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{10429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\$'}));}
+\DoxyCodeLine{10430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(first\_prefix);}
+\DoxyCodeLine{10431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10433\ }
+\DoxyCodeLine{10434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (use\_count)\ \{}
+\DoxyCodeLine{10435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\#'}));}
+\DoxyCodeLine{10436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.array-\/>size(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{10437\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10438\ }
+\DoxyCodeLine{10439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.array)\ \{}
+\DoxyCodeLine{10440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a0f6c65053d859269f88eb4ebb0cd7060}{write\_ubjson}}(el,\ use\_count,\ use\_type,\ prefix\_required);}
+\DoxyCodeLine{10441\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10442\ }
+\DoxyCodeLine{10443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (not\ use\_count)\ \{}
+\DoxyCodeLine{10444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{']'}));}
+\DoxyCodeLine{10445\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10446\ }
+\DoxyCodeLine{10447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10448\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10449\ }
+\DoxyCodeLine{10450\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:\ \{}
+\DoxyCodeLine{10451\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (add\_prefix)\ \{}
+\DoxyCodeLine{10452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\{'}));}
+\DoxyCodeLine{10453\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10454\ }
+\DoxyCodeLine{10455\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ prefix\_required\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{10456\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (use\_type\ and\ not\ j.m\_value.object-\/>empty())\ \{}
+\DoxyCodeLine{10457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(use\_count);}
+\DoxyCodeLine{10458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ CharType\ first\_prefix\ =\ ubjson\_prefix(j.front());}
+\DoxyCodeLine{10459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ same\_prefix\ =\ std::all\_of(j.begin(),\ j.end(),\ [\textcolor{keyword}{this},\ first\_prefix](\textcolor{keyword}{const}\ BasicJsonType\&\ v)\ \{}
+\DoxyCodeLine{10460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ ubjson\_prefix(v)\ ==\ first\_prefix;}
+\DoxyCodeLine{10461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{10462\ }
+\DoxyCodeLine{10463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (same\_prefix)\ \{}
+\DoxyCodeLine{10464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prefix\_required\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{10465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\$'}));}
+\DoxyCodeLine{10466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(first\_prefix);}
+\DoxyCodeLine{10467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10468\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10469\ }
+\DoxyCodeLine{10470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (use\_count)\ \{}
+\DoxyCodeLine{10471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\#'}));}
+\DoxyCodeLine{10472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(j.m\_value.object-\/>size(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{10473\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10474\ }
+\DoxyCodeLine{10475\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ el\ :\ *j.m\_value.object)\ \{}
+\DoxyCodeLine{10476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ write\_number\_with\_ubjson\_prefix(el.first.size(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{10477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_characters(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }CharType*\textcolor{keyword}{>}(el.first.c\_str()),\ el.first.size());}
+\DoxyCodeLine{10478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1detail_1_1binary__writer_a0f6c65053d859269f88eb4ebb0cd7060}{write\_ubjson}}(el.second,\ use\_count,\ use\_type,\ prefix\_required);}
+\DoxyCodeLine{10479\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10480\ }
+\DoxyCodeLine{10481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (not\ use\_count)\ \{}
+\DoxyCodeLine{10482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oa-\/>write\_character(to\_char\_type(\textcolor{charliteral}{'\}'}));}
+\DoxyCodeLine{10483\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10484\ }
+\DoxyCodeLine{10485\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10486\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10487\ }
+\DoxyCodeLine{10488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{10489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{10490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{10491\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+util/json.\+hpp\end{DoxyCompactItemize}

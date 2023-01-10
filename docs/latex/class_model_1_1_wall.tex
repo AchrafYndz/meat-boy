@@ -1,0 +1,138 @@
+\hypertarget{class_model_1_1_wall}{}\doxysection{Model\+::Wall Class Reference}
+\label{class_model_1_1_wall}\index{Model::Wall@{Model::Wall}}
+
+
+{\ttfamily \#include $<$Wall.\+h$>$}
+
+Inheritance diagram for Model\+::Wall\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_wall}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_wall_ac4260a872517b84310aaf32963112cfc}{Wall}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position\+\_\+)
+\item 
+\mbox{\hyperlink{class_model_1_1_wall_a4555f93e6568c252f8570728ff1a3f78}{$\sim$\+Wall}} () override=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}} (\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} type\+\_\+)
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{$\sim$\+Entity}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{assign\+View}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \&view)
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{get\+Type}} () const
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera)=0
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{get\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_subject}{Model\+::\+Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{register\+Observer}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_observer}{Observer}} $>$ \&observer)
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notify\+Observers}} (float x, float y, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera, bool facing\+Left)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \{ {\bfseries player}
+, {\bfseries wall}
+, {\bfseries goal}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entity\+View}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_model_1_1_wall}{Wall} Class for representing wall entities in the game This class is derived from the \doxylink{class_model_1_1_entity}{Entity} base class and \doxylink{class_model_1_1_subject}{Subject} class 
+
+Definition at line \mbox{\hyperlink{_wall_8h_source_l00014}{14}} of file \mbox{\hyperlink{_wall_8h_source}{Wall.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_wall_ac4260a872517b84310aaf32963112cfc}\label{class_model_1_1_wall_ac4260a872517b84310aaf32963112cfc}} 
+\index{Model::Wall@{Model::Wall}!Wall@{Wall}}
+\index{Wall@{Wall}!Model::Wall@{Model::Wall}}
+\doxysubsubsection{\texorpdfstring{Wall()}{Wall()}}
+{\footnotesize\ttfamily Model\+::\+Wall\+::\+Wall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor for creating a new wall object 
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+} & Initial position of the wall \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_wall_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_wall_8cpp_source}{Wall.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ :\ \mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}}(Type::wall)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_wall_a4555f93e6568c252f8570728ff1a3f78}\label{class_model_1_1_wall_a4555f93e6568c252f8570728ff1a3f78}} 
+\index{Model::Wall@{Model::Wall}!````~Wall@{$\sim$Wall}}
+\index{````~Wall@{$\sim$Wall}!Model::Wall@{Model::Wall}}
+\doxysubsubsection{\texorpdfstring{$\sim$Wall()}{~Wall()}}
+{\footnotesize\ttfamily Model\+::\+Wall\+::$\sim$\+Wall (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Default Destructor for \doxylink{class_model_1_1_wall}{Wall} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}\label{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}} 
+\index{Model::Wall@{Model::Wall}!update@{update}}
+\index{update@{update}!Model::Wall@{Model::Wall}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::\+Wall\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Update method which updates the wall\textquotesingle{}s position 
+\begin{DoxyParams}{Parameters}
+{\em world} & A shared pointer to the game world \\
+\hline
+{\em camera} & A shared pointer to the camera \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{Model\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_wall_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_wall_8cpp_source}{Wall.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pixelPosition\ =\ camera-\/>toPixels(\mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}});}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notifyObservers}}(pixelPosition.x,\ pixelPosition.y,\ camera,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/Wall.\+h\item 
+model/Wall.\+cpp\end{DoxyCompactItemize}

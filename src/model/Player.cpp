@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Camera.h"
 
-Model::Player::Player(floatVector2 pos) : Entity(Type::player) { position = pos; }
+Model::Player::Player(floatVector2 position_) : Entity(Type::player) { position = position_; }
 
 void Model::Player::buttonAction(KeyEnum key, bool pressed) {
     switch (key) {

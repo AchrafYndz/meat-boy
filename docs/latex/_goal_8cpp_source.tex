@@ -1,0 +1,15 @@
+\hypertarget{_goal_8cpp_source}{}\doxysection{Goal.\+cpp}
+\label{_goal_8cpp_source}\index{model/Goal.cpp@{model/Goal.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Goal.h"{}}}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00004}\mbox{\hyperlink{class_model_1_1_goal_ab8a113efb53dc0313636439ae039e9e5}{00004}}\ \mbox{\hyperlink{class_model_1_1_goal_ab8a113efb53dc0313636439ae039e9e5}{Model::Goal::Goal}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position\_)\ :\ \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}::goal)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00006}\mbox{\hyperlink{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}{00006}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}{Model::Goal::update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ std::shared\_ptr<Camera>\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pixelPosition\ =\ camera-\/>toPixels(position);}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00008}00008\ \ \ \ \ notifyObservers(pixelPosition.x,\ pixelPosition.y,\ camera,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_goal_8cpp_source_l00009}00009\ \}}
+
+\end{DoxyCode}

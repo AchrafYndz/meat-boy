@@ -1,0 +1,36 @@
+\hypertarget{_stopwatch_8h_source}{}\doxysection{Stopwatch.\+h}
+\label{_stopwatch_8h_source}\index{util/Stopwatch.h@{util/Stopwatch.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STOPWATCH\_H}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STOPWATCH\_H}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00008}00008\ \textcolor{keyword}{namespace\ }Utility\ \{}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00014}\mbox{\hyperlink{class_utility_1_1_stopwatch}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}}\ \{}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00015}00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Stopwatch>\ stopwatch;}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00024}00024\ \ \ \ \ std::chrono::time\_point<std::chrono::steady\_clock>\ lastUpdate\ =\ std::chrono::steady\_clock::now();}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00026}00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00030}\mbox{\hyperlink{class_utility_1_1_stopwatch_a4f3cc617811a1a0b88071813e4032c49}{00030}}\ \ \ \ \ \mbox{\hyperlink{class_utility_1_1_stopwatch_a4f3cc617811a1a0b88071813e4032c49}{Stopwatch}}(\mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}}\&\ other)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00035}\mbox{\hyperlink{class_utility_1_1_stopwatch_a1d732b9ed458591827edcaf67d5a2587}{00035}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utility_1_1_stopwatch_a1d732b9ed458591827edcaf67d5a2587}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utility_1_1_stopwatch}{Stopwatch}}\&\ other)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00042}\mbox{\hyperlink{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}{00042}}\ \ \ \ \ \textcolor{keyword}{static}\ std::shared\_ptr<Stopwatch>\ \mbox{\hyperlink{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}{getInstance}}()\ \{\ \textcolor{keywordflow}{return}\ stopwatch;\ \};}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}{timeSinceLastUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00055}00055\ \};}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00056}00056\ \}\ \textcolor{comment}{//\ namespace\ Utility}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8h_source_l00058}00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_STOPWATCH\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,26 @@
+\hypertarget{_concrete_factory_8h_source}{}\doxysection{Concrete\+Factory.\+h}
+\label{_concrete_factory_8h_source}\index{controller/ConcreteFactory.h@{controller/ConcreteFactory.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CONCRETEFACTORY\_H}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../model/AbstractFactory.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}../util/floatVector2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }Controller\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00015}\mbox{\hyperlink{class_controller_1_1_concrete_factory}{00015}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_controller_1_1_concrete_factory}{ConcreteFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_controller_1_1_abstract_factory}{Controller::AbstractFactory}}\ \{}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00016}00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00020}\mbox{\hyperlink{class_controller_1_1_concrete_factory_a6a2517ace243caa8d38547343deaa73c}{00020}}\ \ \ \ \ \mbox{\hyperlink{class_controller_1_1_concrete_factory_a6a2517ace243caa8d38547343deaa73c}{ConcreteFactory}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00031}00031\ \ \ \ \ std::shared\_ptr<Model::Entity>\ \mbox{\hyperlink{class_controller_1_1_concrete_factory_ace814356232ec8912fffb92d02b23189}{createEntity}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model::Entity::Type}}\ type,}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00033}00033\ \};}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00034}00034\ \}\ \textcolor{comment}{//\ namespace\ Controller}}
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_concrete_factory_8h_source_l00036}00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CONCRETEFACTORY\_H}}
+
+\end{DoxyCode}

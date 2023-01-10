@@ -1,0 +1,142 @@
+\hypertarget{class_model_1_1_goal}{}\doxysection{Model\+::Goal Class Reference}
+\label{class_model_1_1_goal}\index{Model::Goal@{Model::Goal}}
+
+
+{\ttfamily \#include $<$Goal.\+h$>$}
+
+Inheritance diagram for Model\+::Goal\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_goal}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_goal_ab8a113efb53dc0313636439ae039e9e5}{Goal}} (\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} position\+\_\+)
+\item 
+\mbox{\hyperlink{class_model_1_1_goal_a4b6c218a391d1e49b7b487c6a8d38f22}{$\sim$\+Goal}} () override=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}} (\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} type\+\_\+)
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{$\sim$\+Entity}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{assign\+View}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \&view)
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{get\+Type}} () const
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera)=0
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{get\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_subject}{Model\+::\+Subject}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a5e3bb27099ce9eb83fcd9b533064d08f}{register\+Observer}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_observer}{Observer}} $>$ \&observer)
+\item 
+void \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notify\+Observers}} (float x, float y, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ \&camera, bool facing\+Left)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Types inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \{ {\bfseries player}
+, {\bfseries wall}
+, {\bfseries goal}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_model_1_1_entity}{Model\+::\+Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entity\+View}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_model_1_1_goal}{Goal} class represents the goal in the game. It inherits from the \doxylink{class_model_1_1_entity}{Entity} base class and also implements the \doxylink{class_model_1_1_subject}{Subject} interface for the observer pattern. 
+
+Definition at line \mbox{\hyperlink{_goal_8h_source_l00012}{12}} of file \mbox{\hyperlink{_goal_8h_source}{Goal.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_goal_ab8a113efb53dc0313636439ae039e9e5}\label{class_model_1_1_goal_ab8a113efb53dc0313636439ae039e9e5}} 
+\index{Model::Goal@{Model::Goal}!Goal@{Goal}}
+\index{Goal@{Goal}!Model::Goal@{Model::Goal}}
+\doxysubsubsection{\texorpdfstring{Goal()}{Goal()}}
+{\footnotesize\ttfamily Model\+::\+Goal\+::\+Goal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}}}]{position\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor for the \doxylink{class_model_1_1_goal}{Goal} class
+
+
+\begin{DoxyParams}{Parameters}
+{\em position\+\_\+} & The position of the goal \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_goal_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_goal_8cpp_source}{Goal.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ :\ \mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}}(Type::goal)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_goal_a4b6c218a391d1e49b7b487c6a8d38f22}\label{class_model_1_1_goal_a4b6c218a391d1e49b7b487c6a8d38f22}} 
+\index{Model::Goal@{Model::Goal}!````~Goal@{$\sim$Goal}}
+\index{````~Goal@{$\sim$Goal}!Model::Goal@{Model::Goal}}
+\doxysubsubsection{\texorpdfstring{$\sim$Goal()}{~Goal()}}
+{\footnotesize\ttfamily Model\+::\+Goal\+::$\sim$\+Goal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Default Destructor for the \doxylink{class_model_1_1_goal}{Goal} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}\label{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}} 
+\index{Model::Goal@{Model::Goal}!update@{update}}
+\index{update@{update}!Model::Goal@{Model::Goal}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Model\+::\+Goal\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Update the goal
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The game world \\
+\hline
+{\em camera} & The camera \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{Model\+::\+Entity}}.
+
+
+
+Definition at line \mbox{\hyperlink{_goal_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_goal_8cpp_source}{Goal.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pixelPosition\ =\ camera-\/>toPixels(\mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}});}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_subject_a33f6c21717f00c369fe86cbdabcf9c97}{notifyObservers}}(pixelPosition.x,\ pixelPosition.y,\ camera,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00009\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/Goal.\+h\item 
+model/Goal.\+cpp\end{DoxyCompactItemize}

@@ -35,18 +35,18 @@ floatVector2 Model::Camera::toPixels(floatVector2 position) const {
 }
 
 void Model::Camera::move(float difference) {
-    if (cameraCenter + difference - float(WINDOW_HEIGHT) / 2.0f >= 0)
-        cameraCenter += difference;
+    if (cameraHeight + difference - float(WINDOW_HEIGHT) / 2.0f >= 0)
+        cameraHeight += difference;
 }
 
 bool Model::Camera::entityIsVisible(float y) const {
-    double upperLimit = cameraCenter - WINDOW_HEIGHT / 2.0f;
-    double lowerLimit = cameraCenter + WINDOW_HEIGHT / 2.0f;
+    double upperLimit = cameraHeight - WINDOW_HEIGHT / 2.0f;
+    double lowerLimit = cameraHeight + WINDOW_HEIGHT / 2.0f;
 
     return (y + SCALE * TILE_SIZE >= upperLimit && y <= lowerLimit);
 }
 
-void Model::Camera::setCameraCenter(float height) { cameraCenter = height - (WINDOW_HEIGHT / 2.0f); }
+void Model::Camera::setCameraHeight(float height) { cameraHeight = height - (WINDOW_HEIGHT / 2.0f); }
 
 void Model::Camera::update(const std::shared_ptr<Player>& player, const std::shared_ptr<Controller::StateManager>& stateManager) {
     // Move if auto scrolling
@@ -55,7 +55,7 @@ void Model::Camera::update(const std::shared_ptr<Player>& player, const std::sha
     }
     // if player above 80% of the level, move also
     float playerHeight = toPixels(player->getPosition()).y;
-    float difference = playerHeight - (cameraCenter - (WINDOW_HEIGHT * 0.3f));
+    float difference = playerHeight - (cameraHeight - (WINDOW_HEIGHT * 0.3f));
     if (difference < 0.0f)
         move(difference);
 }

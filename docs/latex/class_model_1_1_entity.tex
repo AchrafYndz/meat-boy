@@ -1,0 +1,225 @@
+\hypertarget{class_model_1_1_entity}{}\doxysection{Model\+::Entity Class Reference}
+\label{class_model_1_1_entity}\index{Model::Entity@{Model::Entity}}
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+Inheritance diagram for Model\+::Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_entity}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \{ {\bfseries player}
+, {\bfseries wall}
+, {\bfseries goal}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}{Entity}} (\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} type\+\_\+)
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}{$\sim$\+Entity}} ()=default
+\item 
+void \mbox{\hyperlink{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}{assign\+View}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \&view)
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}{get\+Type}} () const
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}{update}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&world, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera)=0
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}{get\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entity\+View}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The base class for all entities in the game. This class provides basic functionality and properties that all entities share. 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00020}{20}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_model_1_1_entity_a342659dcba0c925b4291476198490432}\label{class_model_1_1_entity_a342659dcba0c925b4291476198490432}} 
+\index{Model::Entity@{Model::Entity}!Type@{Type}}
+\index{Type@{Type}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Model\+::\+Entity\+::\+Type}}}
+
+Enumeration of possible entity types 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00030}{30}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \{\ player,\ wall,\ goal\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}\label{class_model_1_1_entity_a93b25150fa07f32c15f600692ae72f02}} 
+\index{Model::Entity@{Model::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily Model\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}}]{type\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor for the \doxylink{class_model_1_1_entity}{Entity} class
+
+
+\begin{DoxyParams}{Parameters}
+{\em type\+\_\+} & The type of the entity \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00040}{40}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \{\ \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}}\ =\ type\_;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}\label{class_model_1_1_entity_a77ced13830e4c39ad343074cc768ff99}} 
+\index{Model::Entity@{Model::Entity}!````~Entity@{$\sim$Entity}}
+\index{````~Entity@{$\sim$Entity}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{$\sim$Entity()}{~Entity()}}
+{\footnotesize\ttfamily virtual Model\+::\+Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+Default virtual destructor for the \doxylink{class_model_1_1_entity}{Entity} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}\label{class_model_1_1_entity_a3fdf9aeed8d38029cb0323d7ee48d36f}} 
+\index{Model::Entity@{Model::Entity}!assignView@{assignView}}
+\index{assignView@{assignView}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{assignView()}{assignView()}}
+{\footnotesize\ttfamily void Model\+::\+Entity\+::assign\+View (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity_view}{Entity\+View}} $>$ \&}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Assign a view to the entity
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & The view to assign \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00052}{52}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}{entityView}}\ =\ view;\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}\label{class_model_1_1_entity_ab72152de9729f9f0864b0470d63ca012}} 
+\index{Model::Entity@{Model::Entity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Model\+::\+Entity\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the position of the entity
+
+\begin{DoxyReturn}{Returns}
+The normalized position of the entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00074}{74}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}};\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}\label{class_model_1_1_entity_ae190b8c195b1262457649cb36f745469}} 
+\index{Model::Entity@{Model::Entity}!getType@{getType}}
+\index{getType@{getType}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} Model\+::\+Entity\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the type of the entity
+
+\begin{DoxyReturn}{Returns}
+The type of the entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00059}{59}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}{type}};\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}\label{class_model_1_1_entity_a204eb098dad03429284f5c3b97ccc614}} 
+\index{Model::Entity@{Model::Entity}!update@{update}}
+\index{update@{update}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void Model\+::\+Entity\+::update (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_world}{Model\+::\+World}} $>$ \&}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$}]{camera }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Update the entity
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The game world \\
+\hline
+{\em camera} & The camera \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_model_1_1_goal_a875811d16ca606d2fc31441d9cbfd500}{Model\+::\+Goal}}, and \mbox{\hyperlink{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}{Model\+::\+Wall}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}\label{class_model_1_1_entity_a2207e0cc6497c8e5f595740394da618c}} 
+\index{Model::Entity@{Model::Entity}!entityView@{entityView}}
+\index{entityView@{entityView}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{entityView}{entityView}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_entity_view}{Entity\+View}}$>$ Model\+::\+Entity\+::entity\+View\hspace{0.3cm}{\ttfamily [protected]}}
+
+A shared pointer to the view of the entity 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00026}{26}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+\mbox{\Hypertarget{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}\label{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}} 
+\index{Model::Entity@{Model::Entity}!position@{position}}
+\index{position@{position}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Model\+::\+Entity\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+The normalized position of the entity 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00023}{23}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+\mbox{\Hypertarget{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}\label{class_model_1_1_entity_ae53ceff6f9a8b992b2992b9cf64c8aac}} 
+\index{Model::Entity@{Model::Entity}!type@{type}}
+\index{type@{type}!Model::Entity@{Model::Entity}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}} Model\+::\+Entity\+::type}
+
+The type of the current entity instance 
+
+Definition at line \mbox{\hyperlink{_entity_8h_source_l00033}{33}} of file \mbox{\hyperlink{_entity_8h_source}{Entity.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/Entity.\+h\end{DoxyCompactItemize}

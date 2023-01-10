@@ -1,0 +1,16 @@
+\hypertarget{_wall_8cpp_source}{}\doxysection{Wall.\+cpp}
+\label{_wall_8cpp_source}\index{model/Wall.cpp@{model/Wall.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Wall.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}World.h"{}}}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00005}\mbox{\hyperlink{class_model_1_1_wall_ac4260a872517b84310aaf32963112cfc}{00005}}\ \mbox{\hyperlink{class_model_1_1_wall_ac4260a872517b84310aaf32963112cfc}{Model::Wall::Wall}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position\_)\ :\ \mbox{\hyperlink{class_model_1_1_entity}{Entity}}(\mbox{\hyperlink{class_model_1_1_entity_a342659dcba0c925b4291476198490432}{Type}}::wall)\ \{\ \mbox{\hyperlink{class_model_1_1_entity_a16fe7f99f742f95bfe886aa1b5c28cc0}{position}}\ =\ position\_;\ \}}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00007}\mbox{\hyperlink{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}{00007}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_wall_a463c0012a1cc204dc88e694b93df2d55}{Model::Wall::update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Model::World>\&\ world,\ std::shared\_ptr<Camera>\ camera)\ \{}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ pixelPosition\ =\ camera-\/>toPixels(position);}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00009}00009\ \ \ \ \ notifyObservers(pixelPosition.x,\ pixelPosition.y,\ camera,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_wall_8cpp_source_l00010}00010\ \}}
+
+\end{DoxyCode}

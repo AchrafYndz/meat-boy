@@ -32,6 +32,7 @@ add_library(Logic STATIC
         src/model/Goal.cpp
         src/model/Goal.h
         src/model/AbstractFactory.h
+        src/model/Constants.h
         )
 
 

@@ -1,0 +1,43 @@
+\hypertarget{_camera_8h_source}{}\doxysection{Camera.\+h}
+\label{_camera_8h_source}\index{model/Camera.h@{model/Camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CAMERA\_H}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CAMERA\_H}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../util/floatVector2.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Constants.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}World.h"{}}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00010}00010\ \textcolor{keyword}{namespace\ }Model\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00014}\mbox{\hyperlink{class_model_1_1_camera}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model_1_1_camera}{Camera}}\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00015}00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{float}\ cameraHeight\ =\ WINDOW\_HEIGHT\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{int}\ totalHeight\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00021}00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00025}\mbox{\hyperlink{class_model_1_1_camera_a227bde436fb839665053062b30d48983}{00025}}\ \ \ \ \ \mbox{\hyperlink{class_model_1_1_camera_a227bde436fb839665053062b30d48983}{Camera}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00032}\mbox{\hyperlink{class_model_1_1_camera_a10c195c241c971f760121e7c8d1c2e44}{00032}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_camera_a10c195c241c971f760121e7c8d1c2e44}{setTotalHeight}}(\textcolor{keywordtype}{int}\ rows)\ \{\ totalHeight\ =\ rows;\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00041}00041\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_model_1_1_camera_a8a7e64ad1b458a2073cca7bb47c15aa3}{normalizePosition}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00050}00050\ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ \mbox{\hyperlink{class_model_1_1_camera_a293d13c0634f64f67736d746b0801fff}{toPixels}}(\mbox{\hyperlink{structfloat_vector2}{floatVector2}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00057}\mbox{\hyperlink{class_model_1_1_camera_a4c4d397ed8becbfae6d510212d40e552}{00057}}\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_model_1_1_camera_a4c4d397ed8becbfae6d510212d40e552}{getCameraHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cameraHeight;\ \}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_camera_ade39585a6663a3d5e362b2d5c53e7c14}{setCameraHeight}}(\textcolor{keywordtype}{float}\ height);}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00071}00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_camera_abfe0dfdfa60be2c8c051eb304a2a22b6}{move}}(\textcolor{keywordtype}{float}\ difference);}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00080}00080\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_model_1_1_camera_a12f98fb699e1b543a05ae68181639ac0}{entityIsVisible}}(\textcolor{keywordtype}{float}\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_1_1_camera_aa59b9044eb694087d4b9a3c40691eb7a}{update}}(\textcolor{keyword}{const}\ std::shared\_ptr<Player>\&\ player,\ \textcolor{keyword}{const}\ std::shared\_ptr<Controller::StateManager>\&\ stateManager);}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00089}00089\ \};}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00090}00090\ \}\ \textcolor{comment}{//\ namespace\ Model}}
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_camera_8h_source_l00092}00092\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INC\_2022\_PROJECT\_ACHRAFYNDZ\_CAMERA\_H}}
+
+\end{DoxyCode}

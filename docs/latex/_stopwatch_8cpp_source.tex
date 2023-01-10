@@ -1,0 +1,16 @@
+\hypertarget{_stopwatch_8cpp_source}{}\doxysection{Stopwatch.\+cpp}
+\label{_stopwatch_8cpp_source}\index{util/Stopwatch.cpp@{util/Stopwatch.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Stopwatch.h"{}}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00003}00003\ std::shared\_ptr<Utility::Stopwatch>\ Utility::Stopwatch::stopwatch(\textcolor{keyword}{new}\ Stopwatch);}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00005}\mbox{\hyperlink{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}{00005}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_utility_1_1_stopwatch_a73fbe23453c5a3627261a41b29c9cee4}{Utility::Stopwatch::timeSinceLastUpdate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordflow}{return}\ std::chrono::duration\_cast<std::chrono::nanoseconds>(std::chrono::steady\_clock::now()\ -\/\ lastUpdate).count()\ /}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00007}00007\ \ \ \ \ \ \ \ \ \ \ \ 1e9;}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_stopwatch_8cpp_source_l00010}\mbox{\hyperlink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utility_1_1_stopwatch_aef7cd8354ff6ca999cbd09daefdd15dd}{Utility::Stopwatch::reset}}()\ \{\ lastUpdate\ =\ std::chrono::steady\_clock::now();\ \}}
+
+\end{DoxyCode}

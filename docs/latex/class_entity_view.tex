@@ -1,0 +1,170 @@
+\hypertarget{class_entity_view}{}\doxysection{Entity\+View Class Reference}
+\label{class_entity_view}\index{EntityView@{EntityView}}
+Inheritance diagram for Entity\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_entity_view}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_view_a0fcb1a9151db3a3939693a6c6becdc75}{Entity\+View}} (const std\+::string \&filepath)
+\item 
+\mbox{\hyperlink{class_entity_view_a0f778007e6a69481a371e9ef322e976a}{$\sim$\+Entity\+View}} () override=default
+\item 
+void \mbox{\hyperlink{class_entity_view_ad98400bca731b20b578725681ce058b8}{update}} (float x, float y, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Model\+::\+Camera}} $>$ camera, bool facing\+Left) override
+\item 
+\mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} \mbox{\hyperlink{class_entity_view_a1d50d3ac429c1dcac7f899959cef5a3e}{get\+Size}} ()
+\item 
+void \mbox{\hyperlink{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}{face\+Left}} (bool left)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_observer}{Model\+::\+Observer}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_model_1_1_observer_abc90dad2eccf359f58a71a0f99645efb}{$\sim$\+Observer}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}{update}} (float x, float y, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Camera}} $>$ camera, bool facing\+Left)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_entity_view_8h_source_l00015}{15}} of file \mbox{\hyperlink{_entity_view_8h_source}{Entity\+View.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_entity_view_a0fcb1a9151db3a3939693a6c6becdc75}\label{class_entity_view_a0fcb1a9151db3a3939693a6c6becdc75}} 
+\index{EntityView@{EntityView}!EntityView@{EntityView}}
+\index{EntityView@{EntityView}!EntityView@{EntityView}}
+\doxysubsubsection{\texorpdfstring{EntityView()}{EntityView()}}
+{\footnotesize\ttfamily Entity\+View\+::\+Entity\+View (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Constructor for the \doxylink{class_entity_view}{Entity\+View} class
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & path to the image file to use for the sprite \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_view_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_entity_view_8cpp_source}{Entity\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{keywordflow}{if}\ (!texture.loadFromFile(filepath))\ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ load\ file\ for\ Texture"{}});}
+\DoxyCodeLine{00006\ \ \ \ \ \}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ sprite.setTexture(texture);}
+\DoxyCodeLine{00009\ \ \ \ \ sprite.setScale(SCALE,\ SCALE);}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_entity_view_a0f778007e6a69481a371e9ef322e976a}\label{class_entity_view_a0f778007e6a69481a371e9ef322e976a}} 
+\index{EntityView@{EntityView}!````~EntityView@{$\sim$EntityView}}
+\index{````~EntityView@{$\sim$EntityView}!EntityView@{EntityView}}
+\doxysubsubsection{\texorpdfstring{$\sim$EntityView()}{~EntityView()}}
+{\footnotesize\ttfamily Entity\+View\+::$\sim$\+Entity\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+Default Destructor of the \doxylink{class_entity_view}{Entity\+View} class 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}\label{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}} 
+\index{EntityView@{EntityView}!faceLeft@{faceLeft}}
+\index{faceLeft@{faceLeft}!EntityView@{EntityView}}
+\doxysubsubsection{\texorpdfstring{faceLeft()}{faceLeft()}}
+{\footnotesize\ttfamily void Entity\+View\+::face\+Left (\begin{DoxyParamCaption}\item[{bool}]{left }\end{DoxyParamCaption})}
+
+sets the Entities\+View\textquotesingle{}s orientation based on the provided parameter
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & whether or not the sprite should face\+Left left \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_entity_view_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_entity_view_8cpp_source}{Entity\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{if}\ (left)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ sprite.setScale(-\/SCALE,\ SCALE);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ sprite.setOrigin(sprite.getLocalBounds().width,\ 0.f);}
+\DoxyCodeLine{00018\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ sprite.setScale(SCALE,\ SCALE);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ sprite.setOrigin(0.f,\ 0.f);}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_entity_view_a1d50d3ac429c1dcac7f899959cef5a3e}\label{class_entity_view_a1d50d3ac429c1dcac7f899959cef5a3e}} 
+\index{EntityView@{EntityView}!getSize@{getSize}}
+\index{getSize@{getSize}!EntityView@{EntityView}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfloat_vector2}{float\+Vector2}} Entity\+View\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+returns the size of the sprite
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structfloat_vector2}{float\+Vector2} object representing the width and height of the sprite 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_entity_view_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_entity_view_8cpp_source}{Entity\+View.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{\ \textcolor{keywordflow}{return}\ \{sprite.getLocalBounds().width,\ sprite.getLocalBounds().height\};\ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_entity_view_ad98400bca731b20b578725681ce058b8}\label{class_entity_view_ad98400bca731b20b578725681ce058b8}} 
+\index{EntityView@{EntityView}!update@{update}}
+\index{update@{update}!EntityView@{EntityView}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Entity\+View\+::update (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_model_1_1_camera}{Model\+::\+Camera}} $>$}]{camera,  }\item[{bool}]{facing\+Left }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+updates the position and orientation of the \doxylink{class_entity_view}{Entity\+View}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate of the Entity position \\
+\hline
+{\em y} & y-\/coordinate of the entities position \\
+\hline
+{\em camera} & \\
+\hline
+{\em facing\+Left} & true if facing left, false otherwise \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_model_1_1_observer_a85c1960faf53a5f806edad013d5136a9}{Model\+::\+Observer}}.
+
+
+
+Definition at line \mbox{\hyperlink{_entity_view_8h_source_l00045}{45}} of file \mbox{\hyperlink{_entity_view_8h_source}{Entity\+View.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (camera-\/>entityIsVisible(y))\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ sprite.setPosition(x,\ y);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity_view_a7f03dbaf277a8eba98fda1482ce9aecc}{faceLeft}}(facingLeft);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_controller_1_1_game_abfa1c95ffcd87bf637352cbc15eea6b2}{Controller::Game::getWindow}}()-\/>draw(sprite);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+view/Entity\+View.\+h\item 
+view/Entity\+View.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,149 @@
+\hypertarget{_game_8cpp_source}{}\doxysection{Game.\+cpp}
+\label{_game_8cpp_source}\index{controller/Game.cpp@{controller/Game.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Game.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../model/Player.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}StateManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00007}00007\ sf::RenderWindow\ Controller::Game::window;}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00009}\mbox{\hyperlink{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}{00009}}\ \mbox{\hyperlink{class_controller_1_1_game_a3cd1e2b9440a853a78a5ec939bd50211}{Controller::Game::Game}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00010}00010\ \ \ \ \ window.create(sf::VideoMode(WINDOW\_WIDTH,\ WINDOW\_HEIGHT),\ \textcolor{stringliteral}{"{}Meat\ Boy"{}});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gameFont.loadFromFile(\textcolor{stringliteral}{"{}resources/fonts/meat-\/boy-\/font.ttf"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Could\ not\ load\ game\ font"{}});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00015}00015\ \ \ \ \ text.setFont(gameFont);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00017}00017\ \ \ \ \ stateManager\ =\ std::make\_shared<StateManager>();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00019}00019\ \ \ \ \ camera\ =\ std::make\_shared<Model::Camera>();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00021}00021\ \ \ \ \ world\ =\ std::make\_shared<Model::World>();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00024}\mbox{\hyperlink{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_1_1_game_a46d84e54c4f513e8f1058c3feff13f08}{Controller::Game::run}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00025}00025\ \ \ \ \ std::shared\_ptr<Utility::Stopwatch>\ stopwatch\ =\ \mbox{\hyperlink{class_utility_1_1_stopwatch_ad35db1b6c78faf84e61827f51b2b91e3}{Utility::Stopwatch::getInstance}}();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{while}\ (window.isOpen())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stopwatch-\/>timeSinceLastUpdate()\ >\ TIME\_PER\_FRAME)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ stopwatch-\/>reset();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ window.clear();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ process();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ render();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ window.display();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00037}00037\ \textcolor{keywordtype}{void}\ Controller::Game::process()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (stateManager-\/>isInMenuState())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ sf::Event\ \textcolor{keyword}{event}\{\};}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (window.pollEvent(event))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (event.type)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ sf::Event::Closed:}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ sf::Event::KeyPressed:}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ handleMenuInput(event.key.code);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00055}00055\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ sf::Event\ \textcolor{keyword}{event}\{\};}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (window.pollEvent(event))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stateManager-\/>goToMenu();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::Closed)}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ std::shared\_ptr<Model::Player>\ player\ =\ world-\/>getPlayer();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::A)\ ||\ sf::Keyboard::isKeyPressed(sf::Keyboard::Left))}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::left,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::left,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::D)\ ||\ sf::Keyboard::isKeyPressed(sf::Keyboard::Right))}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::right,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::right,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::W)\ ||\ sf::Keyboard::isKeyPressed(sf::Keyboard::Space))}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::space,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ player-\/>buttonAction(player-\/>KeyEnum::space,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ WIN\ STATE\ -\/>\ go\ to\ next\ Level\ or\ Main\ Menu\ if\ it's\ the\ last\ Level}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player-\/>hasReachedGoal())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selectedLevel\ ==\ 3)}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stateManager-\/>goToMenu();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ selectedLevel++;}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ world-\/>loadLevel(selectedLevel,\ stateManager,\ camera);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ DIE\ -\/>\ reload\ Level}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!camera-\/>entityIsVisible(camera-\/>toPixels(player-\/>getPosition()).y))\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ world-\/>loadLevel(selectedLevel,\ stateManager,\ camera);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00097}00097\ \textcolor{keywordtype}{void}\ Controller::Game::render()\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (stateManager-\/>isInMenuState())\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ the\ game\ title}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ text.setCharacterSize(\textcolor{keywordtype}{int}(400\ *\ SCALE));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ text.setString(\textcolor{stringliteral}{"{}Meat\ Boy"{}});}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ text.setFillColor(sf::Color(100,\ 100,\ 100));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ text.setPosition(sf::Vector2f(10,\ 10));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reposition\ View\ (for\ when\ we\ went\ from\ Level\ to\ Main\ Menu)}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ sf::View\ view\ =\ window.getView();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ view.setCenter(WINDOW\_WIDTH\ /\ 2.f,\ WINDOW\_HEIGHT\ /\ 2.f);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ window.setView(view);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ window.draw(text);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ draw\ level\ selection}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ totalLevels;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ text.setString(\textcolor{stringliteral}{"{}Level\ "{}}\ +\ std::to\_string(i));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ text.setFillColor(i\ ==\ selectedLevel\ ?\ sf::Color::White\ :\ sf::Color(100,\ 100,\ 100));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ text.setPosition(sf::Vector2f(120.0f,\ 60.0f\ +\ (\textcolor{keywordtype}{float}(i)\ *\ 80.0f)));}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ window.draw(text);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00119}00119\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ world-\/>update(camera);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ camera-\/>update(world-\/>getPlayer(),\ stateManager);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ cameraCenter\ =\ camera-\/>getCameraHeight();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ sf::View\ v\ =\ window.getView();}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ v.setCenter(WINDOW\_WIDTH\ /\ 2.f,\ cameraCenter);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ window.setView(v);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00130}00130\ \textcolor{keywordtype}{void}\ Controller::Game::handleMenuInput(sf::Keyboard::Key\ key)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ ==\ sf::Keyboard::W\ ||\ key\ ==\ sf::Keyboard::Up)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selectedLevel\ >\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ selectedLevel-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ selectedLevel\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00137}00137\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (key\ ==\ sf::Keyboard::S\ ||\ key\ ==\ sf::Keyboard::Down)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selectedLevel\ <\ totalLevels)}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ selectedLevel++;}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00140}00140\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (key\ ==\ sf::Keyboard::Enter)\ \{}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ world-\/>loadLevel(selectedLevel,\ stateManager,\ camera);}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00142}00142\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_game_8cpp_source_l00143}00143\ \}}
+
+\end{DoxyCode}
