@@ -36,12 +36,12 @@ void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
             currentAcceleration += acceleration;
         facingLeft = false;
     } else if (currentJumpingTime <= 0.f) { // deceleration if not jumping
-        if (currentAcceleration < 0.34f && currentAcceleration > -0.34f)
+        if (currentAcceleration < 0.10f && currentAcceleration > -0.10f)
             currentAcceleration = 0.f; // correction
         if (currentAcceleration > 0.f)
-            currentAcceleration -= acceleration;
+            currentAcceleration -= acceleration/5;
         else if (currentAcceleration < 0.f)
-            currentAcceleration += acceleration;
+            currentAcceleration += acceleration/5;
     }
 
     if (currentAcceleration > topSpeed)
@@ -70,21 +70,30 @@ void Model::Player::processInput(const std::shared_ptr<Camera>& camera) {
     position = camera->normalizePosition(floatVector2(currentX + currentAcceleration, playerPosition.y));
 }
 
+
 void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shared_ptr<Camera> camera) {
     processInput(camera);
 
     floatVector2 playerPosition = camera->toPixels(getPosition()); // top left corner
 
     if (currentJumpingTime > 0) {
-        playerPosition.y -= topSpeed;
+        verticalAcceleration -= topSpeed/4;
 
-        // if one third of the jump -> deceleration
+        // if player in last 2/3rds of the jump -> start decelerating
         if (currentJumpingTime < jumpingTotalTime / 3.f)
-            playerPosition.y += jumpDeceleration;
+            verticalAcceleration += jumpDeceleration;
 
         currentJumpingTime -= TIME_PER_FRAME;
     } else
-        playerPosition.y += topSpeed; // apply gravity
+        verticalAcceleration = topSpeed; // apply gravity
+
+    if (verticalAcceleration > topSpeed) {
+        verticalAcceleration = topSpeed;
+    } else if (verticalAcceleration < -topSpeed) {
+        verticalAcceleration = -topSpeed;
+    }
+
+    playerPosition.y += verticalAcceleration;
 
     /// collision
 
@@ -100,6 +109,11 @@ void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shar
     bottomSensor.x = playerPosition.x + (SCALE * bounds.x / 2.f);
     bottomSensor.y = playerPosition.y + (SCALE * bounds.y) + sensorOffset;
     bottomSensor.active = false;
+
+    topSensor.x = playerPosition.x + (SCALE * bounds.x / 2.f);
+    topSensor.y = playerPosition.y - sensorOffset;
+    topSensor.active = false;
+
 
     floatRectangle rectangle{};
     for (const auto& entity : world->getEntities()) {
@@ -117,6 +131,8 @@ void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shar
                 leftSensor.active = true;
             else if (world->rectangleContains(rectangle, floatVector2(rightSensor.x, rightSensor.y)))
                 rightSensor.active = true;
+            else if (world->rectangleContains(rectangle, floatVector2(topSensor.x, topSensor.y)))
+                topSensor.active = true;
         }
     }
     if (bottomSensor.active)
@@ -134,9 +150,9 @@ void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shar
             floatVector2 playerOverlap = world->getOverlap(playerPosition, camera->toPixels(entity->getPosition()));
             if (playerOverlap.x > 0.f && playerOverlap.y > 0.f) {
                 if (playerOverlap.y < playerOverlap.x) { // compensate only the shortest overlap, in this case y
-                    if (bottomSensor.active) {     // player on top of tile
+                    if (bottomSensor.active) {  // player on top of tile
                         playerPosition.y -= playerOverlap.y;
-                    } else { // player hit tile from below
+                    } else if (topSensor.active) {  // player hit tile from below
                         playerPosition.y += playerOverlap.y;
                     }
                 } else {                      // compensate only x
@@ -154,6 +170,10 @@ void Model::Player::update(const std::shared_ptr<Model::World>& world, std::shar
             if (playerOverlap.x > 0.f && playerOverlap.y > 0.f)
                 reachedGoal = true;
         }
+    }
+
+    if ((state == State::onLeftWall || state == State::onRightWall) && currentJumpingTime > 0.f) {
+        playerPosition.y += jumpDeceleration*2;
     }
 
     notifyObservers(playerPosition.x, playerPosition.y, camera, facingLeft);

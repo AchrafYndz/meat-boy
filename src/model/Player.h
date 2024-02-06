@@ -26,6 +26,7 @@ private:
     Sensor leftSensor;
     Sensor rightSensor;
     Sensor bottomSensor;
+    Sensor topSensor;
 
     /**
      * Enum representing the collision state of the player
@@ -36,14 +37,15 @@ private:
     /**
      * Variables used for player movement
      */
-    const float speedMultiplier = WINDOW_WIDTH / 480.f;
+    const float speedMultiplier = WINDOW_WIDTH / 480.f / 2.f;
     const float acceleration = 60.f * TIME_PER_FRAME * speedMultiplier;
     float currentAcceleration = 0.f;
-    const float topSpeed = 300.f * TIME_PER_FRAME * speedMultiplier;
+    const float topSpeed = 800.f * TIME_PER_FRAME * speedMultiplier;
 
     const float jumpingTotalTime = 0.8f;
     float currentJumpingTime = 0.f;
-    const float jumpDeceleration = 120.f * TIME_PER_FRAME * speedMultiplier;
+    const float jumpDeceleration = 240.f * TIME_PER_FRAME * speedMultiplier;
+    float verticalAcceleration = 20.f * TIME_PER_FRAME * speedMultiplier;
 
     bool jumpAvailable = true;
 
