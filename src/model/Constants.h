@@ -10,7 +10,7 @@ const int WINDOW_HEIGHT = 853;
 // const int WINDOW_WIDTH = 720;
 // const int WINDOW_HEIGHT = 1280;
 
-const float TIME_PER_FRAME = 1 / 60.0f;
+const float TIME_PER_FRAME = 1 / 144.0f;
 const int TILE_SIZE = 256;
 const float SCALE = (WINDOW_WIDTH / 15.0f) / TILE_SIZE;
 
