@@ -14,6 +14,22 @@ Controller::Game::Game() {
     }
     text.setFont(gameFont);
 
+    if (!backgroundTexture.loadFromFile("resources/textures/background.png")) {
+        throw std::invalid_argument("Could not load background texture");
+    }
+    backgroundSprite.setTexture(backgroundTexture);
+
+    const float scaleFactor = static_cast<float>(WINDOW_WIDTH) / static_cast<float>(backgroundTexture.getSize().x);
+    backgroundSprite.setScale(scaleFactor, scaleFactor);
+
+    if (!menuBackgroundTexture.loadFromFile("resources/textures/menu_background.png")) {
+        throw std::invalid_argument("Could not load background texture");
+    }
+    menuBackgroundSprite.setTexture(menuBackgroundTexture);
+
+    const float menuScaleFactor = static_cast<float>(WINDOW_HEIGHT) / static_cast<float>(menuBackgroundTexture.getSize().y);
+    menuBackgroundSprite.setScale(menuScaleFactor, menuScaleFactor);
+
     stateManager = std::make_shared<StateManager>();
 
     camera = std::make_shared<Model::Camera>();
@@ -96,11 +112,15 @@ void Controller::Game::process() {
 
 void Controller::Game::render() {
     if (stateManager->isInMenuState()) {
+        window.draw(menuBackgroundSprite);
+
+        const float windowWidth = static_cast<float>(window.getSize().x);
         // draw the game title
-        text.setCharacterSize(int(400 * SCALE));
+        text.setCharacterSize(static_cast<int>(400 * SCALE));
         text.setString("Meat Boy");
-        text.setFillColor(sf::Color(100, 100, 100));
-        text.setPosition(sf::Vector2f(10, 10));
+        text.setFillColor(sf::Color(96, 05, 00));
+        const float textWidth = text.getLocalBounds().width;
+        text.setPosition(sf::Vector2f(windowWidth / 2.0f - textWidth / 2.0f, 10));
 
         // reposition View (for when we went from Level to Main Menu)
         sf::View view = window.getView();
@@ -112,11 +132,13 @@ void Controller::Game::render() {
         // draw level selection
         for (int i = 1; i <= totalLevels; i++) {
             text.setString("Level " + std::to_string(i));
-            text.setFillColor(i == selectedLevel ? sf::Color::White : sf::Color(100, 100, 100));
-            text.setPosition(sf::Vector2f(120.0f, 60.0f + (float(i) * 80.0f)));
+            text.setFillColor(i == selectedLevel ? sf::Color(210, 70, 70) : sf::Color(41, 27, 23));
+            const float textWidth = text.getLocalBounds().width;
+            text.setPosition(sf::Vector2f(windowWidth / 2.0f - textWidth / 2.0f, 120.0f + (static_cast<float>(i) * 80.0f)));
             window.draw(text);
         }
     } else {
+        window.draw(Game::backgroundSprite);
         world->update(camera);
         camera->update(world->getPlayer(), stateManager);
 

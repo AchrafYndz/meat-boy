@@ -32,6 +32,18 @@ private:
     /** The SFML text object that is used to render the text in the game */
     sf::Text text;
 
+    /** The SFML texture used for the background of the game */
+    sf::Texture backgroundTexture;
+
+    /** The SFML sprite used for the background of the game */
+    sf::Sprite backgroundSprite;
+
+    /** The SFML sprite used for the background of the menu */
+    sf::Sprite menuBackgroundSprite;
+
+    /** The SFML texture used for the background of the menu */
+    sf::Texture menuBackgroundTexture;
+
     /** The currently selected level of the game */
     int selectedLevel = 1;
 

@@ -44,7 +44,7 @@ void Model::World::loadLevel(int levelNumber, const std::shared_ptr<Controller::
     levelMap.clear();
     levelMap.seekg(0);                             // return to the beginning
     camera->setTotalHeight(totalRows);                  // set total height of level
-    camera->setCameraHeight(float(totalRows) * tileSize); // set initial camera position
+    camera->setCameraHeight(static_cast<float>(totalRows) * tileSize); // set initial camera position
 
     std::string value;
     int column = 0;                             // top
@@ -52,7 +52,7 @@ void Model::World::loadLevel(int levelNumber, const std::shared_ptr<Controller::
     while (getline(levelMap, line)) {           /* read entire line into line */
         std::stringstream stringstream(line);             /* create stringstream from line */
         while (getline(stringstream, value, delimiter)) { /* read each field from line */
-            floatVector2 pos = camera->normalizePosition(floatVector2(float(column) * tileSize, float(row) * tileSize));
+            floatVector2 pos = camera->normalizePosition(floatVector2(static_cast<float>(column) * tileSize, static_cast<float>(row) * tileSize));
             if (value == "0") // wall
                 addEntity(concreteFactory->createEntity(shared_from_this(), Entity::wall, pos));
             else if (value == "1") // goal

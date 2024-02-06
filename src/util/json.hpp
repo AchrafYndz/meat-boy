@@ -2610,7 +2610,7 @@ struct conjunction : std::true_type {};
 template <class B1>
 struct conjunction<B1> : B1 {};
 template <class B1, class... Bn>
-struct conjunction<B1, Bn...> : std::conditional<bool(B1::value), conjunction<Bn...>, B1>::type {};
+struct conjunction<B1, Bn...> : std::conditional<static_cast<bool>(B1::value), conjunction<Bn...>, B1>::type {};
 
 template <typename T1, typename T2>
 struct is_constructible_tuple : std::false_type {};
@@ -4057,7 +4057,7 @@ public:
     bool start_object(std::size_t len) {
         ref_stack.push_back(handle_value(BasicJsonType::value_t::object));
 
-        if (JSON_HEDLEY_UNLIKELY(len != std::size_t(-1) and len > ref_stack.back()->max_size())) {
+        if (JSON_HEDLEY_UNLIKELY(len != static_cast<std::size_t>(-1) and len > ref_stack.back()->max_size())) {
             JSON_THROW(out_of_range::create(408, "excessive object size: " + std::to_string(len)));
         }
 
@@ -4078,7 +4078,7 @@ public:
     bool start_array(std::size_t len) {
         ref_stack.push_back(handle_value(BasicJsonType::value_t::array));
 
-        if (JSON_HEDLEY_UNLIKELY(len != std::size_t(-1) and len > ref_stack.back()->max_size())) {
+        if (JSON_HEDLEY_UNLIKELY(len != static_cast<std::size_t>(-1) and len > ref_stack.back()->max_size())) {
             JSON_THROW(out_of_range::create(408, "excessive array size: " + std::to_string(len)));
         }
 
@@ -4216,7 +4216,7 @@ public:
         ref_stack.push_back(val.second);
 
         // check object limit
-        if (ref_stack.back() and JSON_HEDLEY_UNLIKELY(len != std::size_t(-1) and len > ref_stack.back()->max_size())) {
+        if (ref_stack.back() and JSON_HEDLEY_UNLIKELY(len != static_cast<std::size_t>(-1) and len > ref_stack.back()->max_size())) {
             JSON_THROW(out_of_range::create(408, "excessive object size: " + std::to_string(len)));
         }
 
@@ -4271,7 +4271,7 @@ public:
         ref_stack.push_back(val.second);
 
         // check array limit
-        if (ref_stack.back() and JSON_HEDLEY_UNLIKELY(len != std::size_t(-1) and len > ref_stack.back()->max_size())) {
+        if (ref_stack.back() and JSON_HEDLEY_UNLIKELY(len != static_cast<std::size_t>(-1) and len > ref_stack.back()->max_size())) {
             JSON_THROW(out_of_range::create(408, "excessive array size: " + std::to_string(len)));
         }
 
@@ -4441,13 +4441,13 @@ public:
 
     bool string(string_t& /*unused*/) { return true; }
 
-    bool start_object(std::size_t /*unused*/ = std::size_t(-1)) { return true; }
+    bool start_object(std::size_t /*unused*/ = static_cast<std::size_t>(-1)) { return true; }
 
     bool key(string_t& /*unused*/) { return true; }
 
     bool end_object() { return true; }
 
-    bool start_array(std::size_t /*unused*/ = std::size_t(-1)) { return true; }
+    bool start_array(std::size_t /*unused*/ = static_cast<std::size_t>(-1)) { return true; }
 
     bool end_array() { return true; }
 
@@ -4693,7 +4693,7 @@ private:
         std::int32_t document_size;
         get_number<std::int32_t, true>(input_format_t::bson, document_size);
 
-        if (JSON_HEDLEY_UNLIKELY(not sax->start_object(std::size_t(-1)))) {
+        if (JSON_HEDLEY_UNLIKELY(not sax->start_object(static_cast<std::size_t>(-1)))) {
             return false;
         }
 
@@ -4871,7 +4871,7 @@ private:
         std::int32_t document_size;
         get_number<std::int32_t, true>(input_format_t::bson, document_size);
 
-        if (JSON_HEDLEY_UNLIKELY(not sax->start_array(std::size_t(-1)))) {
+        if (JSON_HEDLEY_UNLIKELY(not sax->start_array(static_cast<std::size_t>(-1)))) {
             return false;
         }
 
@@ -5092,7 +5092,7 @@ private:
         }
 
         case 0x9F: // array (indefinite length)
-            return get_cbor_array(std::size_t(-1));
+            return get_cbor_array(static_cast<std::size_t>(-1));
 
         // map (0x00..0x17 pairs of data items follow)
         case 0xA0:
@@ -5146,7 +5146,7 @@ private:
         }
 
         case 0xBF: // map (indefinite length)
-            return get_cbor_object(std::size_t(-1));
+            return get_cbor_object(static_cast<std::size_t>(-1));
 
         case 0xF4: // false
             return sax->boolean(false);
@@ -5330,7 +5330,7 @@ private:
             return false;
         }
 
-        if (len != std::size_t(-1)) {
+        if (len != static_cast<std::size_t>(-1)) {
             for (std::size_t i = 0; i < len; ++i) {
                 if (JSON_HEDLEY_UNLIKELY(not parse_cbor_internal())) {
                     return false;
@@ -5358,7 +5358,7 @@ private:
         }
 
         string_t key;
-        if (len != std::size_t(-1)) {
+        if (len != static_cast<std::size_t>(-1)) {
             for (std::size_t i = 0; i < len; ++i) {
                 get();
                 if (JSON_HEDLEY_UNLIKELY(not get_cbor_string(key) or not sax->key(key))) {
@@ -6190,7 +6190,7 @@ private:
                 }
             }
         } else {
-            if (JSON_HEDLEY_UNLIKELY(not sax->start_array(std::size_t(-1)))) {
+            if (JSON_HEDLEY_UNLIKELY(not sax->start_array(static_cast<std::size_t>(-1)))) {
                 return false;
             }
 
@@ -6242,7 +6242,7 @@ private:
                 }
             }
         } else {
-            if (JSON_HEDLEY_UNLIKELY(not sax->start_object(std::size_t(-1)))) {
+            if (JSON_HEDLEY_UNLIKELY(not sax->start_object(static_cast<std::size_t>(-1)))) {
                 return false;
             }
 
@@ -7922,7 +7922,7 @@ private:
                 // invariant: get_token() was called before each iteration
                 switch (last_token) {
                 case token_type::begin_object: {
-                    if (JSON_HEDLEY_UNLIKELY(not sax->start_object(std::size_t(-1)))) {
+                    if (JSON_HEDLEY_UNLIKELY(not sax->start_object(static_cast<std::size_t>(-1)))) {
                         return false;
                     }
 
@@ -7962,7 +7962,7 @@ private:
                 }
 
                 case token_type::begin_array: {
-                    if (JSON_HEDLEY_UNLIKELY(not sax->start_array(std::size_t(-1)))) {
+                    if (JSON_HEDLEY_UNLIKELY(not sax->start_array(static_cast<std::size_t>(-1)))) {
                         return false;
                     }
 

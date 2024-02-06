@@ -6,9 +6,9 @@ floatVector2 Model::Camera::normalizePosition(floatVector2 position) const {
     floatVector2 result;
 
     float oldMin = 0.0f;
-    float oldMax = float(totalHeight) * SCALE * TILE_SIZE;
+    float oldMax = static_cast<float>(totalHeight) * SCALE * TILE_SIZE;
     float newMin = -1.0f;
-    float newMax = float(totalHeight);
+    float newMax = static_cast<float>(totalHeight);
 
     float oldPercent = (position.y - oldMin) / (oldMax - oldMin);
 
@@ -22,9 +22,9 @@ floatVector2 Model::Camera::toPixels(floatVector2 position) const {
     floatVector2 result;
 
     float oldMin = -1.0f;
-    float oldMax = float(totalHeight);
+    float oldMax = static_cast<float>(totalHeight);
     float newMin = 0.0f;
-    float newMax = float(totalHeight) * SCALE * TILE_SIZE;
+    float newMax = static_cast<float>(totalHeight) * SCALE * TILE_SIZE;
 
     float oldPercent = (position.y - oldMin) / (oldMax - oldMin);
 
@@ -35,7 +35,7 @@ floatVector2 Model::Camera::toPixels(floatVector2 position) const {
 }
 
 void Model::Camera::move(float difference) {
-    if (cameraHeight + difference - float(WINDOW_HEIGHT) / 2.0f >= 0)
+    if (cameraHeight + difference - static_cast<float>(WINDOW_HEIGHT) / 2.0f >= 0)
         cameraHeight += difference;
 }
 
